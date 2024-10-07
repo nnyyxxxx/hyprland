@@ -28,3 +28,6 @@ Install via git
 | `ALT + RMB` | Resizes window in floating & resizes mfact in tiled; when two or more windows are on screen |
 | `ALT + SPACE` | Makes the selected window float |
 | `ALT + V` | Spawns hyprpicker (Color picker) |
+
+### Preview:
+![](.github/preview.png)
