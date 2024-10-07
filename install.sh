@@ -139,7 +139,7 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/gtk-3.0" "$XDG_CONFIG_HOME/gtk-3.0" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up gtk-3.0 configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/qt5ct" "$XDG_CONFIG_HOME/qt5ct" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up qt5ct.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/.xinitrc" "$HOME/.xinitrc" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up .xinitrc.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/hypr" "$XDG_CONFIG_HOME/hypr" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up hypr configuration.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/hypr" "$XDG_CONFIG_HOME/hypr" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up hypr configuration.${RC}"; }
 
     cp -R "$HYPRLAND_DIR/extra/waybar" "$XDG_CONFIG_HOME/waybar" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up waybar configuration.${RC}"; }
     cp -R "$HYPRLAND_DIR/extra/rofi" "$XDG_CONFIG_HOME/rofi" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up rofi configuration.${RC}"; }
