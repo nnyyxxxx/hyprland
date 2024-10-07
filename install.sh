@@ -141,6 +141,8 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/waybar" "$XDG_CONFIG_HOME/waybar" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up waybar configuration.${RC}"; }
     cp -R "$HYPRLAND_DIR/extra/rofi" "$XDG_CONFIG_HOME/rofi" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up rofi configuration.${RC}"; }
 
+    cd "$HYPRLAND_DIR/suckless/st" && $ESCALATION_TOOL make clean install > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install st.${RC}"; }
+
     echo "QT_QPA_PLATFORMTHEME=qt5ct" | $ESCALATION_TOOL tee -a /etc/environment > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set qt5ct in environment.${RC}"; }
 
     systemctl --user enable pipewire > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up pipewire.${RC}"; }
