@@ -94,7 +94,7 @@ window#waybar.hidden {
 }
 
 #wireplumber {
-  background-color: #f9e2af;
+  background-color: #cba6f7;
 }
 
 #network {
@@ -104,11 +104,11 @@ window#waybar.hidden {
 
 #clock {
   font-family: JetBrainsMono Nerd Font;
-  background-color: #cba6f7;
+  background-color: #89b4fa;
 }
 
 #custom-power {
-  background-color: #f2cdcd;
+  background-color: #f38ba8;
 }
 
 
