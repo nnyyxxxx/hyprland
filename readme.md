@@ -2,7 +2,16 @@
   <img src=".github/header.svg" alt="Header">
 </p>
 
-### My dot files for hyprland
-This repository contains my dotfiles for hyprland.
+### Usage:
+Install via curl
+  ```shell
+  curl -fsSL https://github.com/nnyyxxxx/hyprland/raw/main/install.sh | sh
+  ```
 
-W.I.P.!
+Install via git
+  ```shell
+  git clone https://github.com/nnyyxxxx/hyprland
+  cd hyprland
+  chmod +x install.sh
+  ./install.sh
+  ```
