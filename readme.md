@@ -15,3 +15,16 @@ Install via git
   chmod +x install.sh
   ./install.sh
   ```
+### Keybinds overview:
+| Keybind | Description |  
+| --- | --- |  
+| `ALT SHIFT + Enter` | Spawns st (Terminal) |  
+| `ALT SHIFT + P` | Spawns rofi (Application launcher) |
+| `ALT SHIFT + C` | Kills current window |
+| `ALT SHIFT + W` | Kills hyprland |
+| `ALT SHIFT + F` | Toggles fullscreen (Actualfullscreen Patch) |
+| `ALT + ESC` | Spawns grim (Screenshot utility) | 
+| `ALT + LMB` | Drags selected window |
+| `ALT + RMB` | Resizes window in floating & resizes mfact in tiled; when two or more windows are on screen |
+| `ALT + SPACE` | Makes the selected window float |
+| `ALT + V` | Spawns hyprpicker (Color picker) |
