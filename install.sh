@@ -118,6 +118,9 @@ setupConfigurations() {
     mv "$XDG_CONFIG_HOME/gtk-3.0" "$XDG_CONFIG_HOME/gtk-3.0-bak" > /dev/null 2>&1
     mv "$XDG_CONFIG_HOME/fastfetch" "$XDG_CONFIG_HOME/fastfetch-bak" > /dev/null 2>&1
     mv "$XDG_CONFIG_HOME/cava" "$XDG_CONFIG_HOME/cava-bak" > /dev/null 2>&1
+    mv "$XDG_CONFIG_HOME/hypr" "$XDG_CONFIG_HOME/hypr-bak" > /dev/null 2>&1
+    mv "$XDG_CONFIG_HOME/waybar" "$XDG_CONFIG_HOME/waybar-bak" > /dev/null 2>&1
+    mv "$XDG_CONFIG_HOME/rofi" "$XDG_CONFIG_HOME/rofi-bak" > /dev/null 2>&1
     mv "$HOME/.zshrc" "$HOME/.zshrc-bak" > /dev/null 2>&1
     mv "$HOME/.zprofile" "$HOME/.zprofile-bak" > /dev/null 2>&1
 
