@@ -77,7 +77,7 @@
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": " ",
-            "default": ["󰖀","󰕾",""]
+            "default": ["󰖀","󰕾 "," "]
         },
         "on-click": "pamixer -t",
         "scroll-step": 1
