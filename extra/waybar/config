@@ -16,10 +16,10 @@
 
     "modules-right": [
         "tray",
+        "battery",
         "custom/updates",
         "network",
         "wireplumber",
-        "battery",
         "custom/power"
     ],
 
@@ -59,7 +59,7 @@
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
         "format-ethernet": "󰀂",
         "format-alt" : "󱛇",
-        "format-disconnected" : "󰖪 ",
+        "format-disconnected" : "󰖪",
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
@@ -71,7 +71,7 @@
 
     "wireplumber": {
         "format": "{icon}",
-        "format-bluetooth": "󰂰 ",
+        "format-bluetooth": "󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume : {volume}%",
         "format-muted": "󰝟",
