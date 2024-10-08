@@ -18,7 +18,7 @@ Install via git
 ### Keybinds overview:
 | Keybind | Description |  
 | --- | --- |  
-| `ALT SHIFT + Enter` | Spawns st (Terminal) |  
+| `ALT SHIFT + Enter` | Spawns kitty (Terminal) |  
 | `ALT SHIFT + P` | Spawns rofi (Application launcher) |
 | `ALT SHIFT + C` | Kills current window |
 | `ALT SHIFT + W` | Kills hyprland |
