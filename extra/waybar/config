@@ -14,7 +14,7 @@
     ],
     "modules-right": [
         "tray",
-        "memory",
+        "custom/updates",
         "network",
         "wireplumber",
         "battery",
@@ -38,11 +38,6 @@
             "4": [],
             "5": []
         }
-    },
-    "memory": {
-        "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
     },
     "tray": {
         "spacing": 10
@@ -119,5 +114,12 @@
         "format": "󰤆",
         "tooltip": false,
         "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
+    },
+    "custom/updates": {
+        "format": "󰚰 {}",
+        "exec": "checkupdates | wc -l",
+        "interval": 600,
+        "on-click": "kitty -e ~/Documents/debloat.sh",
+        "tooltip": false
     }
 }

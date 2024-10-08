@@ -52,7 +52,7 @@ window#waybar.hidden {
   color: #1e1e2e;
 }
 
-#memory,
+#custom-updates,
 #custom-power,
 #battery,
 #backlight,
@@ -71,8 +71,12 @@ window#waybar.hidden {
   margin-right: 10px;
 }
 
-#memory {
-  background-color: #fab387;
+#custom-updates {
+  background-color: #89b4fa;
+  color: #181825;
+  border-radius: 4px;
+  margin: 6px 3px;
+  padding: 6px 12px;
 }
 
 #battery {
