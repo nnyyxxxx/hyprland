@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-2"
 theme='style-5'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostname)
 
 # Options
 shutdown=''
@@ -22,7 +22,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "Uptime: $uptime" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}/${theme}.rasi"
 }
 
 # Confirmation CMD
@@ -35,46 +35,58 @@ confirm_cmd() {
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}/${theme}.rasi"
 }
 
 # Ask for confirmation
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+	printf "%s\n%s\n" "$yes" "$no" | confirm_cmd
 }
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	printf "%s\n%s\n%s\n%s\n%s\n" "$lock" "$suspend" "$logout" "$reboot" "$shutdown" | rofi_cmd
 }
 
 # Execute Command
 run_cmd() {
 	selected="$(confirm_exit)"
-	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
-		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
-				killall xfce4-session
-			elif [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
-				killall Hyprland
-			fi
-		fi
+	if [ "$selected" = "$yes" ]; then
+		case "$1" in
+			'--shutdown')
+				systemctl poweroff
+				;;
+			'--reboot')
+				systemctl reboot
+				;;
+			'--suspend')
+				mpc -q pause
+				amixer set Master mute
+				systemctl suspend
+				;;
+			'--logout')
+				case "$DESKTOP_SESSION" in
+					'openbox')
+						openbox --exit
+						;;
+					'bspwm')
+						bspc quit
+						;;
+					'i3')
+						i3-msg exit
+						;;
+					'plasma')
+						qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+						;;
+					"xfce")
+						killall xfce4-session
+						;;
+					"hyprland")
+						killall Hyprland
+						;;
+				esac
+				;;
+		esac
 	else
 		exit 0
 	fi
@@ -82,20 +94,20 @@ run_cmd() {
 
 # Actions
 chosen="$(run_rofi)"
-case ${chosen} in
-    $shutdown)
+case "$chosen" in
+	"$shutdown")
 		run_cmd --shutdown
-        ;;
-    $reboot)
+		;;
+	"$reboot")
 		run_cmd --reboot
-        ;;
-    $lock)
+		;;
+	"$lock")
 		swaylock
-        ;;
-    $suspend)
+		;;
+	"$suspend")
 		run_cmd --suspend
-        ;;
-    $logout)
+		;;
+	"$logout")
 		run_cmd --logout
-        ;;
+		;;
 esac

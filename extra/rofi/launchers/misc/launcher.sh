@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 theme="screen"
 dir="$HOME/.config/rofi/launchers/misc"

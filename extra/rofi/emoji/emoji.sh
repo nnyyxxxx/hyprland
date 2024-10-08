@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 dir="$HOME/.config/rofi"
 theme='style-1'
