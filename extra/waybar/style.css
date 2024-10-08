@@ -7,9 +7,9 @@
 }
 
 window#waybar {
-  background-color: #181825;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+  background-color: rgba(24, 24, 37, 0.9);
+  border-radius: 10px;
+  margin: 10px;
 }
 
 window#waybar.hidden {
@@ -18,6 +18,7 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: transparent;
+  margin-left: 10px;
 }
 
 #workspaces button {
@@ -66,7 +67,7 @@ window#waybar.hidden {
 }
 
 #custom-power {
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 #memory {
