@@ -48,7 +48,8 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  background-color: #89b4fa;
+  color: #1e1e2e;
 }
 
 #memory,
