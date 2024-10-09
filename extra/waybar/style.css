@@ -16,8 +16,8 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: black;
-  margin-left: 6px;
-  padding: 2px;
+  margin: 0;
+  padding: 0;
   border: 1px solid #808080;
 }
 
@@ -26,7 +26,7 @@ window#waybar.hidden {
   min-width: 0;
   box-shadow: inset 0 -3px transparent;
   padding: 4px 10px;
-  margin: 2px;
+  margin: 0;
   color: white;
 }
 
@@ -58,7 +58,7 @@ window#waybar.hidden {
 #network,
 #clock,
 #tray {
-  margin: 4px 2px;
+  margin: 0;
   padding: 4px 10px;
   background-color: black;
   color: white;
@@ -66,7 +66,7 @@ window#waybar.hidden {
 }
 
 #custom-power {
-  margin-right: 6px;
+  margin-right: 0;
 }
 
 #custom-updates,
