@@ -31,24 +31,24 @@ window#waybar.hidden {
   color: white;
 }
 
-#workspaces button.active {
-  color: #0F0F0F;
-  background-color: white;
-  border: 1px solid #3A3A3C;
-}
-
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
   color: #0F0F0F;
   background-color: white;
-  border: 1px solid #3A3A3C;
+  box-shadow: 0 0 0 1px #3A3A3C;
+}
+
+#workspaces button.active {
+  color: #0F0F0F;
+  background-color: white;
+  box-shadow: 0 0 0 1px #3A3A3C;
 }
 
 #workspaces button.urgent {
   background-color: #f38ba8;
   color: #0F0F0F;
-  border: 1px solid #3A3A3C;
+  box-shadow: 0 0 0 1px #3A3A3C;
 }
 
 #custom-arch {
