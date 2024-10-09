@@ -18,7 +18,7 @@ window#waybar.hidden {
   background-color: black;
   margin-left: 10px;
   padding: 3px;
-  border: 1px solid white;
+  border: 1px solid #808080;
 }
 
 #workspaces button {
@@ -33,7 +33,7 @@ window#waybar.hidden {
 #workspaces button.active {
   color: black;
   background-color: white;
-  border: 1px solid white;
+  border: 1px solid #808080;
 }
 
 #workspaces button:hover {
@@ -41,13 +41,13 @@ window#waybar.hidden {
   text-shadow: inherit;
   color: black;
   background-color: white;
-  border: 1px solid white;
+  border: 1px solid #808080;
 }
 
 #workspaces button.urgent {
   background-color: white;
   color: black;
-  border: 1px solid white;
+  border: 1px solid #808080;
 }
 
 #custom-updates,
@@ -62,7 +62,7 @@ window#waybar.hidden {
   padding: 6px 12px;
   background-color: black;
   color: white;
-  border: 1px solid white;
+  border: 1px solid #808080;
 }
 
 #custom-power {
