@@ -59,12 +59,17 @@ window#waybar.hidden {
 #wireplumber,
 #network,
 #clock,
-#tray {
+#tray,
+#window {
   margin: 0 2px;
   padding: 6px 12px;
   background-color: black;
   color: white;
   border: 1px solid #3A3A3C;
+}
+
+#window {
+  margin-left: 0;
 }
 
 #custom-power {
@@ -81,7 +86,8 @@ window#waybar.hidden {
 #wireplumber,
 #network,
 #clock,
-#custom-power {
+#custom-power,
+#window {
   background-color: black;
   color: white;
 }

@@ -7,7 +7,8 @@
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
 
     "modules-center": [
@@ -23,13 +24,10 @@
         "custom/power"
     ],
 
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-click-right": "fullscreen",
-        "icon-theme": "WhiteSur",
-        "icon-size": 25,
-        "tooltip-format": "{title}"
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
     },
 
     "hyprland/workspaces": {
@@ -42,6 +40,15 @@
             "4": [],
             "5": []
         }
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "WhiteSur",
+        "icon-size": 25,
+        "tooltip-format": "{title}"
     },
 
     "tray": {
