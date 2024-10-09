@@ -94,9 +94,9 @@ installDeps() {
         sddm lightdm gdm lxdm lemurs emptty xorg-xdm ly pulseaudio hyprland hyprpaper hyprcursor > /dev/null 2>&1
 
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
-        cliphist waybar grim slurp hyprpicker hyprpaper bleachbit fastfetch \
-        pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu \
-        ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip rofi \
+        cliphist waybar grim slurp hyprpicker hyprpaper bleachbit fastfetch cpio \
+        pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
+        ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip rofi cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
         cmatrix gtk3 neovim pamixer mpv feh zsh kitty dash pipewire-pulse easyeffects qt5ct \
         bashtop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland qt6-wayland > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install dependencies.${RC}"; }
