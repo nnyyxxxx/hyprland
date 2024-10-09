@@ -71,7 +71,7 @@ window#waybar.hidden {
 
 #custom-arch {
   margin-left: 0;
-  padding-right: 14px;
+  padding-right: 16px;
 }
 
 #window {
@@ -80,7 +80,7 @@ window#waybar.hidden {
 
 #custom-power {
   margin-right: 0;
-  padding-right: 14px;
+  padding-right: 16px;
 }
 
 #custom-arch,
@@ -111,5 +111,5 @@ tooltip label {
 
 #network {
   margin-right: 0;
-  padding-right: 14px;
+  padding-right: 16px;
 }
