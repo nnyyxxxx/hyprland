@@ -80,7 +80,7 @@ window#waybar.hidden {
 }
 
 #battery {
-  background-color: #f38ba8;
+  background-color: #b4befe;
 }
 
 #battery.warning,
