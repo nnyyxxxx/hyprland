@@ -7,7 +7,7 @@
 
 window#waybar {
   background-color: black;
-  margin: 10px;
+  margin: 6px;
 }
 
 window#waybar.hidden {
@@ -16,8 +16,8 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: black;
-  margin-left: 10px;
-  padding: 3px;
+  margin-left: 6px;
+  padding: 2px;
   border: 1px solid #808080;
 }
 
@@ -25,8 +25,8 @@ window#waybar.hidden {
   all: initial;
   min-width: 0;
   box-shadow: inset 0 -3px transparent;
-  padding: 6px 12px;
-  margin: 3px;
+  padding: 4px 10px;
+  margin: 2px;
   color: white;
 }
 
@@ -58,15 +58,15 @@ window#waybar.hidden {
 #network,
 #clock,
 #tray {
-  margin: 6px 3px;
-  padding: 6px 12px;
+  margin: 4px 2px;
+  padding: 4px 10px;
   background-color: black;
   color: white;
   border: 1px solid #808080;
 }
 
 #custom-power {
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 #custom-updates,
@@ -89,6 +89,6 @@ tooltip {
 }
 
 tooltip label {
-  padding: 5px;
+  padding: 4px;
   color: white;
 }
