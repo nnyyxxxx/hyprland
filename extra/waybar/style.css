@@ -52,6 +52,7 @@ window#waybar.hidden {
   border: 1px solid #3A3A3C;
 }
 
+#custom-arch,
 #custom-updates,
 #custom-power,
 #battery,
@@ -68,14 +69,21 @@ window#waybar.hidden {
   border: 1px solid #3A3A3C;
 }
 
-#window {
+#custom-arch {
   margin-left: 0;
+  padding-right: 14px;
+}
+
+#window {
+  margin-left: 2px;
 }
 
 #custom-power {
   margin-right: 0;
+  padding-right: 14px;
 }
 
+#custom-arch,
 #custom-updates,
 #battery,
 #battery.warning,
@@ -99,4 +107,9 @@ tooltip {
 tooltip label {
   padding: 4px;
   color: white;
+}
+
+#network {
+  margin-right: 0;
+  padding-right: 14px;
 }
