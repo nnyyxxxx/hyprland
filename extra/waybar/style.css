@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  background-color: black;
+  background-color: #0F0F0F;
   margin: 6px;
   padding: 0 4px;
 }
@@ -16,7 +16,7 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: black;
+  background-color: #0F0F0F;
   margin: 0 2px 0 2px;
   padding: 2px;
   border: 1px solid #3A3A3C;
@@ -32,7 +32,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  color: black;
+  color: #0F0F0F;
   background-color: white;
   border: 1px solid #3A3A3C;
 }
@@ -40,21 +40,21 @@ window#waybar.hidden {
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: black;
+  color: #0F0F0F;
   background-color: white;
   border: 1px solid #3A3A3C;
 }
 
 #workspaces button.urgent {
   background-color: white;
-  color: black;
+  color: #0F0F0F;
   border: 1px solid #3A3A3C;
 }
 
 #custom-arch {
   margin: 0 4px 0 0;
   padding: 6px 16px 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -62,7 +62,7 @@ window#waybar.hidden {
 #custom-updates {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -70,7 +70,7 @@ window#waybar.hidden {
 #battery {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -78,7 +78,7 @@ window#waybar.hidden {
 #backlight {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -86,7 +86,7 @@ window#waybar.hidden {
 #wireplumber {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -94,7 +94,7 @@ window#waybar.hidden {
 #network {
   margin: 0 2px 0 4px;
   padding: 6px 16px 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -102,7 +102,7 @@ window#waybar.hidden {
 #clock {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -110,7 +110,7 @@ window#waybar.hidden {
 #tray {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -118,7 +118,7 @@ window#waybar.hidden {
 #window {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -126,7 +126,7 @@ window#waybar.hidden {
 #custom-power {
   margin: 0 2px 0 4px;
   padding: 6px 16px 6px 12px;
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
   border: 1px solid #3A3A3C;
 }
@@ -135,12 +135,12 @@ window#waybar.hidden {
 #battery.critical,
 #battery.urgent,
 #battery.charging {
-  background-color: black;
+  background-color: #0F0F0F;
   color: white;
 }
 
 tooltip {
-  background-color: black;
+  background-color: #0F0F0F;
 }
 
 tooltip label {

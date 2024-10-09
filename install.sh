@@ -138,7 +138,7 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/BreezeX-Black" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze dark cursor.${RC}"; }
     cp -R "$HYPRLAND_DIR/extra/BreezeX-Light" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze light cursor"; }
 
-    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/gtk-3.0/catppuccin-mocha" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up catppuccin-mocha theme.${RC}"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/fastfetch" "$XDG_CONFIG_HOME/fastfetch" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up fastfetch configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/nvim" "$XDG_CONFIG_HOME/nvim" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up nvim configuration.${RC}"; }

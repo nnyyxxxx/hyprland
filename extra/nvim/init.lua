@@ -30,19 +30,43 @@ require("lazy").setup({
   { import = "plugins" },
 
   {
+    "NvChad/base46",
+    branch = "v2.5",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local ok, base46 = pcall(require, "base46")
+      if ok then
+        if type(base46.load_theme) == "function" then
+          base46.load_theme()
+        else
+          print("base46.load_theme is not a function. base46 version: " .. (base46.VERSION or "unknown"))
+        end
+      else
+        print("Failed to load base46: " .. tostring(base46))
+      end
+    end,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
     config = function()
-      require('nvim-tree').setup {
-         --empty
-      }
+      require('nvim-tree').setup {}
     end,
   },
 }, lazy_config)
 
 -- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
+local ok, _ = pcall(dofile, vim.g.base46_cache .. "defaults")
+if not ok then
+  print("Failed to load defaults from base46_cache")
+end
+
+ok, _ = pcall(dofile, vim.g.base46_cache .. "statusline")
+if not ok then
+  print("Failed to load statusline from base46_cache")
+end
 
 require "nvchad.autocmds"
 

@@ -15,6 +15,38 @@
     "terminal.sourceControlRepositoriesKind": "both",
     "telemetry.telemetryLevel": "off",
     "catppuccin.accentColor": "lavender",
-    "window.menuBarVisibility": "compact",
-    "window.commandCenter": false
+    "window.menuBarVisibility": "visible",
+    "discord.smallImage": "VSCodium",
+    "window.commandCenter": false,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorCustomizations": {
+        "[Catppuccin Mocha]": {
+            "editor.background": "#0F0F0F",
+            "sideBar.background": "#0F0F0F",
+            "activityBar.background": "#0F0F0F",
+            "panel.background": "#0F0F0F",
+            "terminal.background": "#0F0F0F",
+            "statusBar.background": "#0F0F0F",
+            "titleBar.activeBackground": "#0F0F0F",
+            "titleBar.inactiveBackground": "#0F0F0F",
+            "editorGroupHeader.tabsBackground": "#0F0F0F",
+            "tab.inactiveBackground": "#0F0F0F",
+            "tab.activeBackground": "#1A1A1A",
+            "breadcrumb.background": "#0F0F0F",
+            "editorGutter.background": "#0F0F0F",
+            "input.background": "#1A1A1A",
+            "dropdown.background": "#1A1A1A",
+            "list.activeSelectionBackground": "#1A1A1A",
+            "list.hoverBackground": "#1A1A1A",
+            "notifications.background": "#0F0F0F",
+            "editorWidget.background": "#0F0F0F",
+            "editorSuggestWidget.background": "#0F0F0F",
+            "tab.hoverBackground": "#0F0F0F",
+            "tab.unfocusedHoverBackground": "#0F0F0F",
+            "tab.hoverBorder": "#1A1A1A",
+            "tab.unfocusedHoverBorder": "#1A1A1A",
+            "editorGroup.emptyBackground": "#0F0F0F",
+            "editorGroup.focusedEmptyBorder": "#1A1A1A"
+        }
+    }
 }
