@@ -70,12 +70,10 @@
 
     "network": {
         "format-wifi" : "{icon}",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-icons": "󰀂",
         "format-ethernet": "󰀂",
-        "format-alt" : "󱛇",
-        "format-disconnected" : "󰖪",
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{icon} {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
         "on-click": "~/.config/rofi/wifi/wifi.sh &",
         "on-click-right": "~/.config/rofi/wifi/wifinew.sh &",
@@ -85,13 +83,11 @@
 
     "wireplumber": {
         "format": "{icon}",
-        "format-bluetooth": "󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume : {volume}%",
         "format-muted": "󰝟",
         "format-icons": {
-            "headphone": " ",
-            "default": ["󰖀","󰕾"," "]
+            "default": [" "]
         },
         "on-click": "pamixer -t",
         "scroll-step": 1
