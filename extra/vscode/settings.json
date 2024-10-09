@@ -10,7 +10,7 @@
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "extensions.autoUpdate": false,
     "workbench.statusBar.visible": false,
-    "terminal.external.linuxExec": "st",
+    "terminal.external.linuxExec": "kitty",
     "terminal.explorerKind": "both",
     "terminal.sourceControlRepositoriesKind": "both",
     "telemetry.telemetryLevel": "off",
