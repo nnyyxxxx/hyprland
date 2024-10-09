@@ -8,6 +8,7 @@
 window#waybar {
   background-color: black;
   margin: 6px;
+  padding: 0 4px;
 }
 
 window#waybar.hidden {
@@ -16,7 +17,7 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: black;
-  margin: 0;
+  margin: 0 2px 0 0;
   padding: 0;
   border: 1px solid #808080;
 }
@@ -58,7 +59,7 @@ window#waybar.hidden {
 #network,
 #clock,
 #tray {
-  margin: 0;
+  margin: 0 2px;
   padding: 4px 10px;
   background-color: black;
   color: white;
