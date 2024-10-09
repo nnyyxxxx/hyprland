@@ -17,7 +17,7 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: black;
-  margin: 0 2px 0 0;
+  margin: 0 2px 0 2px;
   padding: 2px;
   border: 1px solid #3A3A3C;
 }
@@ -51,50 +51,90 @@ window#waybar.hidden {
   border: 1px solid #3A3A3C;
 }
 
-#custom-arch,
-#custom-updates,
-#custom-power,
-#battery,
-#backlight,
-#wireplumber,
-#network,
-#clock,
-#tray,
-#window {
-  margin: 0 2px;
+#custom-arch {
+  margin: 0 6px 0 0;
+  padding: 6px 16px 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#custom-updates {
+  margin: 0 2px 0 6px;
   padding: 6px 12px;
   background-color: black;
   color: white;
   border: 1px solid #3A3A3C;
 }
 
-#custom-arch {
-  margin-left: 0;
-  padding-right: 16px;
+#battery {
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#backlight {
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#wireplumber {
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#network {
+  margin: 0 2px 0 6px;
+  padding: 6px 16px 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#clock {
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
+#tray {
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
 }
 
 #window {
-  margin-left: 2px;
+  margin: 0 2px 0 6px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
 }
 
 #custom-power {
-  margin-right: 0;
-  padding-right: 16px;
+  margin: 0 2px 0 6px;
+  padding: 6px 16px 6px 12px;
+  background-color: black;
+  color: white;
+  border: 1px solid #3A3A3C;
 }
 
-#custom-arch,
-#custom-updates,
-#battery,
 #battery.warning,
 #battery.critical,
 #battery.urgent,
-#battery.charging,
-#backlight,
-#wireplumber,
-#network,
-#clock,
-#custom-power,
-#window {
+#battery.charging {
   background-color: black;
   color: white;
 }
@@ -106,9 +146,4 @@ tooltip {
 tooltip label {
   padding: 4px;
   color: white;
-}
-
-#network {
-  margin-right: 0;
-  padding-right: 16px;
 }
