@@ -201,6 +201,9 @@ class ColorButton(QPushButton):
         if color.isValid():
             self.setColor(color)
 
+    def getColor(self):
+        return self.color
+
 class HyprlandConfigWidget(QWidget):
     def __init__(self, config_path):
         super().__init__()
@@ -310,26 +313,42 @@ class HyprlandConfigWidget(QWidget):
         self.inactive_border_color.setColor(general.get('col.inactive_border', '#CCCCCC'))
         self.layout.setCurrentText(general.get('layout', 'dwindle'))
 
+    def color_to_rgb(self, color):
+        return f'rgb({color.name()[1:]})'
+
     def save_config(self):
         with open(self.config_path, 'r') as f:
             lines = f.readlines()
 
         updated_lines = []
         in_general_section = False
+        general_options = {
+            'gaps_in': self.gaps_in.value(),
+            'gaps_out': self.gaps_out.value(),
+            'border_size': self.border_size.value(),
+            'col.active_border': self.color_to_rgb(self.active_border_color.color),
+            'col.inactive_border': self.color_to_rgb(self.inactive_border_color.color),
+            'layout': self.layout.currentText()
+        }
+
         for line in lines:
             if line.strip() == 'general {':
                 in_general_section = True
                 updated_lines.append(line)
-                updated_lines.append(f'    gaps_in = {self.gaps_in.value()}\n')
-                updated_lines.append(f'    gaps_out = {self.gaps_out.value()}\n')
-                updated_lines.append(f'    border_size = {self.border_size.value()}\n')
-                updated_lines.append(f'    col.active_border = {self.active_border_color.color().name()}\n')
-                updated_lines.append(f'    col.inactive_border = {self.inactive_border_color.color().name()}\n')
-                updated_lines.append(f'    layout = {self.layout.currentText()}\n')
             elif line.strip() == '}' and in_general_section:
                 in_general_section = False
                 updated_lines.append(line)
-            elif not in_general_section:
+            elif in_general_section and '=' in line:
+                option, current_value = map(str.strip, line.split('='))
+                if option in general_options:
+                    new_value = str(general_options[option])
+                    if new_value != current_value:
+                        updated_lines.append(f'    {option} = {new_value}\n')
+                    else:
+                        updated_lines.append(line)
+                else:
+                    updated_lines.append(line)
+            else:
                 updated_lines.append(line)
 
         with open(self.config_path, 'w') as f:
@@ -353,7 +372,7 @@ class App(QMainWindow):
         sidebar_layout.setSpacing(0)
         sidebar_layout.setContentsMargins(0, 0, 0, 0)
 
-        sections = ["Keybinds", "Hyprland.conf", "Hyprpaper.conf"]
+        sections = ["Keybinds", "Settings"]
         self.section_buttons = []
         for section in sections:
             btn = QPushButton(section)
@@ -383,9 +402,10 @@ class App(QMainWindow):
         keybinds_layout.addWidget(keybinds_scroll_area)
         self.stack.addWidget(keybinds_widget)
 
+        settings_widget = QTabWidget()
         hyprland_conf_widget = HyprlandConfigWidget(os.path.expanduser("~/hyprland/hypr/hyprland.conf"))
-        self.stack.addWidget(hyprland_conf_widget)
-
+        settings_widget.addTab(hyprland_conf_widget, "Hyprland")
+        
         hyprpaper_conf_widget = QWidget()
         hyprpaper_conf_layout = QVBoxLayout(hyprpaper_conf_widget)
         self.hyprpaper_conf_edit = ConfigEditor(os.path.expanduser("~/hyprland/hypr/hyprpaper.conf"))
@@ -395,7 +415,9 @@ class App(QMainWindow):
         self.hyprpaper_conf_status = QLabel("No unsaved changes")
         hyprpaper_conf_layout.addWidget(hyprpaper_conf_scroll_area)
         hyprpaper_conf_layout.addWidget(self.hyprpaper_conf_status)
-        self.stack.addWidget(hyprpaper_conf_widget)
+        settings_widget.addTab(hyprpaper_conf_widget, "Hyprpaper")
+        
+        self.stack.addWidget(settings_widget)
 
         for i, btn in enumerate(self.section_buttons):
             btn.clicked.connect(lambda _, idx=i: self.stack.setCurrentIndex(idx))
@@ -416,11 +438,15 @@ class App(QMainWindow):
 
     def save_current_config(self):
         current_widget = self.stack.currentWidget()
-        if isinstance(current_widget, QWidget):
-            editor = current_widget.findChild(ConfigEditor)
-            if editor:
-                editor.save_file()
-                self.update_status(current_widget.findChild(QLabel), editor)
+        if isinstance(current_widget, QTabWidget):
+            current_tab = current_widget.currentWidget()
+            if isinstance(current_tab, HyprlandConfigWidget):
+                current_tab.save_config()
+            elif isinstance(current_tab, QWidget):
+                editor = current_tab.findChild(ConfigEditor)
+                if editor:
+                    editor.save_file()
+                    self.update_status(current_tab.findChild(QLabel), editor)
 
     def update_status(self, status_label, editor):
         if editor.check_modified():
