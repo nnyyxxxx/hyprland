@@ -227,9 +227,14 @@ class HyprlandConfigWidget(QWidget):
         self.scroll_area.setWidgetResizable(True)
         layout.addWidget(self.scroll_area)
 
+        button_layout = QHBoxLayout()
         add_button = QPushButton("Add Option")
         add_button.clicked.connect(self.add_option)
-        layout.addWidget(add_button)
+        save_button = QPushButton("Save Configuration")
+        save_button.clicked.connect(self.save_config)
+        button_layout.addWidget(add_button)
+        button_layout.addWidget(save_button)
+        layout.addLayout(button_layout)
 
         self.setLayout(layout)
         self.update_widgets()
@@ -455,6 +460,9 @@ class App(QMainWindow):
         self.save_shortcut.activated.connect(self.save_current_config)
         self.hyprpaper_conf_edit.textChanged.connect(lambda: self.update_status(self.hyprpaper_conf_status, self.hyprpaper_conf_edit))
 
+        self.hyprland_conf_status = QLabel("No unsaved changes")
+        hyprland_conf_widget.layout().addWidget(self.hyprland_conf_status)
+
         self.update_keybinds()
 
     def update_keybinds(self):
@@ -469,14 +477,18 @@ class App(QMainWindow):
         current_widget = self.centralWidget().layout().itemAt(0).widget().currentWidget()
         if isinstance(current_widget, HyprlandConfigWidget):
             current_widget.save_config()
+            self.update_status(self.hyprland_conf_status, current_widget)
         elif isinstance(current_widget, QWidget):
             editor = current_widget.findChild(ConfigEditor)
             if editor:
                 editor.save_file()
                 self.update_status(current_widget.findChild(QLabel), editor)
 
-    def update_status(self, status_label, editor):
-        if editor.check_modified():
+    def update_status(self, status_label, widget):
+        if isinstance(widget, HyprlandConfigWidget):
+            status_label.setText("Configuration saved")
+            status_label.setStyleSheet("color: green;")
+        elif isinstance(widget, ConfigEditor) and widget.check_modified():
             status_label.setText("Unsaved changes")
             status_label.setStyleSheet("color: yellow;")
         else:
