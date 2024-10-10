@@ -14,7 +14,7 @@
     "terminal.explorerKind": "both",
     "terminal.sourceControlRepositoriesKind": "both",
     "telemetry.telemetryLevel": "off",
-    "catppuccin.accentColor": "lavender",
+    "catppuccin.accentColor": "red",
     "window.menuBarVisibility": "visible",
     "discord.smallImage": "VSCodium",
     "window.commandCenter": false,
