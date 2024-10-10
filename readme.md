@@ -24,7 +24,8 @@ Install via git
 | `ALT SHIFT + W` | Kills hyprland |
 | `ALT SHIFT + F` | Toggles fullscreen |
 | `ALT SHIFT + V` | Spawns hyprpicker (Color picker) |
-| `ALT + ESC` | Spawns grim (Screenshot utility) | 
+| `ALT SHIFT + B` | Reloads waybar / Spawns waybar |
+| `ALT + ESC` | Spawns grim (Screenshot utility) |
 | `ALT + LMB` | Drags selected window |
 | `ALT + RMB` | Resizes window in floating & resizes mfact in tiled; when two or more windows are on screen |
 | `ALT + SPACE` | Makes the selected window float |
