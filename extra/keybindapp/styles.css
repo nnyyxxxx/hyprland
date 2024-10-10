@@ -1,16 +1,20 @@
-QMainWindow {
+QMainWindow, QScrollArea, QLabel {
     background-color: #0F0F0F;
     color: white;
 }
 
-QTableWidget {
+QLabel {
+    padding: 5px;
+}
+
+QTableWidget, QTextEdit {
     background-color: #0F0F0F;
     color: white;
     border: 1px solid #3A3A3C;
     gridline-color: #3A3A3C;
 }
 
-QTableWidget::item {
+QTableWidget::item, QTextEdit {
     padding: 5px;
     border: none;
 }
@@ -22,32 +26,34 @@ QHeaderView::section {
     border: 1px solid #3A3A3C;
 }
 
-QTableWidget::item:selected {
+QTableWidget::item:selected, QTextEdit::selection {
     background-color: #3A3A3C;
     color: white;
 }
 
 QScrollBar:vertical {
-    border: 1px solid #3A3A3C;
+    border: none;
     background: #0F0F0F;
-    width: 15px;
-    margin: 0px 0px 0px 0px;
+    width: 10px;
+    margin: 0px;
 }
 
 QScrollBar::handle:vertical {
     background: #3A3A3C;
     min-height: 20px;
+    border-radius: 5px;
 }
 
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-    border: 1px solid #3A3A3C;
-    background: #0F0F0F;
-    height: 15px;
-    subcontrol-position: top;
-    subcontrol-origin: margin;
+    border: none;
+    background: none;
 }
 
-QTableWidget, QHeaderView::section {
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QTableWidget, QHeaderView::section, QTextEdit {
     selection-background-color: transparent;
     selection-color: white;
 }
@@ -56,4 +62,47 @@ QHeaderView::section:vertical {
     background-color: #0F0F0F;
     color: #0F0F0F;
     border: none;
+}
+
+QPushButton#SidebarButton {
+    background-color: #0F0F0F;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+QPushButton#SidebarButton:hover {
+    background-color: #3A3A3C;
+}
+
+QPushButton#SidebarButton:pressed {
+    background-color: #4A4A4C;
+}
+
+QWidget#Sidebar {
+    background-color: #1A1A1A;
+    border-right: 1px solid #3A3A3C;
+}
+
+QPlainTextEdit {
+    background-color: #0F0F0F;
+    color: #CDD6F4;
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+}
+
+QPlainTextEdit LineNumberArea {
+    background-color: #0F0F0F;
+    color: #6C7086;
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+    padding-right: 5px;
+}
+
+QPlainTextEdit {
+    selection-background-color: #303138;
 }
