@@ -5,7 +5,7 @@
 title-text: ""
 desktop-image: "background.png"
 desktop-image-scale-method: "stretch"
-desktop-color: "#1E1E2E"
+desktop-color: "#0F0F0F"
 terminal-font: "Unifont Regular 16"
 terminal-left: "0"
 terminal-top: "0"
