@@ -30,6 +30,8 @@ alias mpv='mpv --keep-open'
 alias record='mkdir -p ~/recordings && ffmpeg -f x11grab -r 60 -s 2560x1440 -i :0.0 -c:v libx264 -preset fast -crf 23 -pix_fmt yuv420p -vf "scale=2560:1440" -threads 0 ~/recordings/$(date +"%Y-%m-%d-%H-%M-%S").mp4'
 alias history='history 1'
 alias ls='ls -hN --group-directories-first --color=auto'
+alias fmt='cargo fmt --all'
+alias check='cargo fmt --all --check'
 alias ..='cd ..'
 
 # git based actions
