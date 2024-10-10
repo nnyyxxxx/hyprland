@@ -107,7 +107,7 @@
             },
             "ClientTheme": {
                 "enabled": true,
-                "color": "0F0F0F"
+                "color": "0f0f0f"
             },
             "ColorSighted": {
                 "enabled": false
@@ -274,7 +274,7 @@
                 "enabled": false
             },
             "NoBlockedMessages": {
-                "enabled": false
+                "enabled": true
             },
             "NoDefaultHangStatus": {
                 "enabled": false
@@ -404,9 +404,6 @@
                 "enabled": false
             },
             "RoleColorEverywhere": {
-                "enabled": false
-            },
-            "SearchReply": {
                 "enabled": false
             },
             "SecretRingToneEnabler": {
@@ -615,6 +612,12 @@
             },
             "VolumeBooster": {
                 "enabled": false
+            },
+            "FullSearchContext": {
+                "enabled": false
+            },
+            "AccountPanelServerProfile": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -627,7 +630,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1725834347824
+            "settingsSyncVersion": 1728569349138
         }
     },
     "quickCss": ""
