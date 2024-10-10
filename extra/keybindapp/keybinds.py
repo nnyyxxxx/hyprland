@@ -5,10 +5,11 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QTableWidget, QTableWidg
                              QVBoxLayout, QHBoxLayout, QWidget, QPushButton, QStackedWidget, 
                              QTextEdit, QScrollBar, QScrollArea, QLabel, QPlainTextEdit, 
                              QCheckBox, QSpinBox, QComboBox, QColorDialog, QTabWidget,
-                             QScrollArea, QFormLayout, QGroupBox)
+                             QScrollArea, QFormLayout, QGroupBox, QLineEdit, QInputDialog, QMessageBox,
+                             QDoubleSpinBox)
 from PyQt6.QtGui import (QFont, QKeySequence, QShortcut, QColor, QTextFormat, QPainter, QPalette,
                          QSyntaxHighlighter, QTextCharFormat)
-from PyQt6.QtCore import Qt, QTimer, QEvent, QRect
+from PyQt6.QtCore import Qt, QTimer, QEvent, QRect, pyqtSignal
 
 def parse_keybinds_from_readme():
     readme_path = os.path.expanduser("~/hyprland/readme.md")
@@ -183,6 +184,8 @@ class SyntaxHighlighter(QSyntaxHighlighter):
                 self.setFormat(match.start(), match.end() - match.start(), format)
 
 class ColorButton(QPushButton):
+    colorChanged = pyqtSignal(QColor)
+
     def __init__(self, color=None, parent=None):
         super().__init__(parent)
         self.setFixedSize(32, 32)
@@ -193,8 +196,10 @@ class ColorButton(QPushButton):
     def setColor(self, color):
         if isinstance(color, str):
             color = QColor(color)
-        self.color = color
-        self.setStyleSheet(f"background-color: {self.color.name()}; border: 1px solid #45475A; border-radius: 3px;")
+        if self.color != color:
+            self.color = color
+            self.setStyleSheet(f"background-color: {self.color.name()}; border: 1px solid #45475A; border-radius: 3px;")
+            self.colorChanged.emit(self.color)
 
     def choose_color(self):
         color = QColorDialog.getColor(self.color, self.parent(), "Choose Color")
@@ -209,150 +214,199 @@ class HyprlandConfigWidget(QWidget):
         super().__init__()
         self.config_path = config_path
         self.config_data = {}
+        self.section_layouts = {}
         self.load_config()
         self.initUI()
 
     def initUI(self):
-        layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(20)
+        layout = QVBoxLayout()
+        self.scroll_area = CustomScrollArea()
+        self.scroll_widget = QWidget()
+        self.scroll_layout = QFormLayout(self.scroll_widget)
+        self.scroll_area.setWidget(self.scroll_widget)
+        self.scroll_area.setWidgetResizable(True)
+        layout.addWidget(self.scroll_area)
 
-        self.tab_widget = QTabWidget()
-        layout.addWidget(self.tab_widget)
+        add_button = QPushButton("Add Option")
+        add_button.clicked.connect(self.add_option)
+        layout.addWidget(add_button)
 
-        self.create_general_tab()
-        self.create_decoration_tab()
-        self.create_animations_tab()
-        self.create_input_tab()
-
-        save_button = QPushButton("Save Configuration")
-        save_button.clicked.connect(self.save_config)
-        save_button.setObjectName("SaveButton")
-        layout.addWidget(save_button)
-
-    def create_general_tab(self):
-        scroll_area = QScrollArea()
-        scroll_area.setWidgetResizable(True)
-        general_widget = QWidget()
-        general_layout = QVBoxLayout(general_widget)
-        general_layout.setContentsMargins(10, 10, 10, 10)
-        general_layout.setSpacing(15)
-
-        gaps_group = QGroupBox("Gaps")
-        gaps_layout = QFormLayout()
-        gaps_layout.setContentsMargins(10, 10, 10, 10)
-        gaps_layout.setSpacing(10)
-        self.gaps_in = QSpinBox()
-        self.gaps_out = QSpinBox()
-        gaps_layout.addRow("Inner:", self.gaps_in)
-        gaps_layout.addRow("Outer:", self.gaps_out)
-        gaps_group.setLayout(gaps_layout)
-        general_layout.addWidget(gaps_group)
-
-        border_group = QGroupBox("Border")
-        border_layout = QFormLayout()
-        border_layout.setContentsMargins(10, 10, 10, 10)
-        border_layout.setSpacing(10)
-        self.border_size = QSpinBox()
-        self.border_size.setRange(0, 10)
-        self.active_border_color = ColorButton()
-        self.inactive_border_color = ColorButton()
-        border_layout.addRow("Size:", self.border_size)
-        border_layout.addRow("Active color:", self.active_border_color)
-        border_layout.addRow("Inactive color:", self.inactive_border_color)
-        border_group.setLayout(border_layout)
-        general_layout.addWidget(border_group)
-
-        layout_group = QGroupBox("Layout")
-        layout_layout = QFormLayout()
-        layout_layout.setContentsMargins(10, 10, 10, 10)
-        layout_layout.setSpacing(10)
-        self.layout = QComboBox()
-        self.layout.addItems(["dwindle", "master"])
-        layout_layout.addRow("Type:", self.layout)
-        layout_group.setLayout(layout_layout)
-        general_layout.addWidget(layout_group)
-
-        general_layout.addStretch(1)
-        scroll_area.setWidget(general_widget)
-        self.tab_widget.addTab(scroll_area, "General")
-
-        self.set_general_values()
-
-    def create_decoration_tab(self):
-        pass
-
-    def create_animations_tab(self):
-        pass
-
-    def create_input_tab(self):
-        pass
+        self.setLayout(layout)
+        self.update_widgets()
 
     def load_config(self):
-        with open(self.config_path, 'r') as f:
-            lines = f.readlines()
-        
-        current_section = None
-        for line in lines:
-            line = line.strip()
-            if line.endswith('{'):
-                current_section = line.split()[0]
-                self.config_data[current_section] = {}
-            elif line.startswith('}'):
-                current_section = None
-            elif '=' in line and current_section:
-                key, value = map(str.strip, line.split('='))
-                self.config_data[current_section][key] = value
-
-    def set_general_values(self):
-        general = self.config_data.get('general', {})
-        self.gaps_in.setValue(int(general.get('gaps_in', 0)))
-        self.gaps_out.setValue(int(general.get('gaps_out', 0)))
-        self.border_size.setValue(int(general.get('border_size', 0)))
-        self.active_border_color.setColor(general.get('col.active_border', '#FFFFFF'))
-        self.inactive_border_color.setColor(general.get('col.inactive_border', '#CCCCCC'))
-        self.layout.setCurrentText(general.get('layout', 'dwindle'))
-
-    def color_to_rgb(self, color):
-        return f'rgb({color.name()[1:]})'
+        with open(self.config_path, "r") as f:
+            current_section = None
+            for line in f:
+                line = line.strip()
+                if line.startswith("#") or not line:
+                    continue
+                if line.endswith("{"):
+                    current_section = line.split()[0]
+                    self.config_data[current_section] = {}
+                elif "=" in line and current_section:
+                    key, value = line.split("=", 1)
+                    self.config_data[current_section][key.strip()] = value.strip()
 
     def save_config(self):
-        with open(self.config_path, 'r') as f:
-            lines = f.readlines()
+        with open(self.config_path, "w") as f:
+            for section, options in self.config_data.items():
+                f.write(f"{section} {{\n")
+                for key, value in options.items():
+                    f.write(f"    {key} = {value}\n")
+                f.write("}\n\n")
 
-        updated_lines = []
-        in_general_section = False
-        general_options = {
-            'gaps_in': self.gaps_in.value(),
-            'gaps_out': self.gaps_out.value(),
-            'border_size': self.border_size.value(),
-            'col.active_border': self.color_to_rgb(self.active_border_color.color),
-            'col.inactive_border': self.color_to_rgb(self.inactive_border_color.color),
-            'layout': self.layout.currentText()
+    def update_widgets(self):
+        for i in reversed(range(self.scroll_layout.rowCount())):
+            self.scroll_layout.removeRow(i)
+        
+        for section, options in self.config_data.items():
+            if section not in self.section_layouts:
+                self.section_layouts[section] = QFormLayout()
+                section_widget = QWidget()
+                section_widget.setLayout(self.section_layouts[section])
+                self.scroll_layout.addRow(section, section_widget)
+            
+            for option, value in options.items():
+                widget = self.create_widget_for_option(option, value)
+                remove_button = QPushButton("Remove")
+                remove_button.clicked.connect(lambda _, s=section, o=option: self.remove_option(s, o))
+                hbox = QHBoxLayout()
+                hbox.addWidget(widget)
+                hbox.addWidget(remove_button)
+                self.section_layouts[section].addRow(option, hbox)
+
+    def create_widget_for_option(self, option, value):
+        if option in ["border_size", "gaps_in", "gaps_out", "gaps_workspaces", "extend_border_grab_area", "resize_corner",
+                      "shadow_range", "shadow_render_power", "blur_size", "blur_passes", "workspace_swipe_fingers",
+                      "workspace_swipe_distance", "workspace_swipe_min_speed_to_force", "workspace_swipe_cancel_ratio",
+                      "workspace_swipe_direction_lock_threshold", "scroll_event_delay"]:
+            widget = QSpinBox()
+            widget.setRange(0, 1000)
+            widget.setValue(int(value))
+            widget.valueChanged.connect(lambda v, o=option: self.update_config(o, str(v)))
+        elif option in ["no_border_on_floating", "resize_on_border", "hover_icon_on_border", "allow_tearing",
+                        "drop_shadow", "shadow_ignore_window", "dim_inactive", "blur_enabled", "blur_ignore_opacity",
+                        "blur_new_optimizations", "blur_xray", "blur_special", "blur_popups"]:
+            widget = QCheckBox()
+            widget.setChecked(value.lower() in ["true", "yes", "on", "1"])
+            widget.stateChanged.connect(lambda v, o=option: self.update_config(o, "true" if v else "false"))
+        elif option in ["active_opacity", "inactive_opacity", "fullscreen_opacity", "shadow_scale", "dim_strength",
+                        "dim_special", "dim_around", "blur_noise", "blur_contrast", "blur_brightness", "blur_vibrancy",
+                        "blur_vibrancy_darkness", "sensitivity"]:
+            widget = QDoubleSpinBox()
+            widget.setRange(0, 1)
+            widget.setSingleStep(0.1)
+            widget.setValue(float(value))
+            widget.valueChanged.connect(lambda v, o=option: self.update_config(o, str(v)))
+        elif option in ["col.inactive_border", "col.active_border", "col.nogroup_border", "col.nogroup_border_active",
+                        "col.shadow", "col.shadow_inactive"]:
+            widget = ColorButton(value)
+            widget.colorChanged.connect(lambda c, o=option: self.update_config(o, c.name()))
+        else:
+            widget = QLineEdit(value)
+            widget.textChanged.connect(lambda v, o=option: self.update_config(o, v))
+        return widget
+
+    def update_config(self, option, value):
+        for section, options in self.config_data.items():
+            if option in options:
+                self.config_data[section][option] = value
+                break
+
+    def add_option(self):
+        all_options = {
+            "general": ["border_size", "no_border_on_floating", "gaps_in", "gaps_out", "gaps_workspaces",
+                        "col.inactive_border", "col.active_border", "col.nogroup_border", "col.nogroup_border_active",
+                        "layout", "no_focus_fallback", "resize_on_border", "extend_border_grab_area",
+                        "hover_icon_on_border", "allow_tearing", "resize_corner"],
+            "decoration": ["rounding", "active_opacity", "inactive_opacity", "fullscreen_opacity", "drop_shadow",
+                           "shadow_range", "shadow_render_power", "shadow_ignore_window", "col.shadow",
+                           "col.shadow_inactive", "shadow_offset", "shadow_scale", "dim_inactive", "dim_strength",
+                           "dim_special", "dim_around", "screen_shader"],
+            "animations": ["enabled", "first_launch_animation"],
+            "input": ["kb_model", "kb_layout", "kb_variant", "kb_options", "kb_rules", "kb_file",
+                      "numlock_by_default", "resolve_binds_by_sym", "repeat_rate", "repeat_delay",
+                      "sensitivity", "accel_profile", "force_no_accel", "left_handed", "scroll_method",
+                      "natural_scroll", "follow_mouse", "mouse_refocus", "float_switch_override_focus"],
+            "gestures": ["workspace_swipe", "workspace_swipe_fingers", "workspace_swipe_distance",
+                         "workspace_swipe_invert", "workspace_swipe_min_speed_to_force",
+                         "workspace_swipe_cancel_ratio", "workspace_swipe_create_new",
+                         "workspace_swipe_direction_lock", "workspace_swipe_direction_lock_threshold"],
+            "misc": ["disable_hyprland_logo", "disable_splash_rendering", "vfr", "vrr", "mouse_move_enables_dpms",
+                     "always_follow_on_dnd", "layers_hog_keyboard_focus", "animate_manual_resizes",
+                     "disable_autoreload", "enable_swallow", "swallow_regex", "focus_on_activate",
+                     "no_direct_scanout", "hide_cursor_on_touch", "mouse_move_focuses_monitor"],
+            "binds": ["pass_mouse_when_bound", "scroll_event_delay", "workspace_back_and_forth",
+                      "allow_workspace_cycles", "focus_preferred_method"],
+            "xwayland": ["use_nearest_neighbor", "force_zero_scaling"],
+            "debug": ["overlay", "damage_blink", "disable_logs", "disable_time", "damage_tracking",
+                      "enable_stdout_logs", "manual_crash", "suppress_errors"]
         }
 
-        for line in lines:
-            if line.strip() == 'general {':
-                in_general_section = True
-                updated_lines.append(line)
-            elif line.strip() == '}' and in_general_section:
-                in_general_section = False
-                updated_lines.append(line)
-            elif in_general_section and '=' in line:
-                option, current_value = map(str.strip, line.split('='))
-                if option in general_options:
-                    new_value = str(general_options[option])
-                    if new_value != current_value:
-                        updated_lines.append(f'    {option} = {new_value}\n')
-                    else:
-                        updated_lines.append(line)
-                else:
-                    updated_lines.append(line)
-            else:
-                updated_lines.append(line)
+        available_options = []
+        for section, options in all_options.items():
+            for option in options:
+                if option not in self.config_data.get(section, {}):
+                    available_options.append(f"{section}:{option}")
 
-        with open(self.config_path, 'w') as f:
-            f.writelines(updated_lines)
+        dialog = QInputDialog(self)
+        dialog.setComboBoxItems(available_options)
+        dialog.setWindowTitle("Add Option")
+        dialog.setLabelText("Select an option to add:")
+        dialog.resize(400, 300)
+        dialog.findChild(QComboBox).setMaxVisibleItems(10)
+
+        if dialog.exec() == QInputDialog.Accepted:
+            selected = dialog.textValue()
+            if selected:
+                section, option = selected.split(':')
+                default_value = self.get_default_value(option)
+                widget = self.create_widget_for_option(option, default_value)
+                
+                remove_button = QPushButton("Remove")
+                remove_button.clicked.connect(lambda _, s=section, o=option: self.remove_option(s, o))
+                
+                hbox = QHBoxLayout()
+                hbox.addWidget(widget)
+                hbox.addWidget(remove_button)
+                
+                if section not in self.config_data:
+                    self.config_data[section] = {}
+                self.config_data[section][option] = default_value
+                
+                if section not in self.section_layouts:
+                    self.section_layouts[section] = QFormLayout()
+                    section_widget = QWidget()
+                    section_widget.setLayout(self.section_layouts[section])
+                    self.scroll_layout.addRow(section, section_widget)
+                
+                self.section_layouts[section].addRow(option, hbox)
+
+    def remove_option(self, section, option):
+        if section in self.config_data and option in self.config_data[section]:
+            del self.config_data[section][option]
+            for i in range(self.section_layouts[section].rowCount()):
+                if self.section_layouts[section].itemAt(i, QFormLayout.LabelRole).widget().text() == option:
+                    self.section_layouts[section].removeRow(i)
+                    break
+
+    def get_default_value(self, option):
+        if option in ["border_size", "gaps_in", "gaps_out"]:
+            return "5"
+        elif option in ["no_border_on_floating", "resize_on_border", "hover_icon_on_border", "allow_tearing"]:
+            return "false"
+        elif option == "layout":
+            return "dwindle"
+        elif option == "accel_profile":
+            return "adaptive"
+        elif option == "scroll_method":
+            return "2fg"
+        elif option in ["active_opacity", "inactive_opacity", "fullscreen_opacity", "shadow_scale",
+                        "dim_strength", "dim_special", "dim_around", "sensitivity"]:
+            return "1.0"
+        else:
+            return ""
 
 class App(QMainWindow):
     def __init__(self):
@@ -364,45 +418,23 @@ class App(QMainWindow):
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
-        layout = QHBoxLayout(central_widget)
+        layout = QVBoxLayout(central_widget)
 
-        sidebar = QWidget()
-        sidebar.setObjectName("Sidebar")
-        sidebar_layout = QVBoxLayout(sidebar)
-        sidebar_layout.setSpacing(0)
-        sidebar_layout.setContentsMargins(0, 0, 0, 0)
-
-        sections = ["Keybinds", "Settings"]
-        self.section_buttons = []
-        for section in sections:
-            btn = QPushButton(section)
-            btn.setObjectName("SidebarButton")
-            sidebar_layout.addWidget(btn)
-            self.section_buttons.append(btn)
-
-        sidebar_layout.addStretch()
-        layout.addWidget(sidebar, 1)
-
-        self.stack = QStackedWidget()
-        layout.addWidget(self.stack, 4)
+        settings_widget = QTabWidget()
 
         keybinds_widget = QWidget()
         keybinds_layout = QVBoxLayout(keybinds_widget)
         self.keybinds_table = QTableWidget()
-        self.keybinds_table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-        self.keybinds_table.setFocusPolicy(Qt.FocusPolicy.NoFocus)
-        self.keybinds_table.setSelectionMode(QTableWidget.SelectionMode.NoSelection)
         self.keybinds_table.setColumnCount(2)
         self.keybinds_table.setHorizontalHeaderLabels(["Keybind", "Description"])
         self.keybinds_table.horizontalHeader().setStretchLastSection(True)
         self.keybinds_table.verticalHeader().setVisible(False)
-        keybinds_scroll_area = CustomScrollArea()
-        keybinds_scroll_area.setWidget(self.keybinds_table)
-        keybinds_scroll_area.setWidgetResizable(True)
-        keybinds_layout.addWidget(keybinds_scroll_area)
-        self.stack.addWidget(keybinds_widget)
+        self.keybinds_table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        self.keybinds_table.setSelectionMode(QTableWidget.SelectionMode.NoSelection)
+        self.keybinds_table.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+        keybinds_layout.addWidget(self.keybinds_table)
+        settings_widget.addTab(keybinds_widget, "Keybinds")
 
-        settings_widget = QTabWidget()
         hyprland_conf_widget = HyprlandConfigWidget(os.path.expanduser("~/hyprland/hypr/hyprland.conf"))
         settings_widget.addTab(hyprland_conf_widget, "Hyprland")
         
@@ -416,17 +448,14 @@ class App(QMainWindow):
         hyprpaper_conf_layout.addWidget(hyprpaper_conf_scroll_area)
         hyprpaper_conf_layout.addWidget(self.hyprpaper_conf_status)
         settings_widget.addTab(hyprpaper_conf_widget, "Hyprpaper")
-        
-        self.stack.addWidget(settings_widget)
 
-        for i, btn in enumerate(self.section_buttons):
-            btn.clicked.connect(lambda _, idx=i: self.stack.setCurrentIndex(idx))
-
-        self.update_keybinds()
+        layout.addWidget(settings_widget)
 
         self.save_shortcut = QShortcut(QKeySequence("Ctrl+S"), self)
         self.save_shortcut.activated.connect(self.save_current_config)
         self.hyprpaper_conf_edit.textChanged.connect(lambda: self.update_status(self.hyprpaper_conf_status, self.hyprpaper_conf_edit))
+
+        self.update_keybinds()
 
     def update_keybinds(self):
         keybinds = parse_keybinds_from_readme()
@@ -437,16 +466,14 @@ class App(QMainWindow):
         self.keybinds_table.resizeColumnsToContents()
 
     def save_current_config(self):
-        current_widget = self.stack.currentWidget()
-        if isinstance(current_widget, QTabWidget):
-            current_tab = current_widget.currentWidget()
-            if isinstance(current_tab, HyprlandConfigWidget):
-                current_tab.save_config()
-            elif isinstance(current_tab, QWidget):
-                editor = current_tab.findChild(ConfigEditor)
-                if editor:
-                    editor.save_file()
-                    self.update_status(current_tab.findChild(QLabel), editor)
+        current_widget = self.centralWidget().layout().itemAt(0).widget().currentWidget()
+        if isinstance(current_widget, HyprlandConfigWidget):
+            current_widget.save_config()
+        elif isinstance(current_widget, QWidget):
+            editor = current_widget.findChild(ConfigEditor)
+            if editor:
+                editor.save_file()
+                self.update_status(current_widget.findChild(QLabel), editor)
 
     def update_status(self, status_label, editor):
         if editor.check_modified():
