@@ -32,6 +32,7 @@ class KeybindsApp(QMainWindow):
             ("ALT SHIFT + F", "Toggles fullscreen"),
             ("ALT SHIFT + V", "Spawns hyprpicker (Color picker)"),
             ("ALT SHIFT + B", "Reloads waybar / Spawns waybar"),
+            ("ALT SHIFT + K", "Opens the keybinds app (or just click the notebook button in waybar)"),
             ("ALT + ESC", "Spawns grim (Screenshot utility)"),
             ("ALT + LMB", "Drags selected window"),
             ("ALT + RMB", "Resizes window in floating & resizes mfact in tiled; when two or more windows are on screen"),
