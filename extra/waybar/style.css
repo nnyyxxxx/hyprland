@@ -131,6 +131,14 @@ window#waybar.hidden {
   border: 1px solid #3A3A3C;
 }
 
+#custom-keybinds {
+  margin: 0 2px 0 4px;
+  padding: 6px 16px 6px 12px;
+  background-color: #0F0F0F;
+  color: white;
+  border: 1px solid #3A3A3C;
+}
+
 #battery.warning,
 #battery.critical,
 #battery.urgent,

@@ -1,0 +1,59 @@
+QMainWindow {
+    background-color: #0F0F0F;
+    color: white;
+}
+
+QTableWidget {
+    background-color: #0F0F0F;
+    color: white;
+    border: 1px solid #3A3A3C;
+    gridline-color: #3A3A3C;
+}
+
+QTableWidget::item {
+    padding: 5px;
+    border: none;
+}
+
+QHeaderView::section {
+    background-color: #0F0F0F;
+    color: white;
+    padding: 5px;
+    border: 1px solid #3A3A3C;
+}
+
+QTableWidget::item:selected {
+    background-color: #3A3A3C;
+    color: white;
+}
+
+QScrollBar:vertical {
+    border: 1px solid #3A3A3C;
+    background: #0F0F0F;
+    width: 15px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #3A3A3C;
+    min-height: 20px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: 1px solid #3A3A3C;
+    background: #0F0F0F;
+    height: 15px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QTableWidget, QHeaderView::section {
+    selection-background-color: transparent;
+    selection-color: white;
+}
+
+QHeaderView::section:vertical {
+    background-color: #0F0F0F;
+    color: #0F0F0F;
+    border: none;
+}
