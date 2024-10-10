@@ -15,6 +15,13 @@ Install via git
   chmod +x install.sh
   ./install.sh
   ```
+Updating
+```shell
+# This might not be the best idea, dependencies could get added to the install script and new utilities could get added in the future, I'd advice against this unless you have local changes.
+cd "$HOME/hyprland"
+git pull
+```
+
 ### Keybinds overview:
 | Keybind | Description |  
 | --- | --- |  
