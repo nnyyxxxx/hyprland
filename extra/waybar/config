@@ -143,11 +143,5 @@
         "interval": 60,
         "on-click": "kitty --title debloat -e ~/Documents/debloat.sh",
         "tooltip": false
-    },
-
-    "custom/keybinds": {
-        "format": "󰹕",
-        "on-click": "exec ~/hyprland/extra/keybindapp/run.sh",
-        "tooltip": false
     }
 }
