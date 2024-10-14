@@ -21,8 +21,6 @@ Updating
 cd "$HOME/hyprland"
 git pull
 ```
-### Information:
-The keybinds app will take a bit to open on first launch as it needs to install the pip pkgs first.
 
 ### Keybinds overview:
 | Keybind | Description |  
