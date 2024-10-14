@@ -74,7 +74,7 @@ textview text {
 }
 
 textview border {
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: rgba(239, 241, 245, 0.7);
 }
 
@@ -2059,7 +2059,7 @@ headerbar entry > image:disabled {
 
 headerbar {
   transition: background-color 75ms cubic-bezier(0, 0, 0.2, 1), color 75ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: #eff1f5;
   min-height: 48px;
   padding: 0;
@@ -2267,11 +2267,11 @@ headerbar.default-decoration windowcontrols menubutton button {
 }
 
 window.devel headerbar {
-  background: #181825 cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, linear-gradient(to right, transparent 65%, rgba(137, 180, 250, 0.1)), linear-gradient(to top, #0F0F0F 3px, #222234);
+  background: #0F0F0F cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, linear-gradient(to right, transparent 65%, rgba(137, 180, 250, 0.1)), linear-gradient(to top, #0F0F0F 3px, #222234);
 }
 
 window.devel headerbar:backdrop {
-  background: #181825 cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, image(#181825);
+  background: #0F0F0F cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, image(#0F0F0F);
   /* background-color would flash */
 }
 
@@ -2525,7 +2525,7 @@ stack.view treeview.view {
  *********/
 menubar {
   padding: 0;
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: #eff1f5;
 }
 
@@ -3003,7 +3003,7 @@ tabbar > revealer > box {
 }
 
 tabbar .box {
-  background-color: #181825;
+  background-color: #0F0F0F;
   background-image: none;
   padding: 0;
   margin: 0;
@@ -3122,7 +3122,7 @@ tabbar.inline .box:backdrop > .end-action {
 
 dnd tab {
   min-height: 24px;
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: #eff1f5;
   box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.09), 0 2px 14px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05);
   outline: 1px solid rgba(17, 17, 27, 0.75);
@@ -4210,7 +4210,7 @@ actionbar.toolbar {
 }
 
 actionbar.toolbar > revealer > box {
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 actionbar > revealer > box {
@@ -5127,7 +5127,7 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 .sidebar listview.view,
@@ -5150,7 +5150,7 @@ stacksidebar.sidebar:dir(rtl), stacksidebar.sidebar.right, stacksidebar.sidebar.
 
 stacksidebar list {
   padding: 6px;
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 stacksidebar row {
@@ -5196,7 +5196,7 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
 }
 
 .navigation-sidebar.background, .navigation-sidebar.background:disabled {
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: rgba(239, 241, 245, 0.7);
 }
 
@@ -5607,7 +5607,7 @@ window.solid-csd {
   margin: 0;
   padding: 2px;
   border-radius: 0;
-  background-color: #181825;
+  background-color: #0F0F0F;
   border: 1px solid #393947;
 }
 
@@ -6280,7 +6280,7 @@ monthcell {
 }
 
 monthcell:hover:not(.out-of-month):not(.today) {
-  background-color: #181825;
+  background-color: #0F0F0F;
   transition: background-color 200ms;
   color: #eff1f5;
 }
@@ -6383,7 +6383,7 @@ datechooser {
 }
 
 datechooser .current-week {
-  background: alpha(#181825, 0.7);
+  background: alpha(#0F0F0F, 0.7);
   color: #eff1f5;
   border-radius: 6px;
 }
@@ -7262,7 +7262,7 @@ panelframeswitcher {
 }
 
 .frameheader.header {
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 .frameheader.header:backdrop {
@@ -7669,7 +7669,7 @@ preferencesgroup > box button.background-preview-button.toggle:checked {
 }
 
 preferencesgroup > box .cutout-button {
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 window.about .main-page > viewport > clamp > box {
@@ -7804,7 +7804,7 @@ toolbarview.undershoot-bottom scrolledwindow > undershoot.bottom {
 }
 
 .sidebar-pane {
-  background-color: #181825;
+  background-color: #0F0F0F;
   color: #eff1f5;
 }
 
@@ -7829,12 +7829,12 @@ toolbarview.undershoot-bottom scrolledwindow > undershoot.bottom {
 }
 
 .sidebar-pane banner > revealer > widget {
-  background-color: mix(#89b4fa,#181825,0.7);
+  background-color: mix(#89b4fa,#0F0F0F,0.7);
   color: #eff1f5;
 }
 
 .sidebar-pane banner > revealer > widget:backdrop {
-  background-color: mix(#89b4fa,#181825,0.7);
+  background-color: mix(#89b4fa,#0F0F0F,0.7);
 }
 
 /* Middle pane in three-pane setups */
@@ -8142,7 +8142,7 @@ toolbarview.undershoot-bottom scrolledwindow > undershoot.bottom {
 
 .top-bar {
   box-shadow: inset 0 -1px rgba(239, 241, 245, 0.12);
-  background-color: #181825;
+  background-color: #0F0F0F;
 }
 
 .top-bar:backdrop {
@@ -8310,7 +8310,7 @@ text foreground color of insensitive widgets */
 @define-color insensitive_fg_color rgba(239, 241, 245, 0.5);
 /*
 insensitive text widgets and the like base background color */
-@define-color insensitive_base_color #181825;
+@define-color insensitive_base_color #0F0F0F;
 /*
 widget text/foreground color on backdrop windows */
 @define-color theme_unfocused_fg_color #eff1f5;
@@ -8350,7 +8350,7 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_unfocused_title rgba(239, 241, 245, 0.7);
 @define-color wm_highlight rgba(239, 241, 245, 0.1);
 @define-color wm_border #060609;
-@define-color wm_bg #181825;
+@define-color wm_bg #0F0F0F;
 @define-color wm_unfocused_bg #0F0F0F;
 @define-color wm_button_icon white;
 @define-color wm_button_close_hover_bg #f38ba8;
@@ -8486,7 +8486,7 @@ FIXME this is really an API */
 @define-color window_fg_color #eff1f5;
 @define-color view_bg_color #0F0F0F;
 @define-color view_fg_color #eff1f5;
-@define-color headerbar_bg_color #181825;
+@define-color headerbar_bg_color #0F0F0F;
 @define-color headerbar_fg_color #eff1f5;
 @define-color headerbar_border_color rgba(239, 241, 245, 0.12);
 @define-color headerbar_backdrop_color #0F0F0F;
@@ -8494,7 +8494,7 @@ FIXME this is really an API */
 @define-color card_bg_color #0F0F0F;
 @define-color card_fg_color #eff1f5;
 @define-color card_shade_color rgba(239, 241, 245, 0.12);
-@define-color dialog_bg_color #181825;
+@define-color dialog_bg_color #0F0F0F;
 @define-color dialog_fg_color #eff1f5;
 @define-color popover_bg_color #0F0F0F;
 @define-color popover_fg_color #eff1f5;
