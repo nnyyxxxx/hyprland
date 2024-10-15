@@ -47,7 +47,7 @@ alias log='git log'
 # env's
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='st-256color'
+export TERMINAL='kitty'
 export BROWSER='firefox'
 
 # parse the branch and transfer it to the prompt
