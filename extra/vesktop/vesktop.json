@@ -122,7 +122,9 @@
                 "enabled": false
             },
             "CrashHandler": {
-                "enabled": true
+                "enabled": true,
+                "attemptToPreventCrashes": true,
+                "attemptToNavigateToHome": false
             },
             "CtrlEnterSend": {
                 "enabled": false
@@ -274,7 +276,8 @@
                 "enabled": false
             },
             "NoBlockedMessages": {
-                "enabled": true
+                "enabled": true,
+                "ignoreBlockedMessages": false
             },
             "NoDefaultHangStatus": {
                 "enabled": false
@@ -346,7 +349,9 @@
                 "enabled": false
             },
             "PermissionsViewer": {
-                "enabled": false
+                "enabled": true,
+                "permissionsSortOrder": 0,
+                "defaultPermissionsDropdownState": false
             },
             "petpet": {
                 "enabled": false
@@ -554,10 +559,12 @@
                 "enabled": false
             },
             "VoiceDownload": {
-                "enabled": false
+                "enabled": true
             },
             "VoiceMessages": {
-                "enabled": false
+                "enabled": true,
+                "echoCancellation": true,
+                "noiseSuppression": true
             },
             "WebKeybinds": {
                 "enabled": true
@@ -630,7 +637,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1728569349138
+            "settingsSyncVersion": 1729120103116
         }
     },
     "quickCss": ""
