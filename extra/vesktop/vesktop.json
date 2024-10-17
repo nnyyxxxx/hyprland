@@ -106,8 +106,8 @@
                 "enabled": false
             },
             "ClientTheme": {
-                "enabled": true,
-                "color": "0f0f0f"
+                "enabled": false,
+                "color": "313338"
             },
             "ColorSighted": {
                 "enabled": false
@@ -157,7 +157,13 @@
                 "enabled": false
             },
             "FakeNitro": {
-                "enabled": false
+                "enabled": true,
+                "enableStickerBypass": true,
+                "enableStreamQualityBypass": true,
+                "enableEmojiBypass": true,
+                "transformEmojis": true,
+                "transformStickers": true,
+                "transformCompoundSentence": false
             },
             "FakeProfileThemes": {
                 "enabled": false
@@ -637,7 +643,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1729120103116
+            "settingsSyncVersion": 1729186851445
         }
     },
     "quickCss": ""

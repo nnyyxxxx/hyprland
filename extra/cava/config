@@ -102,18 +102,18 @@
 ; waveform = 0
 
 [color]
-background = '#0F0F0F'
+background = '#FEFEFE'
 
 gradient = 1
 
-gradient_color_1 = '#b4befe'
-gradient_color_2 = '#a6b3f7'
-gradient_color_3 = '#98a8f0'
-gradient_color_4 = '#8a9de9'
-gradient_color_5 = '#7c92e2'
-gradient_color_6 = '#6e87db'
-gradient_color_7 = '#607cd4'
-gradient_color_8 = '#5271cd'
+gradient_color_1 = '#20283C'
+gradient_color_2 = '#2A3450'
+gradient_color_3 = '#344064'
+gradient_color_4 = '#3E4C78'
+gradient_color_5 = '#48588C'
+gradient_color_6 = '#5264A0'
+gradient_color_7 = '#5C70B4'
+gradient_color_8 = '#667CC8'
 
 [smoothing]
 
@@ -136,3 +136,4 @@ gradient_color_8 = '#5271cd'
 ; 3 = 1 # midtone
 ; 4 = 1
 ; 5 = 1 # treble
+
