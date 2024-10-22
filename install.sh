@@ -94,7 +94,7 @@ installDeps() {
         sddm lightdm gdm lxdm lemurs emptty xorg-xdm ly pulseaudio hyprland hyprpaper hyprcursor > /dev/null 2>&1
 
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
-        cliphist waybar grim slurp hyprpicker hyprpaper bleachbit fastfetch cpio \
+        cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
         ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip rofi cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
@@ -104,7 +104,7 @@ installDeps() {
     current_step=$((current_step + 1))
 
     $AUR_HELPER -S --needed --noconfirm \
-        cava pipes.sh checkupdates-with-aur librewolf-bin hyprland-git > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
+        cava pipes.sh checkupdates-with-aur librewolf-bin > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
