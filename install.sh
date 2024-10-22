@@ -104,7 +104,7 @@ installDeps() {
     current_step=$((current_step + 1))
 
     $AUR_HELPER -S --needed --noconfirm \
-        cava pipes.sh checkupdates-with-aur librewolf-bin > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
+        cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
@@ -149,6 +149,7 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/kitty" "$XDG_CONFIG_HOME/kitty" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up kitty configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/waybar" "$XDG_CONFIG_HOME/waybar" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up waybar configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/rofi" "$XDG_CONFIG_HOME/rofi" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up rofi configuration.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/extra/hyprwall" "$XDG_CONFIG_HOME/hyprwall" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up hyprwall configuration.${RC}"; }
 
     echo "QT_QPA_PLATFORMTHEME=qt5ct" | $ESCALATION_TOOL tee -a /etc/environment > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set qt5ct in environment.${RC}"; }
 

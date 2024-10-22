@@ -28,20 +28,20 @@ window#waybar.hidden {
   box-shadow: inset 0 -3px transparent;
   padding: 4px 10px;
   margin: 2px;
-  color: white;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
   color: #0F0F0F;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 0 0 0 1px #3A3A3C;
 }
 
 #workspaces button.active {
   color: #0F0F0F;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 0 0 0 1px #3A3A3C;
 }
 
@@ -55,7 +55,7 @@ window#waybar.hidden {
   margin: 0 4px 0 0;
   padding: 6px 16px 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -63,7 +63,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -71,7 +71,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -79,7 +79,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -87,7 +87,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -95,7 +95,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 16px 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -103,7 +103,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -111,7 +111,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -119,7 +119,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -127,7 +127,7 @@ window#waybar.hidden {
   margin: 0 2px 0 4px;
   padding: 6px 16px 6px 12px;
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
   border: 1px solid #3A3A3C;
 }
 
@@ -136,7 +136,7 @@ window#waybar.hidden {
 #battery.urgent,
 #battery.charging {
   background-color: #0F0F0F;
-  color: white;
+  color: #ffffff;
 }
 
 tooltip {
@@ -145,5 +145,5 @@ tooltip {
 
 tooltip label {
   padding: 4px;
-  color: white;
+  color: #ffffff;
 }
