@@ -91,7 +91,7 @@ installDeps() {
     current_step=1
 
     $ESCALATION_TOOL pacman -Rns --noconfirm \
-        sddm lightdm gdm lxdm lemurs emptty xorg-xdm ly pulseaudio hyprland hyprpaper hyprcursor > /dev/null 2>&1
+        sddm lightdm gdm lxdm lemurs emptty xorg-xdm ly > /dev/null 2>&1
 
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
