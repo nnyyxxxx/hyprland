@@ -124,7 +124,7 @@ window#waybar.hidden {
 }
 
 #custom-power {
-  margin: 0 2px 0 4px;
+  margin: 0 0 0 4px;
   padding: 6px 16px 6px 12px;
   background-color: #0F0F0F;
   color: #ffffff;
