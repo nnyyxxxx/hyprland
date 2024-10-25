@@ -1,14 +1,10 @@
 #!/bin/sh
 
-# Current Theme
 dir="$HOME/.config/rofi/powermenu/type-2"
 theme='style-5'
 
-# CMDs
 uptime="$(uptime -p | sed -e 's/up //g')"
-host=$(hostname)
 
-# Options
 shutdown=''
 reboot=''
 lock='󰌾'
@@ -17,7 +13,6 @@ logout='󰍃'
 yes=''
 no=''
 
-# Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
 		-p "Uptime: $uptime" \
@@ -25,7 +20,6 @@ rofi_cmd() {
 		-theme "${dir}/${theme}.rasi"
 }
 
-# Confirmation CMD
 confirm_cmd() {
 	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
@@ -38,17 +32,14 @@ confirm_cmd() {
 		-theme "${dir}/${theme}.rasi"
 }
 
-# Ask for confirmation
 confirm_exit() {
 	printf "%s\n%s\n" "$yes" "$no" | confirm_cmd
 }
 
-# Pass variables to rofi dmenu
 run_rofi() {
 	printf "%s\n%s\n%s\n%s\n%s\n" "$lock" "$suspend" "$logout" "$reboot" "$shutdown" | rofi_cmd
 }
 
-# Execute Command
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [ "$selected" = "$yes" ]; then
@@ -60,8 +51,6 @@ run_cmd() {
 				systemctl reboot
 				;;
 			'--suspend')
-				mpc -q pause
-				amixer set Master mute
 				systemctl suspend
 				;;
 			'--logout')
@@ -92,7 +81,6 @@ run_cmd() {
 	fi
 }
 
-# Actions
 chosen="$(run_rofi)"
 case "$chosen" in
 	"$shutdown")
@@ -102,7 +90,7 @@ case "$chosen" in
 		run_cmd --reboot
 		;;
 	"$lock")
-		swaylock
+		hyprlock
 		;;
 	"$suspend")
 		run_cmd --suspend
