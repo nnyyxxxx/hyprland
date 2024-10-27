@@ -1,7 +1,7 @@
 #!/bin/sh
 
-yay --noconfirm
+paru -Syu --noconfirm
 
 sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 
-yes | yay -Scc
+yes | paru -Scc

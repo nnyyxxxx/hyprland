@@ -37,7 +37,7 @@ moveToHome() {
 cloneRepo() {
     printf "%b\n" "${YELLOW}Cloning repository...${RC}"
     rm -rf "$HOME/hyprland" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to remove old hyprland directory.${RC}"; exit 1; }
-    $ESCALATION_TOOL pacman -S --needed --noconfirm git > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install git.${RC}"; exit 1; }
+    $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install git.${RC}"; exit 1; }
     git clone https://github.com/nnyyxxxx/hyprland "$HOME/hyprland" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to clone hyprland.${RC}"; exit 1; }
 }
 
@@ -51,11 +51,11 @@ declareFuncs() {
 installAURHelper() {
     if ! command -v yay > /dev/null 2>&1 && ! command -v paru > /dev/null 2>&1; then
         $ESCALATION_TOOL pacman -S --needed --noconfirm base-devel > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install build dependencies.${RC}"; exit 1; }
-        git clone https://aur.archlinux.org/yay-bin.git "$HOME/yay-bin" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to clone yay.${RC}"; }
-        cd "$HOME/yay-bin"
+        git clone https://aur.archlinux.org/paru-bin.git "$HOME/paru-bin" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to clone paru.${RC}"; }
+        cd "$HOME/paru-bin"
         makepkg -si --noconfirm > /dev/null 2>&1
         cd "$HOME"
-        rm -rf "$HOME/yay-bin"
+        rm -rf "$HOME/paru-bin"
     fi
 
     if command -v yay > /dev/null 2>&1; then
