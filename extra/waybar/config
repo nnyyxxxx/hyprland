@@ -28,7 +28,7 @@
 
     "custom/arch": {
         "format": "󰣇",
-        "on-click": "~/.config/rofi/run/run.sh",
+        "on-click": "hyprlauncher",
         "tooltip": false
     },
 
