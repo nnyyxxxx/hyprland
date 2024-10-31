@@ -72,7 +72,7 @@ setSysOps() {
     printf "%b\n" "${YELLOW}Setting up default cursor...${RC}"
     $ESCALATION_TOOL mkdir -p /usr/share/icons/default
     $ESCALATION_TOOL touch /usr/share/icons/default/index.theme
-    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=BreezeX-Light/' /usr/share/icons/default/index.theme > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set breeze cursor.${RC}"; }
+    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-hyprcursor/' /usr/share/icons/default/index.theme > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set bibata cursor.${RC}"; }
 }
 
 setupAutoLogin() {
@@ -133,10 +133,10 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/.zprofile" "$HOME/.zprofile" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up .zprofile.${RC}"; }
     touch "$HOME/.zlogin" "$HOME/.zshenv" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to create zlogin and zshenv.${RC}"; }
 
-    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/BreezeX-Black" /usr/share/icons/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze dark cursor.${RC}"; }
-    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/BreezeX-Light" /usr/share/icons > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze light cursor"; }
-    cp -R "$HYPRLAND_DIR/extra/BreezeX-Black" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze dark cursor.${RC}"; }
-    cp -R "$HYPRLAND_DIR/extra/BreezeX-Light" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up breeze light cursor"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" /usr/share/icons/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hypr cursor.${RC}"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" /usr/share/icons > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hyprcursor cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
 
     $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
