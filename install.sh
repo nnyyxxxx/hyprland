@@ -72,7 +72,7 @@ setSysOps() {
     printf "%b\n" "${YELLOW}Setting up default cursor...${RC}"
     $ESCALATION_TOOL mkdir -p /usr/share/icons/default
     $ESCALATION_TOOL touch /usr/share/icons/default/index.theme
-    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-hyprcursor/' /usr/share/icons/default/index.theme > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set bibata cursor.${RC}"; }
+    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-xcursor/' /usr/share/icons/default/index.theme > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set bibata cursor.${RC}"; }
 }
 
 setupAutoLogin() {
