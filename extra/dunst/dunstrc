@@ -1,0 +1,34 @@
+[global]
+    width = 300
+    height = 100
+    offset = 6x6
+    padding = 16
+    horizontal_padding = 16
+    frame_width = 1
+    frame_color = "#3A3A3C"
+    separator_color = "#3A3A3C"
+    font = JetBrainsMono Nerd Font 10
+    line_height = 4
+    corner_radius = 5
+    origin = top-right
+
+    background = "#0F0F0F"
+    foreground = "#FFFFFF"
+
+    timeout = 5
+    idle_threshold = 120
+
+[urgency_low]
+    background = "#0F0F0F"
+    foreground = "#FFFFFF"
+    timeout = 5
+
+[urgency_normal]
+    background = "#0F0F0F"
+    foreground = "#FFFFFF"
+    timeout = 5
+
+[urgency_critical]
+    background = "#0F0F0F"
+    foreground = "#f38ba8"
+    timeout = 0
