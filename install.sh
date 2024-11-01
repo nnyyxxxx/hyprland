@@ -112,7 +112,7 @@ installDeps() {
 setupConfigurations() {
     printf "%b\n" "${YELLOW}Setting up configuration files...${RC}"
 
-    find "$HOME" -type l -exec rm {} + || { printf "%b\n" "${RED}Failed to remove symlinks.${RC}"; }
+    find "$HOME" -type l -exec rm {} + > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to remove symlinks.${RC}"; }
 
     mv "$XDG_CONFIG_HOME/nvim" "$XDG_CONFIG_HOME/nvim-bak" > /dev/null 2>&1
     mv "$XDG_CONFIG_HOME/gtk-3.0" "$XDG_CONFIG_HOME/gtk-3.0-bak" > /dev/null 2>&1
