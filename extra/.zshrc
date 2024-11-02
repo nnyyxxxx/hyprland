@@ -35,6 +35,7 @@ alias check='cargo fmt --all --check'
 alias clear='printf "\033[2J\033[3J\033[1;1H"'
 alias ll='lsd -llhN --group-directories-first --color=auto'
 alias cp='cp -r'
+alias cat='bat'
 alias ..='cd ..'
 
 # git based actions
