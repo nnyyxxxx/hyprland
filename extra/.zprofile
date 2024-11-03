@@ -1,5 +1,3 @@
 [[ -f ~/.zshrc ]] && . ~/.zshrc
 
-if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-    exec Hyprland
-fi
+# placeholder

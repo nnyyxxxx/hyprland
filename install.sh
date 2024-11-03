@@ -75,15 +75,6 @@ setSysOps() {
     $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-xcursor/' /usr/share/icons/default/index.theme > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set bibata cursor.${RC}"; }
 }
 
-setupAutoLogin() {
-    printf "%b\n" "${YELLOW}Setting up TTY auto-login for user ${USERNAME}...${RC}"
-    
-    $ESCALATION_TOOL mkdir -p /etc/systemd/system/getty@tty1.service.d
-    echo "[Service]
-    ExecStart=
-    ExecStart=-/sbin/agetty --autologin ${USERNAME} --noclear %I \$TERM" | $ESCALATION_TOOL tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up TTY auto-login.${RC}"; }
-}
-
 installDeps() {
     printf "%b\n" "${YELLOW}Installing dependencies...${RC}"
     printf "%b\n" "${YELLOW}This might take a minute or two...${RC}"
@@ -91,7 +82,7 @@ installDeps() {
     current_step=1
 
     $ESCALATION_TOOL pacman -Rns --noconfirm \
-        sddm lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git > /dev/null 2>&1
+        lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git > /dev/null 2>&1
 
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker swww bleachbit hyprland fastfetch cpio \
@@ -100,7 +91,7 @@ installDeps() {
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
         cmatrix gtk3 neovim pamixer mpv feh zsh kitty dash pipewire-pulse easyeffects qt5ct \
         bashtop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
-        hypridle hyprlock qt6-wayland lsd libnotify dunst bat > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install dependencies.${RC}"; }
+        hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install dependencies.${RC}"; }
     printf "%b\n" "${GREEN}Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
@@ -125,6 +116,11 @@ setupConfigurations() {
     mv "$XDG_CONFIG_HOME/dunst" "$XDG_CONFIG_HOME/dunst-bak" > /dev/null 2>&1
     mv "$HOME/.zshrc" "$HOME/.zshrc-bak" > /dev/null 2>&1
     mv "$HOME/.zprofile" "$HOME/.zprofile-bak" > /dev/null 2>&1
+
+    $ESCALATION_TOOL mkdir -p /usr/share/sddm/themes > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to create sddm themes directory.${RC}"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/sddm/corners" /usr/share/sddm/themes > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up sddm theme.${RC}"; }
+    $ESCALATION_TOOL ln -sf "$HYPRLAND_DIR/extra/sddm/sddm.conf" /etc/sddm.conf > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up sddm configuration.${RC}"; }
+    $ESCALATION_TOOL systemctl enable sddm > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to enable sddm.${RC}"; }
 
     $ESCALATION_TOOL mkdir -p /etc/zsh/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to create zsh directory.${RC}"; }
     $ESCALATION_TOOL touch /etc/zsh/zshenv > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to create zshenv.${RC}"; }
@@ -171,6 +167,15 @@ setupConfigurations() {
     fi
 }
 
+setupSDDMPfp() {
+    $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/icons/
+    $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/frieren.jpg" "/var/lib/AccountsService/icons/$USERNAME"
+
+    $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/users/
+    echo "[User]" | $ESCALATION_TOOL tee "/var/lib/AccountsService/users/$USERNAME" > /dev/null
+    echo "Icon=/var/lib/AccountsService/icons/$USERNAME" | $ESCALATION_TOOL tee -a "/var/lib/AccountsService/users/$USERNAME" > /dev/null
+}
+
 success() {
     printf "%b\n" "${YELLOW}Please reboot your system to apply the changes.${RC}"
     printf "%b\n" "${GREEN}Installation complete.${RC}"
@@ -184,7 +189,7 @@ cloneRepo
 declareFuncs
 installAURHelper
 setSysOps
-setupAutoLogin
 installDeps
 setupConfigurations
+setupSDDMPfp
 success
