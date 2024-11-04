@@ -33,9 +33,10 @@ git pull
 | `ALT SHIFT + V` | Spawns hyprpicker (Color picker) |
 | `ALT SHIFT + B` | Reloads waybar / Spawns waybar |
 | `ALT SHIFT + L` | Locks the screen |
+| `ALT SHIFT + R` | Randomizes wallpaper |
 | `ALT + ESC` | Spawns grim (Screenshot utility) |
 | `ALT + LMB` | Drags selected window |
-| `ALT + RMB` | Resizes window in floating & resizes mfact in tiled; when two or more windows are on screen |
+| `ALT + RMB` | Resizes window in floating & resizes mfact in tiled |
 | `ALT + SPACE` | Makes the selected window float |
 
 ### Preview:
