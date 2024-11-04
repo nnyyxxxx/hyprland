@@ -11,19 +11,19 @@
     }
   },
 
-  "logo": {
-    "source": "auto",
-    "color": {
-      "1": "414354",
-      "2": "2"
-    },
+"logo": {
+    "source": "$HOME/hyprland/extra/fastfetch/images/frieren.png",
     "padding": {
       "top": 1
     }
-  },
+},
 
   "modules": [
     "break",
+    {
+      "type": "custom",
+      "format": "            \u001b[36m    ソウソウのフリーレン            "
+    },
     {
       "type": "custom",
       "format": "\u001b[33m╭──────────────────────────────────────────────────╮\u001b[0m"
