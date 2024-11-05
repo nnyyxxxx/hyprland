@@ -136,7 +136,7 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
 
     curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
-    $HOME/.spicetify/spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
+    yes | $HOME/.spicetify/spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
     mkdir -p "$XDG_CONFIG_HOME/spicetify/Themes"
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
 
