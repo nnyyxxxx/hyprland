@@ -22,8 +22,7 @@ setEscalationTool() {
 
 # This is here only for aesthetics, without it the script will request elevation after printing the first print statement; and we don't want that.
 requestElevation() {
-  if [ "$ESCALATION_TOOL" = "sudo" ]; then
-      { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
+  if [ "$ESCALATION_TOOL" = "sudo" ]; then { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   elif [ "$ESCALATION_TOOL" = "doas" ]; then
       { doas true && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   fi
@@ -97,7 +96,7 @@ installDeps() {
 
     $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
-        python-pywalfox-librewolf > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
+        python-pywalfox-librewolf spotify > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
@@ -135,10 +134,14 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hyprcursor cursor"; }
     cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
 
-    curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
-    $HOME/.spicetify/spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
+    curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sed 's/read -r.*/:/' | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
+    $ESCALATION_TOOL chmod a+wr /opt/spotify
+    $ESCALATION_TOOL chmod a+wr /opt/spotify/Apps -R
+    yes | $HOME/.spicetify/spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
     mkdir -p "$XDG_CONFIG_HOME/spicetify/Themes"
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
+
+    wal -i "$HYPRLAND_DIR/wallpapers/frieren1.png" > /dev/null 2>&1
 
     $ESCALATION_TOOL ln -sf "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
