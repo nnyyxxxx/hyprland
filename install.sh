@@ -85,7 +85,7 @@ installDeps() {
         lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git > /dev/null 2>&1
 
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
-        cliphist waybar grim slurp hyprpicker swww bleachbit hyprland fastfetch cpio \
+        cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
         ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip rofi cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
