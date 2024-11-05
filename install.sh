@@ -136,7 +136,8 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
 
     curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
-    $ESCALATION_TOOL chmod 777 /opt/spotify
+    $ESCALATION_TOOL chmod a+wr /opt/spotify
+    $ESCALATION_TOOL chmod a+wr /opt/spotify/Apps -R
     yes | $HOME/.spicetify/spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
     mkdir -p "$XDG_CONFIG_HOME/spicetify/Themes"
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
