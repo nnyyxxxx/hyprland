@@ -135,6 +135,9 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hyprcursor cursor"; }
     cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
 
+    curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
+    spicetify backup apply > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to apply spicetify backup.${RC}"; }
+
     $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/fastfetch" "$XDG_CONFIG_HOME/fastfetch" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up fastfetch configuration.${RC}"; }
