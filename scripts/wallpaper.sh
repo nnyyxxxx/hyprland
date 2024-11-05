@@ -32,9 +32,9 @@ while true; do
         color6=$(sed -n '7p' ~/.cache/wal/colors | sed 's/#//g')
         color7=$(sed -n '8p' ~/.cache/wal/colors | sed 's/#//g')
         
-        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i "s/background-color: #[0-9a-fA-F]\+;*/background-color: #${color0};/g" {} \;
+        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
         
-        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i "s/background-color: #[0-9a-fA-F]\+;*/background-color: #${color0};/g" {} \;
+        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
         gsettings set org.gnome.desktop.interface gtk-theme "dummy"
         gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
