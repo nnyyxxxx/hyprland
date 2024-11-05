@@ -2,6 +2,7 @@
 
 # colors
 autoload -U colors && colors
+cat ~/.cache/wal/sequences
 
 # prompt
 setopt PROMPT_SUBST
@@ -25,7 +26,6 @@ alias c='clear'
 alias rm='rm -rf'
 alias vim='nvim'
 alias debloat='~/Documents/debloat.sh'
-alias chmod='chmod +x'
 alias mpv='mpv --keep-open'
 alias record='mkdir -p ~/recordings && ffmpeg -f x11grab -r 60 -s 2560x1440 -i :0.0 -c:v libx264 -preset fast -crf 23 -pix_fmt yuv420p -vf "scale=2560:1440" -threads 0 ~/recordings/$(date +"%Y-%m-%d-%H-%M-%S").mp4'
 alias history='history 1'
@@ -52,7 +52,7 @@ alias log='git log'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='kitty'
-export BROWSER='firefox'
+export BROWSER='librewolf'
 
 # parse the branch and transfer it to the prompt
 parse_git_branch() {
@@ -152,3 +152,5 @@ ZSH_HIGHLIGHT_STYLES[default]='fg=#cdd6f4'
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=#cdd6f4'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH=$PATH:$HOME/.spicetify

@@ -1,3 +1,5 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
 * {
   border: none;
   min-height: 0;
@@ -6,7 +8,7 @@
 }
 
 window#waybar {
-  background-color: #0F0F0F;
+  background-color: @background;
   margin: 6px;
   padding: 0 4px;
   border-radius: 5px;
@@ -17,7 +19,7 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: #0F0F0F;
+  background-color: @background;
   margin: 0 2px 0 2px;
   padding: 2px;
   border-radius: 5px;
@@ -59,7 +61,7 @@ window#waybar.hidden {
 #custom-arch {
   margin: 0 4px 0 0;
   padding: 6px 16px 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -67,7 +69,7 @@ window#waybar.hidden {
 #custom-updates {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -75,7 +77,7 @@ window#waybar.hidden {
 #battery {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -83,7 +85,7 @@ window#waybar.hidden {
 #backlight {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -91,7 +93,7 @@ window#waybar.hidden {
 #wireplumber {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -99,7 +101,7 @@ window#waybar.hidden {
 #network {
   margin: 0 2px 0 4px;
   padding: 6px 16px 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -107,7 +109,7 @@ window#waybar.hidden {
 #clock {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -115,7 +117,7 @@ window#waybar.hidden {
 #tray {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -123,7 +125,7 @@ window#waybar.hidden {
 #window {
   margin: 0 2px 0 4px;
   padding: 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -131,7 +133,7 @@ window#waybar.hidden {
 #custom-power {
   margin: 0 0 0 4px;
   padding: 6px 16px 6px 12px;
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
   border-radius: 5px;
 }
@@ -140,12 +142,12 @@ window#waybar.hidden {
 #battery.critical,
 #battery.urgent,
 #battery.charging {
-  background-color: #0F0F0F;
+  background-color: @background;
   color: #ffffff;
 }
 
 tooltip {
-  background-color: #0F0F0F;
+  background-color: @background;
 }
 
 tooltip label {
