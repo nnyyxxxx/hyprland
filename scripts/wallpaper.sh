@@ -108,7 +108,16 @@ EOF
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
         
-        sed -i "/\[color\]/,/\[.*\]/ c\
+        if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
+            printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >> "$HOME/hyprland/extra/cava/config"
+            i=1
+            while [ $i -le 8 ]; do
+                eval "current_color=\$color$((8-i))"
+                printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >> "$HOME/hyprland/extra/cava/config"
+                i=$((i + 1))
+            done
+        else
+            sed -i "/\[color\]/,/\[.*\]/ c\
 [color]\n\
 background = '#${color0}'\n\
 gradient = 1\n\
@@ -121,7 +130,8 @@ gradient_color_5 = '#${color3}'\n\
 gradient_color_6 = '#${color2}'\n\
 gradient_color_7 = '#${color1}'\n\
 gradient_color_8 = '#${color0}'\n\
-" $HOME/hyprland/extra/cava/config
+" "$HOME/hyprland/extra/cava/config"
+        fi
 
         pkill cava; cava &
 
