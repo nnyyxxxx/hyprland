@@ -52,13 +52,14 @@ notification-error = ${color1}
 misc              = ${color2}
 EOF
 
-        spicetify config current_theme Sleek
-        spicetify config color_scheme Pywal
-        spicetify apply
+        /home/$USER/.spicetify/spicetify backup apply
+        /home/$USER/.spicetify/spicetify config current_theme Sleek
+        /home/$USER/.spicetify/spicetify config color_scheme Pywal
+        /home/$USER/.spicetify/spicetify apply
 
         if pgrep -x spotify > /dev/null; then
             pkill -x spicetify
-            spicetify -q watch -s &
+            /home/$USER/.spicetify/spicetify -q watch -s &
         fi
         
         last_value="$current_value"
