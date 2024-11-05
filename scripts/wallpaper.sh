@@ -103,7 +103,7 @@ EOF
         /home/$USER/.spicetify/spicetify config color_scheme Pywal
         /home/$USER/.spicetify/spicetify apply
 
-        if pgrep -x spotify > /dev/null && pgrep -x spicetify > /dev/null; then
+        if pgrep -x spotify > /dev/null; then
             pkill -x spicetify
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
