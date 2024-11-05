@@ -22,8 +22,7 @@ setEscalationTool() {
 
 # This is here only for aesthetics, without it the script will request elevation after printing the first print statement; and we don't want that.
 requestElevation() {
-  if [ "$ESCALATION_TOOL" = "sudo" ]; then
-      { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
+  if [ "$ESCALATION_TOOL" = "sudo" ]; then { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   elif [ "$ESCALATION_TOOL" = "doas" ]; then
       { doas true && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   fi
@@ -142,7 +141,7 @@ setupConfigurations() {
     mkdir -p "$XDG_CONFIG_HOME/spicetify/Themes"
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
 
-    wal -i "$HYPRLAND_DIR/wallpapers/frieren1.png"
+    wal -i "$HYPRLAND_DIR/wallpapers/frieren1.png" > /dev/null 2>&1
 
     $ESCALATION_TOOL ln -sf "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
