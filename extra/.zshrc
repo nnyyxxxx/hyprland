@@ -2,6 +2,7 @@
 
 # colors
 autoload -U colors && colors
+cat ~/.cache/wal/sequences
 
 # prompt
 setopt PROMPT_SUBST
@@ -52,7 +53,7 @@ alias log='git log'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='kitty'
-export BROWSER='firefox'
+export BROWSER='librewolf'
 
 # parse the branch and transfer it to the prompt
 parse_git_branch() {

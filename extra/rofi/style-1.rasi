@@ -3,19 +3,45 @@ configuration {
 	modi:                       "drun";
     show-icons:                 true;
     icon-theme: 				"WhiteSur";
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "";
     display-emoji:              "󰞅";
-    display-clipboard:          "";
+    display-clipboard:          "";
 	drun-display-format:        "{name}";
     window-format:              "{t}";
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+* {
+    active-background: #4EAED3;
+    active-foreground: @foreground;
+    normal-background: @background;
+    normal-foreground: @foreground;
+    urgent-background: #13A9D8;
+    urgent-foreground: @foreground;
+
+    alternate-active-background: @background;
+    alternate-active-foreground: @foreground;
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-background: @background;
+    alternate-urgent-foreground: @foreground;
+
+    selected-active-background: #13A9D8;
+    selected-active-foreground: @foreground;
+    selected-normal-background: #4EAED3;
+    selected-normal-foreground: @foreground;
+    selected-urgent-background: #2AC9EB;
+    selected-urgent-foreground: @foreground;
+
+    background-color: @background;
+    background: #0a1d30;
+    foreground: #c7e1eb;
+    border-color: @background;
+    spacing: 2;
+}
 
 /*****----- Main Window -----*****/
 window {
@@ -29,10 +55,10 @@ window {
 
     enabled:                     true;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     2.5ch;
     border:                      0px solid;
     border-radius:               5px;
-    border-color:                @selected;
+    border-color:                @selected-normal-background;
     background-color:            @background;
     cursor:                      "default";
 }
@@ -44,8 +70,8 @@ mainbox {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
-    border-color:                @selected;
+    border-radius:               0px;
+    border-color:                @selected-normal-background;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
@@ -58,8 +84,8 @@ inputbar {
     padding:                     15px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected;
-    background-color:            @selected;
+    border-color:                @selected-normal-background;
+    background-color:            @selected-normal-background;
     text-color:                  @background;
     children:                    ["prompt", "entry" ];
 }
@@ -92,7 +118,7 @@ listview {
     lines:                       6;
     cycle:                       true;
     dynamic:                     true;
-    scrollbar:                   false;
+    scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
@@ -103,16 +129,16 @@ listview {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected;
+    border-color:                @selected-normal-background;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
 }
 scrollbar {
     handle-width:                5px ;
-    handle-color:                @selected;
+    handle-color:                @selected-normal-background;
     border-radius:               0px;
-    background-color:            @background-alt;
+    background-color:            @alternate-normal-background;
 }
 
 /*****----- Elements -----*****/
@@ -123,7 +149,7 @@ element {
     padding:                     8px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected;
+    border-color:                @selected-normal-background;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;

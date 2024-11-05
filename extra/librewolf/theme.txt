@@ -1,1 +1,1 @@
-https://addons.mozilla.org/en-US/firefox/addon/2black/
+https://addons.mozilla.org/en-US/firefox/addon/pywalfox/
