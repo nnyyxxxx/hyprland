@@ -2,7 +2,6 @@
 
 # colors
 autoload -U colors && colors
-cat ~/.cache/wal/sequences
 
 # prompt
 setopt PROMPT_SUBST
