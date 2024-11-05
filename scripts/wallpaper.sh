@@ -117,20 +117,28 @@ EOF
                 i=$((i + 1))
             done
         else
-            sed -i "/\[color\]/,/\[.*\]/ c\
-[color]\n\
-background = '#${color0}'\n\
-gradient = 1\n\
-\n\
-gradient_color_1 = '#${color7}'\n\
-gradient_color_2 = '#${color6}'\n\
-gradient_color_3 = '#${color5}'\n\
-gradient_color_4 = '#${color4}'\n\
-gradient_color_5 = '#${color3}'\n\
-gradient_color_6 = '#${color2}'\n\
-gradient_color_7 = '#${color1}'\n\
-gradient_color_8 = '#${color0}'\n\
-" "$HOME/hyprland/extra/cava/config"
+            color_section=$(cat << EOF
+[color]
+background = '#${color0}'
+gradient = 1
+
+gradient_color_1 = '#${color7}'
+gradient_color_2 = '#${color6}'
+gradient_color_3 = '#${color5}'
+gradient_color_4 = '#${color4}'
+gradient_color_5 = '#${color3}'
+gradient_color_6 = '#${color2}'
+gradient_color_7 = '#${color1}'
+gradient_color_8 = '#${color0}'
+
+EOF
+)
+            awk -v colors="$color_section" '
+                /\[color\]/ { print colors; skip = 1; next }
+                /^\[/ { skip = 0 }
+                !skip { print }
+            ' "$HOME/hyprland/extra/cava/config" > "$HOME/hyprland/extra/cava/config.tmp" && 
+            mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
         fi
 
         pkill cava; cava &

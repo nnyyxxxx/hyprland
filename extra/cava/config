@@ -101,9 +101,11 @@
 
 ; waveform = 0
 
+
 [color]
 background = '#0F0E12'
 gradient = 1
+
 gradient_color_1 = '#bec9d3'
 gradient_color_2 = '#879AAC'
 gradient_color_3 = '#788A9C'
