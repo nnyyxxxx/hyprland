@@ -1,3 +1,5 @@
+@import "../../.cache/wal/colors-rofi-dark.rasi"
+
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun";
@@ -11,36 +13,6 @@ configuration {
     display-clipboard:          "";
 	drun-display-format:        "{name}";
     window-format:              "{t}";
-}
-
-/*****----- Global Properties -----*****/
-* {
-    active-background: #4EAED3;
-    active-foreground: @foreground;
-    normal-background: @background;
-    normal-foreground: @foreground;
-    urgent-background: #13A9D8;
-    urgent-foreground: @foreground;
-
-    alternate-active-background: @background;
-    alternate-active-foreground: @foreground;
-    alternate-normal-background: @background;
-    alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @background;
-    alternate-urgent-foreground: @foreground;
-
-    selected-active-background: #13A9D8;
-    selected-active-foreground: @foreground;
-    selected-normal-background: #4EAED3;
-    selected-normal-foreground: @foreground;
-    selected-urgent-background: #2AC9EB;
-    selected-urgent-foreground: @foreground;
-
-    background-color: @background;
-    background: #0a1d30;
-    foreground: #c7e1eb;
-    border-color: @background;
-    spacing: 2;
 }
 
 /*****----- Main Window -----*****/
