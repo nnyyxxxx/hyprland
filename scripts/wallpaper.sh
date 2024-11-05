@@ -108,6 +108,23 @@ EOF
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
         
+        sed -i "/\[color\]/,/\[.*\]/ c\
+[color]\n\
+background = '#${color0}'\n\
+gradient = 1\n\
+\n\
+gradient_color_1 = '#${color7}'\n\
+gradient_color_2 = '#${color6}'\n\
+gradient_color_3 = '#${color5}'\n\
+gradient_color_4 = '#${color4}'\n\
+gradient_color_5 = '#${color3}'\n\
+gradient_color_6 = '#${color2}'\n\
+gradient_color_7 = '#${color1}'\n\
+gradient_color_8 = '#${color0}'\n\
+" $HOME/hyprland/extra/cava/config
+
+        pkill cava; cava &
+
         last_value="$current_value"
     fi
 done

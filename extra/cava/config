@@ -101,38 +101,3 @@
 
 ; waveform = 0
 
-[color]
-background = '#0F0F0F'
-
-gradient = 1
-
-gradient_color_1 = '#b4befe'
-gradient_color_2 = '#a6b3f7'
-gradient_color_3 = '#98a8f0'
-gradient_color_4 = '#8a9de9'
-gradient_color_5 = '#7c92e2'
-gradient_color_6 = '#6e87db'
-gradient_color_7 = '#607cd4'
-gradient_color_8 = '#5271cd'
-
-[smoothing]
-
-; integral = 77
-
-; monstercat = 0
-; waves = 0
-
-; gravity = 100
-
-; ignore = 0
-
-; noise_reduction = 77
-
-
-[eq]
-
-; 1 = 1 # bass
-; 2 = 1
-; 3 = 1 # midtone
-; 4 = 1
-; 5 = 1 # treble
