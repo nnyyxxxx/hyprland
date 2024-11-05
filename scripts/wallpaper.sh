@@ -32,6 +32,45 @@ while true; do
         color6=$(sed -n '7p' ~/.cache/wal/colors | sed 's/#//g')
         color7=$(sed -n '8p' ~/.cache/wal/colors | sed 's/#//g')
 
+        cat > /home/nyx/hyprland/extra/dunst/dunstrc << EOF
+[global]
+    width = 300
+    height = 100
+    offset = 6x6
+    padding = 16
+    horizontal_padding = 16
+    frame_width = 1
+    frame_color = "#${color2}"
+    separator_color = "#${color2}"
+    font = JetBrainsMono Nerd Font 10
+    line_height = 4
+    corner_radius = 5
+    origin = top-right
+
+    background = "#${color0}"
+    foreground = "#${color7}"
+
+    timeout = 5
+    idle_threshold = 120
+
+[urgency_low]
+    background = "#${color0}"
+    foreground = "#${color7}"
+    timeout = 5
+
+[urgency_normal]
+    background = "#${color0}"
+    foreground = "#${color7}"
+    timeout = 5
+
+[urgency_critical]
+    background = "#${color0}"
+    foreground = "#${color1}"
+    timeout = 0
+EOF
+
+        pkill dunst; dunst &
+
         cat > ~/.config/spicetify/Themes/Sleek/color.ini << EOF
 [Pywal]
 text               = ${color7}
