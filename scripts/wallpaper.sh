@@ -104,8 +104,6 @@ EOF
         /home/$USER/.spicetify/spicetify apply
 
         if hyprctl clients | grep "Spotify"; then
-            killall -9 spicetify
-            killall -9 spotify
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
 
