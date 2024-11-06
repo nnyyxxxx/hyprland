@@ -104,10 +104,11 @@ EOF
             /home/$USER/.spicetify/spicetify config color_scheme Pywal
             /home/$USER/.spicetify/spicetify apply
             
-            pkill -x spicetify
+            killall -9 spicetify
+            killall -9 spotify
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
-        
+
         if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
             printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >> "$HOME/hyprland/extra/cava/config"
             i=1
