@@ -12,8 +12,6 @@
   },
 
 "logo": {
-    "source": "$HOME/hyprland/extra/fastfetch/images/frieren.png",
-    "type": "kitty-direct",
     "padding": {
       "top": 1
     }
