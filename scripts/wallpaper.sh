@@ -98,12 +98,13 @@ notification-error = ${color1}
 misc              = ${color2}
 EOF
 
-        /home/$USER/.spicetify/spicetify backup apply
         /home/$USER/.spicetify/spicetify config current_theme Sleek
         /home/$USER/.spicetify/spicetify config color_scheme Pywal
         /home/$USER/.spicetify/spicetify apply
 
         if hyprctl clients | grep "Spotify"; then
+            killall -9 spicetify
+            killall -9 spotify
             /home/$USER/.spicetify/spicetify -q watch -s &
         fi
 
