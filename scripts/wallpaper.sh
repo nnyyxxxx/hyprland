@@ -143,6 +143,28 @@ EOF
 
         pkill cava; cava &
 
+        cat > $HOME/hyprland/hypr/dark-horizon.conf << EOF
+\$background = rgb(${color0})
+\$backgroundAlpha = ${color0}
+
+\$backgroundAlt = rgb(${color0})
+\$backgroundAltAlpha = ${color0}
+
+\$foreground = rgb(${color7})
+\$foregroundAlpha = ${color7}
+
+\$selected = rgb(${color4})
+\$selectedAlpha = ${color4}
+
+\$active = rgb(${color5})
+\$activeAlpha = ${color5}
+
+\$urgent = rgb(${color1})
+\$urgentAlpha = ${color1}
+EOF
+
+        pkill hyprlock
+
         last_value="$current_value"
     fi
 done
