@@ -103,9 +103,8 @@ EOF
         /home/$USER/.spicetify/spicetify apply
 
         if hyprctl clients | grep "Spotify"; then
-            killall -9 spicetify
-            killall -9 spotify
-            /home/$USER/.spicetify/spicetify -q watch -s &
+            /home/$USER/.spicetify/spicetify watch -s &
+            sleep 1 && pkill spicetify
         fi
 
         if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
