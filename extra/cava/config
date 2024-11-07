@@ -103,14 +103,14 @@
 
 
 [color]
-background = '#090825'
+background = '#0a0008'
 gradient = 1
 
-gradient_color_1 = '#e1e8f4'
-gradient_color_2 = '#9BA5EA'
-gradient_color_3 = '#B7BDDE'
-gradient_color_4 = '#599EE2'
-gradient_color_5 = '#9563D8'
-gradient_color_6 = '#4344C6'
-gradient_color_7 = '#5759A7'
-gradient_color_8 = '#090825'
+gradient_color_1 = '#cea3bd'
+gradient_color_2 = '#E48F72'
+gradient_color_3 = '#C14040'
+gradient_color_4 = '#952E6C'
+gradient_color_5 = '#9C0E0F'
+gradient_color_6 = '#572E53'
+gradient_color_7 = '#5C214E'
+gradient_color_8 = '#0a0008'
