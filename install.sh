@@ -104,6 +104,11 @@ installDeps() {
 setupConfigurations() {
     printf "%b\n" "${YELLOW}Setting up configuration files...${RC}"
 
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" /usr/share/icons/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hypr cursor.${RC}"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" /usr/share/icons > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hyprcursor cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
+
     find "$HOME" -type l -exec rm {} + > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to remove symlinks.${RC}"; }
 
     mv "$XDG_CONFIG_HOME/nvim" "$XDG_CONFIG_HOME/nvim-bak" > /dev/null 2>&1
@@ -130,11 +135,6 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/.zprofile" "$HOME/.zprofile" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up .zprofile.${RC}"; }
     touch "$HOME/.zlogin" "$HOME/.zshenv" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to create zlogin and zshenv.${RC}"; }
 
-    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" /usr/share/icons/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hypr cursor.${RC}"; }
-    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" /usr/share/icons > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
-    cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata hyprcursor cursor"; }
-    cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up bibata x cursor"; }
-
     $ESCALATION_TOOL chmod a+wr /opt/spotify
     $ESCALATION_TOOL chmod a+wr /opt/spotify/Apps -R
     curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sed 's/read -r.*/:/' | sh > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to install spicetify.${RC}"; }
@@ -143,6 +143,11 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
 
     wal -i "$HYPRLAND_DIR/wallpapers/frieren1.png" > /dev/null 2>&1
+
+    mkdir -p "$HOME/.local/share/nvim/base46"
+    touch "$HOME/.local/share/nvim/base46/statusline"
+    touch "$HOME/.local/share/nvim/base46/nvimtree"
+    touch "$HOME/.local/share/nvim/base46/defaults"
 
     $ESCALATION_TOOL ln -sf "$HYPRLAND_DIR/extra/gtk-3.0/dark-horizon" /usr/share/themes/ > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dark-horizon theme.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/cava" "$XDG_CONFIG_HOME/cava" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up cava configuration.${RC}"; }
