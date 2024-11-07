@@ -7,7 +7,21 @@ return {
     end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "nvim-lua/plenary.nvim",
+    module = "plenary",
+    setup = function()
+      vim.api.nvim_create_autocmd("Signal", {
+        pattern = "SIGUSR1",
+        callback = function()
+          require('nvchad.utils').reload()
+        end
+      })
+      
+      os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
+    end,
+  },
+
   -- {
   --   "neovim/nvim-lspconfig",
   --   config = function()
