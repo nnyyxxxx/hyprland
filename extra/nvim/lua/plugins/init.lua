@@ -22,4 +22,15 @@ return {
   -- 		},
   -- 	},
   -- },
+
+  {
+    "andweeb/presence.nvim",
+    event = "VeryLazy",
+    opts = {
+      auto_update = true,
+      buttons = true,
+      show_time = true,
+      main_image = "neovim",
+    },
+  },
 }
