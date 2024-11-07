@@ -1,20 +1,15 @@
 {
     "layer": "top",
-    "position": "top",
-    "spacing": 0,
-    "height": 34,
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
+    "position": "left",
+    "spacing": 2,
+    "width": 44,
+    "margin": 4,
     "modules-left": [
         "custom/arch",
-        "hyprland/workspaces",
-        "hyprland/window"
+        "hyprland/workspaces"
     ],
 
-    "modules-center": [
-        "clock"
-    ],
+    "modules-center": ["clock"],
 
     "modules-right": [
         "tray",
@@ -30,12 +25,6 @@
         "format": "󰣇",
         "on-click": "$HOME/.config/rofi/run/run.sh",
         "tooltip": false
-    },
-
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 50,
-        "separate-outputs": true
     },
 
     "hyprland/workspaces": {
@@ -63,12 +52,6 @@
         "spacing": 10
     },
 
-    "clock": {
-        "tooltip-format": "{calendar}",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%I:%M %p}"
-    },
-
     "network": {
         "format-wifi" : "{icon}",
         "format-icons": "󰀂",
@@ -94,7 +77,7 @@
     },
 
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
         "format-icons": {
             "charging": [
                 "󰢜",
@@ -121,13 +104,14 @@
                 "󰁹"
             ]
         },
-        "format-full": "Charged ",
+        "format-full": "",
+        "tooltip-format": "{capacity}%",
         "interval": 5,
         "states": {
             "warning": 20,
             "critical": 10
         },
-        "tooltip": false
+        "tooltip": true
     },
 
     "custom/power": {
@@ -137,10 +121,16 @@
     },
 
     "custom/updates": {
-        "format": "󰚰 {}",
+        "format": "󰚰",
         "exec": "checkupdates | wc -l",
         "interval": 60,
         "on-click": "kitty --title debloat -e ~/Documents/debloat.sh",
-        "tooltip": false
+        "tooltip-format": "{} updates available",
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "{:%I\n%M}",
+        "format-alt": "{:%b\n%d}"
     }
 }
