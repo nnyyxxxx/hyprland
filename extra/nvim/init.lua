@@ -35,3 +35,19 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
+
+vim.api.nvim_create_autocmd("Signal", {
+  pattern = "SIGUSR1",
+  callback = function()
+    require('nvchad.utils').reload()
+  end
+})
+
+vim.cmd [[
+  augroup NvimTree
+    autocmd!
+    autocmd VimEnter * NvimTreeToggle
+  augroup END
+]]
