@@ -52,7 +52,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  background-color: @color1;
   color: #0F0F0F;
   box-shadow: 0 0 0 1px #3A3A3C;
   border-radius: 5px;
