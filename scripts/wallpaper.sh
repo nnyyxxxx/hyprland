@@ -125,7 +125,15 @@ EOF
 \$urgentAlpha = ${color1}
 EOF
 
-        pkexec cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
+        if [ ! -w "/usr/share/sddm/themes/corners/backgrounds" ]; then
+            pkexec chmod 777 /usr/share/sddm/themes/corners/backgrounds
+        fi
+
+        if [ ! -w "/usr/share/sddm/themes/corners/theme.conf" ]; then
+            pkexec chmod 666 /usr/share/sddm/themes/corners/theme.conf
+        fi
+
+        cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
         cat > /tmp/sddm-theme.conf << EOF
 [General]
 BgSource="backgrounds/wallpaper.png"
@@ -175,7 +183,7 @@ TimeIsBold=true
 TimeOpacity=1.0
 TimeFormat="hh:mm AP"
 EOF
-        pkexec cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
+        cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
         rm /tmp/sddm-theme.conf
 
         pkill hyprlock
