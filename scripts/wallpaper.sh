@@ -15,14 +15,6 @@ while true; do
         mkdir -p "$HOME/.config/vesktop/themes"
         cp ~/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
         
-        if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
-            pkexec chmod a+wr /opt/spotify
-            pkexec chmod a+wr /opt/spotify/Apps -R
-        fi
-
-        mkdir -p ~/.config/spotify
-        touch ~/.config/spotify/prefs
-        
         color0=$(sed -n '1p' ~/.cache/wal/colors | sed 's/#//g')
         color1=$(sed -n '2p' ~/.cache/wal/colors | sed 's/#//g')
         color2=$(sed -n '3p' ~/.cache/wal/colors | sed 's/#//g')
@@ -77,35 +69,6 @@ while true; do
 EOF
 
         pkill dunst; dunst &
-
-        cat > ~/.config/spicetify/Themes/Sleek/color.ini << EOF
-[Pywal]
-text               = ${color7}
-subtext            = ${color7}
-sidebar-text       = ${color7}
-main              = ${color0}
-sidebar           = ${color0}
-player            = ${color0}
-card              = ${color0}
-shadow            = ${color0}
-selected-row      = ${color3}
-button            = ${color4}
-button-active     = ${color4}
-button-disabled   = ${color7}
-tab-active        = ${color4}
-notification      = ${color6}
-notification-error = ${color1}
-misc              = ${color2}
-EOF
-
-        /home/$USER/.spicetify/spicetify config current_theme Sleek
-        /home/$USER/.spicetify/spicetify config color_scheme Pywal
-        /home/$USER/.spicetify/spicetify apply
-
-        if hyprctl clients | grep "Spotify"; then
-            /home/$USER/.spicetify/spicetify watch -s &
-            sleep 1 && pkill spicetify
-        fi
 
         if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
             printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >> "$HOME/hyprland/extra/cava/config"
@@ -216,6 +179,43 @@ EOF
         rm /tmp/sddm-theme.conf
 
         pkill hyprlock
+
+        if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
+            pkexec chmod a+wr /opt/spotify
+            pkexec chmod a+wr /opt/spotify/Apps -R
+        fi
+
+        mkdir -p ~/.config/spotify
+        touch ~/.config/spotify/prefs
+        
+        cat > ~/.config/spicetify/Themes/Sleek/color.ini << EOF
+[Pywal]
+text               = ${color7}
+subtext            = ${color7}
+sidebar-text       = ${color7}
+main              = ${color0}
+sidebar           = ${color0}
+player            = ${color0}
+card              = ${color0}
+shadow            = ${color0}
+selected-row      = ${color3}
+button            = ${color4}
+button-active     = ${color4}
+button-disabled   = ${color7}
+tab-active        = ${color4}
+notification      = ${color6}
+notification-error = ${color1}
+misc              = ${color2}
+EOF
+
+        /home/$USER/.spicetify/spicetify config current_theme Sleek
+        /home/$USER/.spicetify/spicetify config color_scheme Pywal
+        /home/$USER/.spicetify/spicetify apply
+
+        if hyprctl clients | grep "Spotify"; then
+            /home/$USER/.spicetify/spicetify watch -s &
+            sleep 1 && pkill spicetify
+        fi
 
         last_value="$current_value"
     fi
