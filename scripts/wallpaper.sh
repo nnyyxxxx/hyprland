@@ -162,6 +162,59 @@ EOF
 \$urgentAlpha = ${color1}
 EOF
 
+        pkexec cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
+        cat > /tmp/sddm-theme.conf << EOF
+[General]
+BgSource="backgrounds/wallpaper.png"
+FontFamily="JetBrainsMono Nerd Font"
+FontSize=14
+Padding=50
+Radius=10
+Scale=1
+
+UserPictureEnabled=true
+UserBorderWidth=1
+UserBorderColor="#${color2}"
+UserColor="#${color0}"
+
+InputColor="#${color0}"
+InputTextColor="#${color7}"
+InputBorderWidth=1
+InputBorderColor="#${color2}"
+UserPlaceholderText="user"
+PassPlaceholderText="password"
+HidePassword=true
+
+LoginButtonTextColor="#${color0}"
+LoginButtonText="Login"
+LoginButtonColor="#${color7}"
+
+PopupColor="#${color0}"
+PopupActiveColor="#${color7}"
+PopupActiveTextColor="#${color0}"
+
+SessionButtonColor="#${color0}"
+SessionIconColor="#${color7}"
+PowerButtonColor="#${color0}"
+PowerIconColor="#${color7}"
+
+DateTimeSpacing=-20
+
+DateColor="#${color7}"
+DateSize=36
+DateIsBold=false
+DateOpacity=1.0
+DateFormat="dddd, MMMM d"
+
+TimeColor="#${color7}"
+TimeSize=48
+TimeIsBold=true
+TimeOpacity=1.0
+TimeFormat="hh:mm AP"
+EOF
+        pkexec cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
+        rm /tmp/sddm-theme.conf
+
         pkill hyprlock
 
         last_value="$current_value"
