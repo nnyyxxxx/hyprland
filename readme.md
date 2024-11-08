@@ -25,14 +25,14 @@ git pull
 ### Keybinds overview:
 | Keybind | Description |  
 | --- | --- |  
-| `ALT SHIFT + Enter` | Spawns kitty (Terminal) |  
-| `ALT SHIFT + P` | Spawns rofi (Application launcher) |
+| `ALT SHIFT + Q` | Spawns kitty (Terminal) |  
+| `ALT SHIFT + E` | Spawns rofi (Application launcher) |
 | `ALT SHIFT + C` | Kills current window |
 | `ALT SHIFT + W` | Kills hyprland |
 | `ALT SHIFT + F` | Toggles fullscreen |
 | `ALT SHIFT + V` | Spawns hyprpicker (Color picker) |
 | `ALT SHIFT + B` | Reloads waybar / Spawns waybar |
-| `ALT SHIFT + L` | Locks the screen |
+| `ALT SHIFT + A` | Locks the screen |
 | `ALT SHIFT + R` | Randomizes wallpaper |
 | `ALT + ESC` | Spawns grim (Screenshot utility) |
 | `ALT + LMB` | Drags selected window |
