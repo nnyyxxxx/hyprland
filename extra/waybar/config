@@ -130,7 +130,7 @@
     },
 
     "clock": {
-        "format": "{:%I\n%M}",
-        "format-alt": "{:%b\n%d}"
+        "format": "{:%I\n%M\n%p}",
+        "format-alt": "{:%a\n%b\n%d}"
     }
 }
