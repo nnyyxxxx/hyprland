@@ -21,6 +21,8 @@ Updating
 cd "$HOME/hyprland"
 git pull
 ```
+### Modifying:
+Modifying these dotfiles is not recommended. You will end up breaking something. If you still intend to modify these dots then please take a look at the scripts/wallpaper.sh script. Any modifications could stop the theme patcher from working.
 
 ### Keybinds overview:
 | Keybind | Description |  
