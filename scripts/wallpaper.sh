@@ -10,19 +10,19 @@ while true; do
         wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
         killall waybar; waybar &
         pywalfox update
-        background=$(jq -r '.special.background' ~/.cache/wal/colors.json | sed 's/#//')
-        echo "\$background = rgba(${background}FF)" > ~/.cache/wal/colors-hyprland.conf
+        background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
+        echo "\$background = rgba(${background}FF)" > $HOME/.cache/wal/colors-hyprland.conf
         mkdir -p "$HOME/.config/vesktop/themes"
-        cp ~/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
+        cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
         
-        color0=$(sed -n '1p' ~/.cache/wal/colors | sed 's/#//g')
-        color1=$(sed -n '2p' ~/.cache/wal/colors | sed 's/#//g')
-        color2=$(sed -n '3p' ~/.cache/wal/colors | sed 's/#//g')
-        color3=$(sed -n '4p' ~/.cache/wal/colors | sed 's/#//g')
-        color4=$(sed -n '5p' ~/.cache/wal/colors | sed 's/#//g')
-        color5=$(sed -n '6p' ~/.cache/wal/colors | sed 's/#//g')
-        color6=$(sed -n '7p' ~/.cache/wal/colors | sed 's/#//g')
-        color7=$(sed -n '8p' ~/.cache/wal/colors | sed 's/#//g')
+        color0=$(sed -n '1p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color1=$(sed -n '2p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color2=$(sed -n '3p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color3=$(sed -n '4p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color4=$(sed -n '5p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color5=$(sed -n '6p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color6=$(sed -n '7p' $HOME/.cache/wal/colors | sed 's/#//g')
+        color7=$(sed -n '8p' $HOME/.cache/wal/colors | sed 's/#//g')
         
         find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
         
@@ -30,6 +30,53 @@ while true; do
 
         gsettings set org.gnome.desktop.interface gtk-theme "dummy"
         gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
+
+        cat > $HOME/hyprland/extra/wlogout/style.css << EOF
+window {
+	background-color: rgba(12, 12, 12, 0.9);
+}
+
+button {
+    border-radius: 0;
+    border-color: #${color2};
+    color: #${color7};
+    background-color: #${color0};
+    border-style: solid;
+    border-width: 1px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+}
+
+button:focus, button:active, button:hover {
+    background-color: #${color4};
+    outline-style: none;
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}
+EOF
 
         cat > $HOME/hyprland/extra/dunst/dunstrc << EOF
 [global]

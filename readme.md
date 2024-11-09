@@ -34,6 +34,7 @@ git pull
 | `ALT SHIFT + B` | Reloads waybar / Spawns waybar |
 | `ALT SHIFT + A` | Locks the screen |
 | `ALT SHIFT + R` | Randomizes wallpaper |
+| `ALT SHIFT + S` | Spawns wlogout (Power menu)
 | `ALT + ESC` | Spawns grim (Screenshot utility) |
 | `ALT + LMB` | Drags selected window |
 | `ALT + RMB` | Resizes window in floating & resizes mfact in tiled |

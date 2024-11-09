@@ -162,6 +162,7 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/rofi" "$XDG_CONFIG_HOME/rofi" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up rofi configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/hyprwall" "$XDG_CONFIG_HOME/hyprwall" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up hyprwall configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/dunst" "$XDG_CONFIG_HOME/dunst" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up dunst configuration.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/extra/wlogout" "$XDG_CONFIG_HOME/wlogout" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up wlogout configuration.${RC}"; }
 
     cp -R "$HYPRLAND_DIR/extra/vesktop/discord-pywal.css" "$XDG_CONFIG_HOME/wal/templates" > /dev/null 2>&1 || { printf "%b\n" "${RED}Failed to set up discord-pywal.css.${RC}"; }
 
