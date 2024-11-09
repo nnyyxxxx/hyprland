@@ -5,8 +5,8 @@ autoload -U colors && colors
 
 # prompt
 setopt PROMPT_SUBST
-PS1='%F{yellow}$(if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then echo "$(parse_git_branch) "; fi)%F{green}$(if [[ $PWD == $HOME ]]; then echo ""; else echo "%~"; fi) %F
-%F{red}%f  '
+PS1='%F{red}%f  '
+RPS1='%F{yellow}$(if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then echo "$(parse_git_branch) "; fi)%F{green}$(if [[ $PWD == $HOME ]]; then echo ""; else echo "%~"; fi)'
 
 # essential stuff
 stty -ixon # disable ctrl+s and ctrl+q
