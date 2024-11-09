@@ -22,7 +22,8 @@ setEscalationTool() {
 
 # This is here only for aesthetics, without it the script will request elevation after printing the first print statement; and we don't want that.
 requestElevation() {
-  if [ "$ESCALATION_TOOL" = "sudo" ]; then { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
+  if [ "$ESCALATION_TOOL" = "sudo" ]; then
+      { sudo -v && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   elif [ "$ESCALATION_TOOL" = "doas" ]; then
       { doas true && clear; } || { printf "%b\n" "${RED}Failed to gain elevation.${RC}"; }
   fi
