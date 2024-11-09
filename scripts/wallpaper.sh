@@ -49,7 +49,7 @@ button {
 }
 
 button:focus, button:active, button:hover {
-    background-color: #${color4};
+    background-color: #232023;
     outline-style: none;
 }
 
