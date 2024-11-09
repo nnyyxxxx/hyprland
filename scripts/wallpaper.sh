@@ -91,7 +91,7 @@ EOF
     font = JetBrainsMono Nerd Font 10
     line_height = 4
     corner_radius = 5
-    origin = top-right
+    origin = top-left
 
     background = "#${color0}"
     foreground = "#${color7}"
