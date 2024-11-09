@@ -1,28 +1,8 @@
-<p align="center">
-  <img src=".github/header.svg" alt="Header">
-</p>
-
 ### Usage:
 Install via curl
   ```shell
   curl -fsSL https://github.com/nnyyxxxx/hyprland/raw/main/install.sh | sh
   ```
-
-Install via git
-  ```shell
-  git clone https://github.com/nnyyxxxx/hyprland
-  cd hyprland
-  chmod +x install.sh
-  ./install.sh
-  ```
-Updating
-```shell
-# This might not be the best idea, dependencies could get added to the install script and new utilities could get added in the future, I'd advice against this unless you have local changes.
-cd "$HOME/hyprland"
-git pull
-```
-### Modifying:
-Modifying these dotfiles is not recommended. You will end up breaking something. If you still intend to modify these dots then please take a look at the scripts/wallpaper.sh script. Any modifications could stop the theme patcher from working.
 
 ### Keybinds overview:
 | Keybind | Description |  
