@@ -205,7 +205,7 @@ setupConfigurations() {
 
 setupSDDMPfp() {
     $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/icons/
-    $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/frieren.jpg" "/var/lib/AccountsService/icons/$USERNAME"
+    $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/elf.png" "/var/lib/AccountsService/icons/$USERNAME"
 
     $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/users/
     echo "[User]" | $ESCALATION_TOOL tee "/var/lib/AccountsService/users/$USERNAME" >/dev/null
