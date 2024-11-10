@@ -3,10 +3,10 @@
 dir="$HOME/.config/rofi"
 theme='style-1'
 
-selection=$(nmcli -f SSID,RATE,SIGNAL,BARS,SECURITY device wifi list --rescan no | 
-        awk 'NR>1 && $1 != "--" {print $1,$2,$3,$4,$5}' | 
-        sort -u | 
-        rofi -dmenu -theme ${dir}/${theme}.rasi -p " " -lines 10)
+selection=$(nmcli -f SSID,RATE,SIGNAL,BARS,SECURITY device wifi list --rescan no |
+    awk 'NR>1 && $1 != "--" {print $1,$2,$3,$4,$5}' |
+    sort -u |
+    rofi -dmenu -theme ${dir}/${theme}.rasi -p " " -lines 10)
 
 [ -z "$selection" ] && exit 1
 

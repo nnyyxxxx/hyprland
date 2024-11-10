@@ -8,13 +8,14 @@ while true; do
     current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
     if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
         wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
-        killall waybar; waybar &
+        killall waybar
+        waybar &
         pywalfox update
         background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
-        echo "\$background = rgba(${background}FF)" > $HOME/.cache/wal/colors-hyprland.conf
+        echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-hyprland.conf
         mkdir -p "$HOME/.config/vesktop/themes"
         cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
-        
+
         color0=$(sed -n '1p' $HOME/.cache/wal/colors | sed 's/#//g')
         color1=$(sed -n '2p' $HOME/.cache/wal/colors | sed 's/#//g')
         color2=$(sed -n '3p' $HOME/.cache/wal/colors | sed 's/#//g')
@@ -23,9 +24,9 @@ while true; do
         color5=$(sed -n '6p' $HOME/.cache/wal/colors | sed 's/#//g')
         color6=$(sed -n '7p' $HOME/.cache/wal/colors | sed 's/#//g')
         color7=$(sed -n '8p' $HOME/.cache/wal/colors | sed 's/#//g')
-        
+
         find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
-        
+
         find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
         gsettings set org.gnome.desktop.interface gtk-theme "dummy"
@@ -35,7 +36,7 @@ while true; do
         sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
         sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
 
-        cat > $HOME/hyprland/extra/wlogout/style.css << EOF
+        cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
 window {
 	background-color: rgba(12, 12, 12, 0.9);
 }
@@ -82,7 +83,7 @@ button:focus, button:active, button:hover {
 }
 EOF
 
-        cat > $HOME/hyprland/extra/dunst/dunstrc << EOF
+        cat >$HOME/hyprland/extra/dunst/dunstrc <<EOF
 [global]
     width = 300
     height = 100
@@ -119,18 +120,20 @@ EOF
     timeout = 0
 EOF
 
-        pkill dunst; dunst &
+        pkill dunst
+        dunst &
 
         if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
-            printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >> "$HOME/hyprland/extra/cava/config"
+            printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >>"$HOME/hyprland/extra/cava/config"
             i=1
             while [ $i -le 8 ]; do
-                eval "current_color=\$color$((8-i))"
-                printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >> "$HOME/hyprland/extra/cava/config"
+                eval "current_color=\$color$((8 - i))"
+                printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >>"$HOME/hyprland/extra/cava/config"
                 i=$((i + 1))
             done
         else
-            color_section=$(cat << EOF
+            color_section=$(
+                cat <<EOF
 [color]
 background = '#${color0}'
 gradient = 1
@@ -145,18 +148,19 @@ gradient_color_7 = '#${color1}'
 gradient_color_8 = '#${color0}'
 
 EOF
-)
+            )
             awk -v colors="$color_section" '
                 /\[color\]/ { print colors; skip = 1; next }
                 /^\[/ { skip = 0 }
                 !skip { print }
-            ' "$HOME/hyprland/extra/cava/config" > "$HOME/hyprland/extra/cava/config.tmp" && 
-            mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
+            ' "$HOME/hyprland/extra/cava/config" >"$HOME/hyprland/extra/cava/config.tmp" &&
+                mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
         fi
 
-        pkill cava; cava &
+        pkill cava
+        cava &
 
-        cat > $HOME/hyprland/hypr/dark-horizon.conf << EOF
+        cat >$HOME/hyprland/hypr/dark-horizon.conf <<EOF
 \$background = rgb(${color0})
 \$backgroundAlpha = ${color0}
 
@@ -185,7 +189,7 @@ EOF
         fi
 
         cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
-        cat > /tmp/sddm-theme.conf << EOF
+        cat >/tmp/sddm-theme.conf <<EOF
 [General]
 BgSource="backgrounds/wallpaper.png"
 FontFamily="JetBrainsMono Nerd Font"
@@ -246,8 +250,8 @@ EOF
 
         mkdir -p ~/.config/spotify
         touch ~/.config/spotify/prefs
-        
-        cat > ~/.config/spicetify/Themes/Sleek/color.ini << EOF
+
+        cat >~/.config/spicetify/Themes/Sleek/color.ini <<EOF
 [Pywal]
 text               = ${color7}
 subtext            = ${color7}
