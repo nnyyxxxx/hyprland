@@ -31,6 +31,10 @@ while true; do
         gsettings set org.gnome.desktop.interface gtk-theme "dummy"
         gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
 
+        sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+        sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+        sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+
         cat > $HOME/hyprland/extra/wlogout/style.css << EOF
 window {
 	background-color: rgba(12, 12, 12, 0.9);
