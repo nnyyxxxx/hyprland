@@ -39,6 +39,7 @@ alias cat='bat'
 alias ..='cd ..'
 alias start='qemu-system-x86_64 -drive format=raw,file=bootimage-hlkernel.bin'
 alias start1='vncviewer 127.0.0.1:5900'
+alias shfmt='shfmt -l -w -i 4 *'
 
 # git based actions
 alias checkout='git checkout'
