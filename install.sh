@@ -20,7 +20,6 @@ setEscalationTool() {
     fi
 }
 
-# This is here only for aesthetics, without it the script will request elevation after printing the first print statement; and we don't want that.
 requestElevation() {
     if [ "$ESCALATION_TOOL" = "sudo" ]; then
         { sudo -v && clear; } || { printf "%b\n" "${RED}:: Failed to gain elevation.${RC}"; }
@@ -29,7 +28,6 @@ requestElevation() {
     fi
 }
 
-# Moves the user to their home directory incase they are not already in it.
 moveToHome() {
     cd "$HOME" || {
         printf "%b\n" "${RED}:: Failed to move to home directory.${RC}"

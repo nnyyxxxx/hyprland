@@ -1,15 +1,12 @@
 [[ $- != *i* ]] && return
 
-# colors
 autoload -U colors && colors
 
-# prompt
 setopt PROMPT_SUBST
 PS1='%F{green}%n%F{magenta}@%F{red}%m %F{white}» %F{yellow}$(if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then echo "$(parse_git_branch) "; fi)%F{green}%/
 %F{red}%f  '
 
-# essential stuff
-stty -ixon # disable ctrl+s and ctrl+q
+stty -ixon
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000000
 SAVEHIST=1000000000
@@ -19,7 +16,6 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# essentials
 alias grep='grep --color=auto'
 alias ff='clear && fastfetch'
 alias c='clear'
@@ -41,7 +37,6 @@ alias start='qemu-system-x86_64 -drive format=raw,file=bootimage-hlkernel.bin'
 alias start1='vncviewer 127.0.0.1:5900'
 alias shfmt='shfmt -l -w -i 4 *'
 
-# git based actions
 alias checkout='git checkout'
 alias push='git push'
 alias fetch='git fetch'
@@ -51,37 +46,31 @@ alias stash='git stash && git stash drop'
 alias status='git status'
 alias log='git log'
 
-# env's
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='kitty'
 export BROWSER='librewolf'
 
-# parse the branch and transfer it to the prompt
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-# stashes changes before pulling and then releases the changes
 pull() {
     git stash
     git pull
     git stash pop
 }
 
-# commit with a message dynamically
 commit() {
     git add .
     git commit -m "$*"
     git push
 }
 
-# cloning and cding into that cloned repo
 clone() { 
     git clone "$1" 2>/dev/null && cd "$(basename "$1" .git)"
 }
 
-# dynamically delete branches while on the branch you want to delete
 branch() {
     if [ "$1" = "-d" ] && [ -n "$2" ]; then
         git checkout main 2>/dev/null || git checkout master 2>/dev/null
@@ -91,7 +80,6 @@ branch() {
     fi
 }
 
-# rebasing
 rebase() {
     if [ "$1" = "--abort" ]; then
         git rebase --abort
@@ -99,6 +87,42 @@ rebase() {
     fi
     if [[ "$1" =~ ^[0-9]+$ ]] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         git rebase -i HEAD~"$1"
+    fi
+}
+
+git_status_count() {
+    local modified_count=0
+    local staged_count=0
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        modified_count=$(git status --porcelain | grep -E "^ M|^MM" | wc -l)
+        staged_count=$(git status --porcelain | grep -E "^[MARCD]" | wc -l)
+        if [ $modified_count -gt 0 ] || [ $staged_count -gt 0 ]; then
+            echo "%F{yellow}[%F{red}${modified_count}%F{yellow}|%F{green}${staged_count}%F{yellow}]"
+        fi
+    fi
+}
+
+preexec() {
+    timer=$(($(date +%s%0N)/1000000))
+}
+
+precmd() {
+    if [ $timer ]; then
+        now=$(($(date +%s%0N)/1000000))
+        elapsed=$(($now-$timer))
+        
+        if [ $elapsed -ge 60000 ]; then
+            timer_show="$(($elapsed/60000))m$((($elapsed%60000)/1000))s"
+        elif [ $elapsed -ge 1000 ]; then
+            timer_show="$(($elapsed/1000))s"
+        else
+            timer_show="${elapsed}ms"
+        fi
+        
+        RPROMPT='%F{blue}${timer_show} $(git_status_count)'
+        unset timer
+    else
+        RPROMPT='$(git_status_count)'
     fi
 }
 
