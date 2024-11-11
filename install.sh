@@ -117,13 +117,13 @@ installDeps() {
         bashtop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
         hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm jq python-pywal python-watchdog \
         python xorg-xhost timeshift >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
-    printf "%b\n" "${GREEN}Dependencies installed (${current_step}/${total_steps})${RC}"
+    printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
     $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
         python-pywalfox-librewolf spotify vesktop-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
-    printf "%b\n" "${GREEN}AUR dependencies installed (${current_step}/${total_steps})${RC}"
+    printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
 setupConfigurations() {
