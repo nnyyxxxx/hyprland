@@ -174,7 +174,7 @@ setupConfigurations() {
     cp -R "$HYPRLAND_DIR/extra/Sleek" "$XDG_CONFIG_HOME/spicetify/Themes"
 
     printf "%b\n" "${YELLOW}:: Testing color scheme generation...${RC}"
-    wal -i "$HYPRLAND_DIR/wallpapers/frieren1.png" >/dev/null 2>&1
+    /usr/bin/wal -i "$HYPRLAND_DIR/wallpapers/baddie.png" >/dev/null 2>&1
 
     mkdir -p "$HOME/.local/share/nvim/base46"
     touch "$HOME/.local/share/nvim/base46/statusline"
@@ -212,12 +212,6 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/debloat.sh" "$HOME/Documents/debloat.sh" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up debloat.sh.${RC}"; }
 
     pywalfox install --browser librewolf >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to setup pywalfox.${RC}"; }
-
-    if pacman -Q grub >/dev/null 2>&1; then
-        $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/grub/catppuccin-mocha-grub/" /usr/share/grub/themes/ >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up grub theme.${RC}"; }
-        $ESCALATION_TOOL cp "$HYPRLAND_DIR/extra/grub/grub" /etc/default/ >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up grub configuration.${RC}"; }
-        $ESCALATION_TOOL grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to generate grub configuration.${RC}"; }
-    fi
 
     printf "%b\n" "${GREEN}:: All configurations set up successfully${RC}"
 }
