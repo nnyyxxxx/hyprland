@@ -1,41 +1,43 @@
 #!/bin/sh
 
-config_file="$HOME/hyprland/extra/hyprwall/config.ini"
+config_dir="$HOME/hyprland/extra/hyprwall"
+config_file="$config_dir/config.ini"
 last_value=""
 
-inotifywait -m -e modify "$config_file" | while read -r directory events filename; do
-    current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
-    if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
-        wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
-        killall waybar
-        waybar &
-        pywalfox update
-        background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
-        echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-hyprland.conf
-        mkdir -p "$HOME/.config/vesktop/themes"
-        cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
+inotifywait -m -e modify,create "$config_dir" | while read -r directory events filename; do
+    if [ "$filename" = "config.ini" ]; then
+        current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
+        if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
+            wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
+            killall waybar
+            waybar &
+            pywalfox update
+            background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
+            echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-hyprland.conf
+            mkdir -p "$HOME/.config/vesktop/themes"
+            cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
 
-        color0=$(sed -n '1p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color1=$(sed -n '2p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color2=$(sed -n '3p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color3=$(sed -n '4p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color4=$(sed -n '5p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color5=$(sed -n '6p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color6=$(sed -n '7p' $HOME/.cache/wal/colors | sed 's/#//g')
-        color7=$(sed -n '8p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color0=$(sed -n '1p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color1=$(sed -n '2p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color2=$(sed -n '3p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color3=$(sed -n '4p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color4=$(sed -n '5p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color5=$(sed -n '6p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color6=$(sed -n '7p' $HOME/.cache/wal/colors | sed 's/#//g')
+            color7=$(sed -n '8p' $HOME/.cache/wal/colors | sed 's/#//g')
 
-        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
+            find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
-        find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
+            find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
-        gsettings set org.gnome.desktop.interface gtk-theme "dummy"
-        gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
+            gsettings set org.gnome.desktop.interface gtk-theme "dummy"
+            gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
 
-        sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-        sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-        sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
 
-        cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
+            cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
 window {
 	background-color: rgba(12, 12, 12, 0.9);
 }
@@ -82,7 +84,7 @@ button:focus, button:active, button:hover {
 }
 EOF
 
-        cat >$HOME/hyprland/extra/dunst/dunstrc <<EOF
+            cat >$HOME/hyprland/extra/dunst/dunstrc <<EOF
 [global]
     width = 300
     height = 100
@@ -119,20 +121,20 @@ EOF
     timeout = 0
 EOF
 
-        pkill dunst
-        dunst &
+            pkill dunst
+            dunst &
 
-        if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
-            printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >>"$HOME/hyprland/extra/cava/config"
-            i=1
-            while [ $i -le 8 ]; do
-                eval "current_color=\$color$((8 - i))"
-                printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >>"$HOME/hyprland/extra/cava/config"
-                i=$((i + 1))
-            done
-        else
-            color_section=$(
-                cat <<EOF
+            if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
+                printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >>"$HOME/hyprland/extra/cava/config"
+                i=1
+                while [ $i -le 8 ]; do
+                    eval "current_color=\$color$((8 - i))"
+                    printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >>"$HOME/hyprland/extra/cava/config"
+                    i=$((i + 1))
+                done
+            else
+                color_section=$(
+                    cat <<EOF
 [color]
 background = '#${color0}'
 gradient = 1
@@ -147,19 +149,19 @@ gradient_color_7 = '#${color1}'
 gradient_color_8 = '#${color0}'
 
 EOF
-            )
-            awk -v colors="$color_section" '
+                )
+                awk -v colors="$color_section" '
                 /\[color\]/ { print colors; skip = 1; next }
                 /^\[/ { skip = 0 }
                 !skip { print }
             ' "$HOME/hyprland/extra/cava/config" >"$HOME/hyprland/extra/cava/config.tmp" &&
-                mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
-        fi
+                    mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
+            fi
 
-        pkill cava
-        cava &
+            pkill cava
+            cava &
 
-        cat >$HOME/hyprland/hypr/dark-horizon.conf <<EOF
+            cat >$HOME/hyprland/hypr/dark-horizon.conf <<EOF
 \$background = rgb(${color0})
 \$backgroundAlpha = ${color0}
 
@@ -179,16 +181,16 @@ EOF
 \$urgentAlpha = ${color1}
 EOF
 
-        if [ ! -w "/usr/share/sddm/themes/corners/backgrounds" ]; then
-            pkexec chmod 777 /usr/share/sddm/themes/corners/backgrounds
-        fi
+            if [ ! -w "/usr/share/sddm/themes/corners/backgrounds" ]; then
+                pkexec chmod 777 /usr/share/sddm/themes/corners/backgrounds
+            fi
 
-        if [ ! -w "/usr/share/sddm/themes/corners/theme.conf" ]; then
-            pkexec chmod 666 /usr/share/sddm/themes/corners/theme.conf
-        fi
+            if [ ! -w "/usr/share/sddm/themes/corners/theme.conf" ]; then
+                pkexec chmod 666 /usr/share/sddm/themes/corners/theme.conf
+            fi
 
-        cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
-        cat >/tmp/sddm-theme.conf <<EOF
+            cp "$(eval echo "$current_value")" /usr/share/sddm/themes/corners/backgrounds/wallpaper.png
+            cat >/tmp/sddm-theme.conf <<EOF
 [General]
 BgSource="backgrounds/wallpaper.png"
 FontFamily="JetBrainsMono Nerd Font"
@@ -237,20 +239,20 @@ TimeIsBold=true
 TimeOpacity=1.0
 TimeFormat="hh:mm AP"
 EOF
-        cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
-        rm /tmp/sddm-theme.conf
+            cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
+            rm /tmp/sddm-theme.conf
 
-        pkill hyprlock
+            pkill hyprlock
 
-        if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
-            pkexec chmod a+wr /opt/spotify
-            pkexec chmod a+wr /opt/spotify/Apps -R
-        fi
+            if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
+                pkexec chmod a+wr /opt/spotify
+                pkexec chmod a+wr /opt/spotify/Apps -R
+            fi
 
-        mkdir -p ~/.config/spotify
-        touch ~/.config/spotify/prefs
+            mkdir -p ~/.config/spotify
+            touch ~/.config/spotify/prefs
 
-        cat >~/.config/spicetify/Themes/Sleek/color.ini <<EOF
+            cat >~/.config/spicetify/Themes/Sleek/color.ini <<EOF
 [Pywal]
 text               = ${color7}
 subtext            = ${color7}
@@ -270,15 +272,16 @@ notification-error = ${color1}
 misc              = ${color2}
 EOF
 
-        /home/$USER/.spicetify/spicetify config current_theme Sleek
-        /home/$USER/.spicetify/spicetify config color_scheme Pywal
-        /home/$USER/.spicetify/spicetify apply
+            /home/$USER/.spicetify/spicetify config current_theme Sleek
+            /home/$USER/.spicetify/spicetify config color_scheme Pywal
+            /home/$USER/.spicetify/spicetify apply
 
-        if hyprctl clients | grep "Spotify"; then
-            /home/$USER/.spicetify/spicetify watch -s &
-            sleep 1 && pkill spicetify
+            if hyprctl clients | grep "Spotify"; then
+                /home/$USER/.spicetify/spicetify watch -s &
+                sleep 1 && pkill spicetify
+            fi
+
+            last_value="$current_value"
         fi
-
-        last_value="$current_value"
     fi
 done
