@@ -3,8 +3,7 @@
 config_file="$HOME/hyprland/extra/hyprwall/config.ini"
 last_value=""
 
-while true; do
-    inotifywait -e modify "$config_file" >/dev/null 2>&1
+inotifywait -m -e modify "$config_file" | while read -r directory events filename; do
     current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
     if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
         wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
