@@ -1,6 +1,6 @@
 {
   "height": 600,
-  "show_descriptions": true,
+  "show_descriptions": false,
   "show_paths": true,
   "theme": {
     "background_color": "#0E1512",
