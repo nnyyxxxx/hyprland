@@ -61,7 +61,16 @@ declareFuncs() {
 
 installAURHelper() {
     printf "%b\n" "${YELLOW}:: Checking for AUR helper...${RC}"
-    if ! command -v yay >/dev/null 2>&1 && ! command -v paru >/dev/null 2>&1; then
+
+    if command -v yay >/dev/null 2>&1; then
+        printf "%b\n" "${YELLOW}:: Removing yay...${RC}"
+        $ESCALATION_TOOL pacman -Rns --noconfirm yay >/dev/null 2>&1 || {
+            printf "%b\n" "${RED}:: Failed to remove yay.${RC}"
+            exit 1
+        }
+    fi
+
+    if ! command -v paru >/dev/null 2>&1; then
         printf "%b\n" "${YELLOW}:: Installing paru AUR helper...${RC}"
         $ESCALATION_TOOL pacman -S --needed --noconfirm base-devel >/dev/null 2>&1 || {
             printf "%b\n" "${RED}:: Failed to install build dependencies.${RC}"
@@ -76,13 +85,8 @@ installAURHelper() {
         printf "%b\n" "${GREEN}:: Paru installed successfully${RC}"
     fi
 
-    if command -v yay >/dev/null 2>&1; then
-        printf "%b\n" "${GREEN}:: Using yay as AUR helper${RC}"
-        AUR_HELPER="yay"
-    elif command -v paru >/dev/null 2>&1; then
-        printf "%b\n" "${GREEN}:: Using paru as AUR helper${RC}"
-        AUR_HELPER="paru"
-    fi
+    printf "%b\n" "${GREEN}:: Using paru as AUR helper${RC}"
+    AUR_HELPER="paru"
 }
 
 setSysOps() {
