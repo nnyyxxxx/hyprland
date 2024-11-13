@@ -124,7 +124,7 @@ EOF
             cat >$HOME/hyprland/extra/hyprlauncher/config.json <<EOF
 {
   "height": 600,
-  "show_descriptions": true,
+  "show_descriptions": false,
   "show_paths": true,
   "theme": {
     "background_color": "#${color0}",
