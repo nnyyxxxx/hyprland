@@ -1,25 +1,25 @@
 window { 
-    background-color: #0E1512;
+    background-color: #0F0E12;
 }
 
 list { 
-    background: #0E1512;
+    background: #0F0E12;
 }
 
 list row { 
     padding: 4px;
     margin: 2px 6px;
     border-radius: 8px;
-    background: #0E1512;
+    background: #0F0E12;
     transition: all 200ms ease;
 }
 
 list row:selected { 
-    background-color: #68A054;
+    background-color: #52535F;
 }
 
 list row:hover:not(:selected) {
-    background-color: #68A054;
+    background-color: #52535F;
 }
 
 entry {
@@ -27,32 +27,32 @@ entry {
     margin-bottom: 8px;
     padding: 12px;
     border-radius: 8px;
-    background-color: #68A054;
-    color: #e4e9c9;
-    caret-color: #e4e9c9;
+    background-color: #52535F;
+    color: #bec9d3;
+    caret-color: #bec9d3;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 entry:focus {
-    background-color: #68A054;
+    background-color: #52535F;
 }
 
 .app-name {
-    color: #e4e9c9;
+    color: #bec9d3;
     font-size: 14px;
     font-weight: bold;
     margin-right: 8px;
 }
 
 .app-description {
-    color: #e4e9c9;
+    color: #bec9d3;
     font-size: 12px;
     margin-right: 8px;
 }
 
 .app-path {
-    color: #e4e9c9;
+    color: #bec9d3;
     font-size: 12px;
     font-family: monospace;
     opacity: 0.8;

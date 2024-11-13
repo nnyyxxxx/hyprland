@@ -3,9 +3,9 @@
   "show_descriptions": false,
   "show_paths": true,
   "theme": {
-    "background_color": "#0E1512",
-    "selection_color": "#68A054",
-    "text_color": "#e4e9c9"
+    "background_color": "#0F0E12",
+    "selection_color": "#52535F",
+    "text_color": "#bec9d3"
   },
   "width": 600
 }
