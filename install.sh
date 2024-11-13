@@ -97,7 +97,7 @@ setSysOps() {
     printf "%b\n" "${YELLOW}:: Setting up default cursor...${RC}"
     $ESCALATION_TOOL mkdir -p /usr/share/icons/default
     $ESCALATION_TOOL touch /usr/share/icons/default/index.theme
-    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-xcursor/' /usr/share/icons/default/index.theme >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set bibata cursor.${RC}"; }
+    $ESCALATION_TOOL sed -i 's/^Inherits=Adwaita$/Inherits=bibata-classic-xcursor/' /usr/share/icons/default/index.theme >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set bibata cursor.${RC}"; }
     printf "%b\n" "${GREEN}:: System settings configured successfully${RC}"
 }
 
@@ -136,6 +136,11 @@ setupConfigurations() {
     $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" /usr/share/icons >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata x cursor"; }
     cp -R "$HYPRLAND_DIR/extra/bibata-hyprcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata hyprcursor cursor"; }
     cp -R "$HYPRLAND_DIR/extra/bibata-xcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata x cursor"; }
+
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-classic-hyprcursor" /usr/share/icons/ >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata hypr cursor.${RC}"; }
+    $ESCALATION_TOOL cp -R "$HYPRLAND_DIR/extra/bibata-classic-xcursor" /usr/share/icons >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata x cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-classic-hyprcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata classic hyprcursor cursor"; }
+    cp -R "$HYPRLAND_DIR/extra/bibata-classic-xcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up bibata classic x cursor"; }
 
     printf "%b\n" "${YELLOW}:: Cleaning up old configurations...${RC}"
     find "$HOME" -type l -exec rm {} + >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to remove symlinks.${RC}"; }
