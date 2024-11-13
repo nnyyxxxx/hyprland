@@ -1,0 +1,59 @@
+window { 
+    background-color: #0E1512;
+}
+
+list { 
+    background: #0E1512;
+}
+
+list row { 
+    padding: 4px;
+    margin: 2px 6px;
+    border-radius: 8px;
+    background: #0E1512;
+    transition: all 200ms ease;
+}
+
+list row:selected { 
+    background-color: #68A054;
+}
+
+list row:hover:not(:selected) {
+    background-color: #68A054;
+}
+
+entry {
+    margin: 12px;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #68A054;
+    color: #e4e9c9;
+    caret-color: #e4e9c9;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+entry:focus {
+    background-color: #68A054;
+}
+
+.app-name {
+    color: #e4e9c9;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.app-description {
+    color: #e4e9c9;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.app-path {
+    color: #e4e9c9;
+    font-size: 12px;
+    font-family: monospace;
+    opacity: 0.8;
+}

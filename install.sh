@@ -113,7 +113,7 @@ installDeps() {
     $ESCALATION_TOOL pacman -S --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
-        ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip rofi cmake \
+        ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
         cmatrix gtk3 neovim pamixer mpv feh zsh kitty dash pipewire-pulse easyeffects \
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
@@ -124,7 +124,7 @@ installDeps() {
 
     $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
-        python-pywalfox-librewolf spotify vesktop-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
+        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
@@ -147,7 +147,6 @@ setupConfigurations() {
     mv "$XDG_CONFIG_HOME/cava" "$XDG_CONFIG_HOME/cava-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/hypr" "$XDG_CONFIG_HOME/hypr-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/waybar" "$XDG_CONFIG_HOME/waybar-bak" >/dev/null 2>&1
-    mv "$XDG_CONFIG_HOME/rofi" "$XDG_CONFIG_HOME/rofi-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/kitty" "$XDG_CONFIG_HOME/kitty-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/dunst" "$XDG_CONFIG_HOME/dunst-bak" >/dev/null 2>&1
     mv "$HOME/.zshrc" "$HOME/.zshrc-bak" >/dev/null 2>&1
@@ -193,10 +192,10 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/hypr" "$XDG_CONFIG_HOME/hypr" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hypr configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/kitty" "$XDG_CONFIG_HOME/kitty" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up kitty configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/waybar" "$XDG_CONFIG_HOME/waybar" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up waybar configuration.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/rofi" "$XDG_CONFIG_HOME/rofi" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up rofi configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/hyprwall" "$XDG_CONFIG_HOME/hyprwall" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hyprwall configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/dunst" "$XDG_CONFIG_HOME/dunst" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up dunst configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/wlogout" "$XDG_CONFIG_HOME/wlogout" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up wlogout configuration.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/extra/hyprlauncher" "$XDG_CONFIG_HOME/hyprlauncher" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hyprlauncher configuration.${RC}"; }
 
     cp -R "$HYPRLAND_DIR/extra/vesktop/discord-pywal.css" "$XDG_CONFIG_HOME/wal/templates" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up discord-pywal.css.${RC}"; }
 
