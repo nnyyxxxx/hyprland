@@ -137,6 +137,7 @@ EOF
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
+    "show_scrollbar": false,
     "vim_keys": true,
     "width": 600
   },
