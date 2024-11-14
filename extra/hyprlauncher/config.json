@@ -1,9 +1,14 @@
 {
-  "height": 600,
+  "anchor": "left",
+  "height": 1430,
+  "margin_bottom": 0,
+  "margin_left": 0,
+  "margin_right": 0,
+  "margin_top": 0,
   "show_descriptions": false,
   "show_icons": true,
   "show_paths": false,
   "show_search": true,
   "vim_keys": true,
-  "width": 600
+  "width": 800
 }
