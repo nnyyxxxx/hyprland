@@ -1,14 +1,4 @@
 {
-  "anchor": "left",
-  "height": 1430,
-  "margin_bottom": 0,
-  "margin_left": 0,
-  "margin_right": 0,
-  "margin_top": 0,
-  "show_descriptions": false,
-  "show_icons": true,
-  "show_paths": false,
-  "show_search": true,
   "theme": {
     "colors": {
       "item_bg": "#0C0C0A",
@@ -42,6 +32,18 @@
       "search_font_size": 16
     }
   },
-  "vim_keys": true,
-  "width": 600
+  "window": {
+    "anchor": "left",
+    "height": 1430,
+    "margin_bottom": 0,
+    "margin_left": 0,
+    "margin_right": 0,
+    "margin_top": 0,
+    "show_descriptions": false,
+    "show_icons": true,
+    "show_paths": false,
+    "show_search": true,
+    "vim_keys": true,
+    "width": 600
+  }
 }

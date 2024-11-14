@@ -123,14 +123,20 @@ EOF
 
             cat >$HOME/hyprland/extra/hyprlauncher/config.json <<EOF
 {
-  "anchor": "left",
-  "height": 1430,
-  "show_descriptions": false,
-  "show_icons": true,
-  "show_paths": false,
-  "show_search": true,
-  "vim_keys": true,
-  "width": 600,
+  "window": {
+    "anchor": "left",
+    "height": 1430,
+    "margin_bottom": 0,
+    "margin_left": 0,
+    "margin_right": 0,
+    "margin_top": 0,
+    "show_descriptions": false,
+    "show_icons": true,
+    "show_paths": false,
+    "show_search": true,
+    "vim_keys": true,
+    "width": 600
+  },
   "theme": {
     "colors": {
       "window_bg": "#${color0}",
@@ -144,6 +150,24 @@ EOF
       "item_name": "#${color7}",
       "item_description": "#${color7}",
       "item_path": "#${color7}"
+    },
+    "corners": {
+      "window": 12,
+      "list_item": 8,
+      "search": 8
+    },
+    "spacing": {
+      "item_padding": 4,
+      "item_margin": 6,
+      "search_margin": 12,
+      "search_padding": 12
+    },
+    "typography": {
+      "search_font_size": 16,
+      "item_name_size": 14,
+      "item_description_size": 12,
+      "item_path_size": 12,
+      "item_path_font_family": "monospace"
     }
   }
 }
