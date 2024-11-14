@@ -9,6 +9,39 @@
   "show_icons": true,
   "show_paths": false,
   "show_search": true,
+  "theme": {
+    "colors": {
+      "item_bg": "#0C0C0A",
+      "item_bg_hover": "#956059",
+      "item_bg_selected": "#956059",
+      "item_description": "#c6c9c7",
+      "item_name": "#c6c9c7",
+      "item_path": "#c6c9c7",
+      "search_bg": "#956059",
+      "search_bg_focused": "#956059",
+      "search_caret": "#c6c9c7",
+      "search_text": "#c6c9c7",
+      "window_bg": "#0C0C0A"
+    },
+    "corners": {
+      "list_item": 8,
+      "search": 8,
+      "window": 12
+    },
+    "spacing": {
+      "item_margin": 6,
+      "item_padding": 4,
+      "search_margin": 12,
+      "search_padding": 12
+    },
+    "typography": {
+      "item_description_size": 12,
+      "item_name_size": 14,
+      "item_path_font_family": "monospace",
+      "item_path_size": 12,
+      "search_font_size": 16
+    }
+  },
   "vim_keys": true,
-  "width": 800
+  "width": 600
 }

@@ -123,75 +123,28 @@ EOF
 
             cat >$HOME/hyprland/extra/hyprlauncher/config.json <<EOF
 {
-  "height": 600,
+  "height": 1430,
   "show_descriptions": false,
   "show_icons": true,
   "show_paths": false,
   "show_search": true,
   "vim_keys": true,
-  "width": 600
-}
-EOF
-
-            cat >$HOME/hyprland/extra/hyprlauncher/style.css <<EOF
-window { 
-    background-color: #${color0};
-}
-
-list { 
-    background: #${color0};
-}
-
-list row { 
-    padding: 4px;
-    margin: 2px 6px;
-    border-radius: 8px;
-    background: #${color0};
-    transition: all 200ms ease;
-}
-
-list row:selected { 
-    background-color: #${color2};
-}
-
-list row:hover:not(:selected) {
-    background-color: #${color2};
-}
-
-entry {
-    margin: 12px;
-    margin-bottom: 8px;
-    padding: 12px;
-    border-radius: 8px;
-    background-color: #${color2};
-    color: #${color7};
-    caret-color: #${color7};
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-entry:focus {
-    background-color: #${color2};
-}
-
-.app-name {
-    color: #${color7};
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 8px;
-}
-
-.app-description {
-    color: #${color7};
-    font-size: 12px;
-    margin-right: 8px;
-}
-
-.app-path {
-    color: #${color7};
-    font-size: 12px;
-    font-family: monospace;
-    opacity: 0.8;
+  "width": 600,
+  "theme": {
+    "colors": {
+      "window_bg": "#${color0}",
+      "item_bg": "#${color0}",
+      "item_bg_hover": "#${color2}",
+      "item_bg_selected": "#${color2}",
+      "search_bg": "#${color2}",
+      "search_bg_focused": "#${color2}",
+      "search_text": "#${color7}",
+      "search_caret": "#${color7}",
+      "item_name": "#${color7}",
+      "item_description": "#${color7}",
+      "item_path": "#${color7}"
+    }
+  }
 }
 EOF
 
