@@ -127,6 +127,8 @@ EOF
   "show_descriptions": false,
   "show_icons": true,
   "show_paths": false,
+  "show_search": true,
+  "vim_keys": true,
   "width": 600
 }
 EOF
