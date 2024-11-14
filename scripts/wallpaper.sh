@@ -123,6 +123,7 @@ EOF
 
             cat >$HOME/hyprland/extra/hyprlauncher/config.json <<EOF
 {
+  "anchor": "left",
   "height": 1430,
   "show_descriptions": false,
   "show_icons": true,
