@@ -1,11 +1,7 @@
 {
   "height": 600,
   "show_descriptions": false,
-  "show_paths": true,
-  "theme": {
-    "background_color": "#040407",
-    "selection_color": "#716CCB",
-    "text_color": "#ddcde4"
-  },
+  "show_icons": true,
+  "show_paths": false,
   "width": 600
 }

@@ -125,12 +125,8 @@ EOF
 {
   "height": 600,
   "show_descriptions": false,
-  "show_paths": true,
-  "theme": {
-    "background_color": "#${color0}",
-    "selection_color": "#${color2}",
-    "text_color": "#${color7}"
-  },
+  "show_icons": true,
+  "show_paths": false,
   "width": 600
 }
 EOF
