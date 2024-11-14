@@ -125,11 +125,14 @@ EOF
 {
   "window": {
     "anchor": "left",
+    "border_color": "#${color2}",
+    "border_width": 2,
     "height": 1430,
     "margin_bottom": 0,
     "margin_left": 0,
     "margin_right": 0,
     "margin_top": 0,
+    "show_border": true,
     "show_descriptions": false,
     "show_icons": true,
     "show_paths": false,
