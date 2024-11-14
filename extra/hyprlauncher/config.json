@@ -3,5 +3,6 @@
   "show_descriptions": false,
   "show_icons": true,
   "show_paths": false,
+  "vim_keys": true,
   "width": 600
 }
