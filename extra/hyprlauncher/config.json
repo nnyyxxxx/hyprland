@@ -45,7 +45,6 @@
     "show_descriptions": false,
     "show_icons": true,
     "show_paths": false,
-    "show_scrollbar": true,
     "show_search": true,
     "use_gtk_colors": false,
     "vim_keys": true,
