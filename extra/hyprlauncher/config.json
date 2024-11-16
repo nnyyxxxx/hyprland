@@ -1,4 +1,7 @@
 {
+  "debug": {
+    "disable_auto_focus": false
+  },
   "theme": {
     "colors": {
       "item_bg": "#0C0C0A",
