@@ -1,6 +1,7 @@
 {
   "debug": {
-    "disable_auto_focus": false
+    "disable_auto_focus": false,
+    "enable_logging": false
   },
   "theme": {
     "colors": {
