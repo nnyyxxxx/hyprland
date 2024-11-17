@@ -1,21 +1,21 @@
 {
   "debug": {
-    "disable_auto_focus": true,
+    "disable_auto_focus": false,
     "enable_logging": false
   },
   "theme": {
     "colors": {
-      "item_bg": "#0C0C0A",
-      "item_bg_hover": "#956059",
-      "item_bg_selected": "#956059",
-      "item_description": "#c6c9c7",
-      "item_name": "#c6c9c7",
-      "item_path": "#c6c9c7",
-      "search_bg": "#956059",
-      "search_bg_focused": "#956059",
-      "search_caret": "#c6c9c7",
-      "search_text": "#c6c9c7",
-      "window_bg": "#0C0C0A"
+      "item_bg": "#0f101b",
+      "item_bg_hover": "#90A1B3",
+      "item_bg_selected": "#90A1B3",
+      "item_description": "#dee4e9",
+      "item_name": "#dee4e9",
+      "item_path": "#dee4e9",
+      "search_bg": "#90A1B3",
+      "search_bg_focused": "#90A1B3",
+      "search_caret": "#dee4e9",
+      "search_text": "#dee4e9",
+      "window_bg": "#0f101b"
     },
     "corners": {
       "list_item": 8,
@@ -38,13 +38,8 @@
   },
   "window": {
     "anchor": "left",
-    "border_color": "#956059",
+    "border_color": "#90A1B3",
     "border_width": 2,
-    "custom_navigate_keys": {
-      "delete_word": "h",
-      "down": "j",
-      "up": "k"
-    },
     "height": 1430,
     "margin_bottom": 0,
     "margin_left": 0,
@@ -52,11 +47,12 @@
     "margin_top": 0,
     "max_entries": 50,
     "show_border": true,
-    "show_descriptions": true,
+    "show_descriptions": false,
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
     "use_gtk_colors": false,
+    "vim_keys": true,
     "width": 600
   }
 }
