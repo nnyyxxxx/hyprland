@@ -123,23 +123,9 @@ EOF
 
             cat >$HOME/hyprland/extra/hyprlauncher/config.json <<EOF
 {
-  "window": {
-    "anchor": "left",
-    "border_color": "#${color2}",
-    "border_width": 2,
-    "height": 1430,
-    "margin_bottom": 0,
-    "margin_left": 0,
-    "margin_right": 0,
-    "margin_top": 0,
-    "show_border": true,
-    "show_descriptions": false,
-    "show_icons": true,
-    "show_paths": false,
-    "show_search": true,
-    "show_scrollbar": false,
-    "vim_keys": true,
-    "width": 600
+  "debug": {
+    "disable_auto_focus": false,
+    "enable_logging": false
   },
   "theme": {
     "colors": {
@@ -173,6 +159,24 @@ EOF
       "item_path_size": 12,
       "item_path_font_family": "monospace"
     }
+  },
+  "window": {
+    "anchor": "left",
+    "border_color": "#${color2}",
+    "border_width": 2,
+    "height": 1430,
+    "margin_bottom": 0,
+    "margin_left": 0,
+    "margin_right": 0,
+    "margin_top": 0,
+    "show_border": true,
+    "show_descriptions": false,
+    "show_icons": true,
+    "show_paths": false,
+    "show_search": true,
+    "use_gtk_colors": false,
+    "vim_keys": true,
+    "width": 600
   }
 }
 EOF
