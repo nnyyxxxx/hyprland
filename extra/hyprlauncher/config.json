@@ -1,6 +1,6 @@
 {
   "debug": {
-    "disable_auto_focus": false,
+    "disable_auto_focus": true,
     "enable_logging": false
   },
   "theme": {
@@ -40,6 +40,11 @@
     "anchor": "left",
     "border_color": "#956059",
     "border_width": 2,
+    "custom_navigate_keys": {
+      "delete_word": "h",
+      "down": "j",
+      "up": "k"
+    },
     "height": 1430,
     "margin_bottom": 0,
     "margin_left": 0,
@@ -47,12 +52,11 @@
     "margin_top": 0,
     "max_entries": 50,
     "show_border": true,
-    "show_descriptions": false,
+    "show_descriptions": true,
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
     "use_gtk_colors": false,
-    "vim_keys": true,
     "width": 600
   }
 }
