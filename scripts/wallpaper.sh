@@ -129,6 +129,7 @@ EOF
   },
   "theme": {
     "colors": {
+      "border": "#${color2}",
       "window_bg": "#${color0}",
       "item_bg": "#${color0}",
       "item_bg_hover": "#${color2}",
@@ -162,20 +163,24 @@ EOF
   },
   "window": {
     "anchor": "left",
-    "border_color": "#${color2}",
     "border_width": 2,
+    "custom_navigate_keys": {
+      "delete_word": "h",
+      "down": "j",
+      "up": "k"
+    },
     "height": 1430,
     "margin_bottom": 0,
     "margin_left": 0,
     "margin_right": 0,
     "margin_top": 0,
+    "max_entries": 50,
     "show_border": true,
     "show_descriptions": false,
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
     "use_gtk_colors": false,
-    "vim_keys": true,
     "width": 600
   }
 }
