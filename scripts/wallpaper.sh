@@ -8,7 +8,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
     if [ "$filename" = "config.ini" ]; then
         current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
         if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
-            wal -i "$(echo "$current_value" | sed "s|^$HOME|$HOME|")"
+            wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
             killall waybar
             waybar &
             pywalfox update
