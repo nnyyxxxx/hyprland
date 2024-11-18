@@ -8,7 +8,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
     if [ "$filename" = "config.ini" ]; then
         current_value=$(grep "last_wallpaper" "$config_file" | cut -d'=' -f2 | tr -d ' ')
         if [ "$current_value" != "$last_value" ] && [ -n "$current_value" ]; then
-            wal -i "$(echo "$current_value" | sed "s|^~|$HOME|")"
+            wal -i "$(echo "$current_value" | sed "s|^$HOME|$HOME|")"
             killall waybar
             waybar &
             pywalfox update
@@ -307,6 +307,13 @@ EOF
             cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
             rm /tmp/sddm-theme.conf
 
+            cat >$HOME/hyprland/extra/qt5ct/colors/mocha.conf <<EOF
+[ColorScheme]
+active_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color0}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+disabled_colors=#ff${color2}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color2}, #ff${color2}, #ff${color2}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color4}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+inactive_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color2}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+EOF
+
             pkill hyprlock
 
             if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
@@ -314,10 +321,10 @@ EOF
                 pkexec chmod a+wr /opt/spotify/Apps -R
             fi
 
-            mkdir -p ~/.config/spotify
-            touch ~/.config/spotify/prefs
+            mkdir -p $HOME/.config/spotify
+            touch $HOME/.config/spotify/prefs
 
-            cat >~/.config/spicetify/Themes/Sleek/color.ini <<EOF
+            cat >$HOME/.config/spicetify/Themes/Sleek/color.ini <<EOF
 [Pywal]
 text               = ${color7}
 subtext            = ${color7}
