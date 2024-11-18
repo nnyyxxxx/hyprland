@@ -124,7 +124,7 @@
         "format": "󰚰",
         "exec": "checkupdates | wc -l",
         "interval": 60,
-        "on-click": "kitty --title debloat -e ~/Documents/debloat.sh",
+        "on-click": "alacritty --title debloat -e ~/Documents/debloat.sh",
         "tooltip-format": "{} updates available",
         "tooltip": true
     },

@@ -7,7 +7,7 @@ Install via curl
 ### Keybinds overview:
 | Keybind | Description |  
 | --- | --- |  
-| `ALT SHIFT + Q` | Spawns kitty (Terminal) |  
+| `ALT SHIFT + Q` | Spawns alacritty (Terminal) |  
 | `ALT SHIFT + E` | Spawns rofi (Application launcher) |
 | `ALT SHIFT + C` | Kills current window |
 | `ALT SHIFT + W` | Kills hyprland |

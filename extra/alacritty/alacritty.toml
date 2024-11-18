@@ -1,0 +1,31 @@
+[font]
+normal = { family = "JetBrainsMonoNF" }
+size = 13.0
+
+[cursor]
+style = { shape = "Beam", blinking = "Off" }
+blink_interval = 750
+blink_timeout = 0
+unfocused_hollow = true
+thickness = 0.1
+
+[window]
+padding = { x = 5, y = 5 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
+startup_mode = "Windowed"
+dynamic_title = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[bell]
+duration = 0
+
+[selection]
+save_to_clipboard = true
+
+[general]
+import = ["~/.cache/wal/alacritty.toml"]

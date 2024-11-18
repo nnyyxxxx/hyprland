@@ -48,7 +48,7 @@ alias log='git log'
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='kitty'
+export TERMINAL='alacritty'
 export BROWSER='librewolf'
 
 parse_git_branch() {
