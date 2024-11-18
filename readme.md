@@ -8,7 +8,7 @@ Install via curl
 | Keybind | Description |  
 | --- | --- |  
 | `ALT SHIFT + Q` | Spawns alacritty (Terminal) |  
-| `ALT SHIFT + E` | Spawns rofi (Application launcher) |
+| `ALT SHIFT + E` | Spawns hyprlauncher (Application launcher) |
 | `ALT SHIFT + C` | Kills current window |
 | `ALT SHIFT + W` | Kills hyprland |
 | `ALT SHIFT + F` | Toggles fullscreen |
