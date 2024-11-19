@@ -224,7 +224,7 @@ setupConfigurations() {
 setupSDDMPfp() {
     printf "%b\n" "${YELLOW}:: Setting up SDDM profile picture...${RC}"
     $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/icons/
-    $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/elf.png" "/var/lib/AccountsService/icons/$USERNAME"
+    $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/broke-mcdonalds-worker.jpg" "/var/lib/AccountsService/icons/$USERNAME"
 
     $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/users/
     echo "[User]" | $ESCALATION_TOOL tee "/var/lib/AccountsService/users/$USERNAME" >/dev/null
