@@ -25,7 +25,7 @@
     "break",
     {
       "type": "custom",
-      "format": "            \u001b[35m    ソウソウのフリーレン            "
+      "format": "            \u001b[34m    ソウソウのフリーレン            "
     },
     {
       "type": "custom",
