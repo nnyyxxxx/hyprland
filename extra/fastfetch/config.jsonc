@@ -33,38 +33,38 @@
     },
     {
       "type": "os",
-      "key": "\u001b[31mDistro  \u001b[0m",
-      "keyIcon": "\u001b[31m \u001b[0m"
+      "key": "Distro  ",
+      "keyIcon": " "
     },
     {
       "type": "kernel",
-      "key": "\u001b[35mKernel  \u001b[0m",
-      "keyIcon": "\u001b[35m \u001b[0m"
+      "key": "Kernel  ",
+      "keyIcon": " "
     },
     {
       "type": "uptime",
-      "key": "\u001b[33mUptime  \u001b[0m",
-      "keyIcon": "\u001b[33m \u001b[0m"
+      "key": "Uptime  ",
+      "keyIcon": " "
     },
     {
       "type": "packages",
-      "key": "\u001b[32mPackages\u001b[0m",
-      "keyIcon": "\u001b[32m \u001b[0m"
+      "key": "Packages",
+      "keyIcon": " "
     },
     {
       "type": "wm",
-      "key": "\u001b[34mWM      \u001b[0m",
-      "keyIcon": "\u001b[34m \u001b[0m"
+      "key": "WM      ",
+      "keyIcon": " "
     },
     {
       "type": "shell",
-      "key": "\u001b[35mShell   \u001b[0m",
-      "keyIcon": "\u001b[35m \u001b[0m"
+      "key": "Shell   ",
+      "keyIcon": " "
     },
     {
       "type": "terminal",
-      "key": "\u001b[33mTerminal\u001b[0m",
-      "keyIcon": "\u001b[33m \u001b[0m"
+      "key": "Terminal",
+      "keyIcon": " "
     },
     {
       "type": "custom",
@@ -80,37 +80,37 @@
     },
     {
       "type": "terminalfont",
-      "key": "\u001b[32mFont    \u001b[0m",
-      "keyIcon": "\u001b[32m \u001b[0m"
+      "key": "Font    ",
+      "keyIcon": " "
     },      
     {
       "type": "theme",
-      "key": "\u001b[33mTheme   \u001b[0m",
-      "keyIcon": "\u001b[33m󰉼 \u001b[0m",
+      "key": "Theme   ",
+      "keyIcon": "󰉼 ",
       "format": "{2}"
     },      
     {
       "type": "cursor",
-      "key": "\u001b[35mCursor  \u001b[0m",
-      "keyIcon": "\u001b[35m \u001b[0m"
+      "key": "Cursor  ",
+      "keyIcon": " "
     },      
     {
       "type": "display",
-      "key": "\u001b[33mDisplay \u001b[0m",
-      "keyIcon": "\u001b[33m \u001b[0m",
+      "key": "Display ",
+      "keyIcon": " ",
       "compactType": "original-with-refresh-rate"
     },
     {
       "type": "disk",
-      "key": "\u001b[32mDisk    \u001b[0m",
-      "keyIcon": "\u001b[32m \u001b[0m",
+      "key": "Disk    ",
+      "keyIcon": " ",
       "format": "{1} / {2} ({3})",
       "showExternal": false
     },
     {
       "type": "memory",
-      "key": "\u001b[35mMemory  \u001b[0m",
-      "keyIcon": "\u001b[35m \u001b[0m",
+      "key": "Memory  ",
+      "keyIcon": " ",
       "format": "{1} / {2} ({3})"
     },
     {
