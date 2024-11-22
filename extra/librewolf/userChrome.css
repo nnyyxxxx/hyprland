@@ -11,3 +11,15 @@
 #reader-mode-button {
     display: none !important;
 }
+
+#identity-box {
+    display: none !important;
+}
+
+#tracking-protection-icon-container {
+    display: none !important;
+}
+
+#permissions-granted-icon {
+    display: none !important;
+}
