@@ -3,3 +3,11 @@
 .titlebar-close {
     display: none !important;
 }
+
+#star-button-box {
+    display: none !important;
+}
+
+#reader-mode-button {
+    display: none !important;
+}
