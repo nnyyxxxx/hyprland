@@ -16,6 +16,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-hyprland.conf
             mkdir -p "$HOME/.config/vesktop/themes"
             cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
+            cp "$(eval echo "$current_value")" "$HOME/.cache/wal/current_wallpaper"
 
             color0=$(sed -n '1p' $HOME/.cache/wal/colors | sed 's/#//g')
             color1=$(sed -n '2p' $HOME/.cache/wal/colors | sed 's/#//g')
