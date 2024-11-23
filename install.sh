@@ -36,13 +36,29 @@ moveToHome() {
 }
 
 cloneRepo() {
+    printf "%b\n" "${YELLOW}:: Installing git...${RC}"
+    $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1 || {
+        printf "%b\n" "${RED}:: Failed to install git.${RC}"
+        exit 1
+    }
+
+    printf "%b\n" "${YELLOW}:: Checking repository...${RC}"
+    if [ -d "$HOME/hyprland" ] && [ -d "$HOME/hyprland/.git" ]; then
+        cd "$HOME/hyprland" || exit 1
+        if git remote get-url origin | grep -q "github.com/nnyyxxxx/hyprland"; then
+            printf "%b\n" "${YELLOW}:: Repository exists, pulling latest changes...${RC}"
+            git pull origin main >/dev/null 2>&1 || {
+                printf "%b\n" "${RED}:: Failed to pull latest changes.${RC}"
+                exit 1
+            }
+            printf "%b\n" "${GREEN}:: Repository updated successfully${RC}"
+            return 0
+        fi
+    fi
+
     printf "%b\n" "${YELLOW}:: Cloning repository...${RC}"
     rm -rf "$HOME/hyprland" >/dev/null 2>&1 || {
         printf "%b\n" "${RED}:: Failed to remove old hyprland directory.${RC}"
-        exit 1
-    }
-    $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}:: Failed to install git.${RC}"
         exit 1
     }
     git clone https://github.com/nnyyxxxx/hyprland "$HOME/hyprland" >/dev/null 2>&1 || {
