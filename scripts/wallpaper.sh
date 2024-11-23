@@ -329,6 +329,13 @@ disabled_colors=#ff${color2}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${col
 inactive_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color2}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
 EOF
 
+            cat >$HOME/hyprland/extra/qt6ct/colors/mocha.conf <<EOF
+[ColorScheme]
+active_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color0}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+disabled_colors=#ff${color2}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color2}, #ff${color2}, #ff${color2}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color4}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+inactive_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color2}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
+EOF
+
             pkill hyprlock
 
             if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
