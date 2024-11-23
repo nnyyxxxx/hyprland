@@ -229,8 +229,6 @@ setup_configurations() {
     $ESCALATION_TOOL usermod -s /bin/zsh "$USERNAME" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to change shell.${RC}"; }
 
     mkdir -p "$HOME/Documents" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to create Documents directory.${RC}"; }
-    chmod +x "$HYPRLAND_DIR/extra/debloat.sh" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to make debloat.sh executable.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/debloat.sh" "$HOME/Documents/debloat.sh" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up debloat.sh.${RC}"; }
 
     pywalfox install --browser librewolf >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to setup pywalfox.${RC}"; }
 
