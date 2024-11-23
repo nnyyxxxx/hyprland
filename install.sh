@@ -12,7 +12,7 @@ warning() {
     fi
 }
 
-setEscalationTool() {
+set_escalation_tool() {
     if command -v sudo >/dev/null 2>&1; then
         ESCALATION_TOOL="sudo"
     elif command -v doas >/dev/null 2>&1; then
@@ -20,7 +20,7 @@ setEscalationTool() {
     fi
 }
 
-requestElevation() {
+request_elevation() {
     if [ "$ESCALATION_TOOL" = "sudo" ]; then
         { sudo -v && clear; } || { printf "%b\n" "${RED}:: Failed to gain elevation.${RC}"; }
     elif [ "$ESCALATION_TOOL" = "doas" ]; then
@@ -28,14 +28,14 @@ requestElevation() {
     fi
 }
 
-moveToHome() {
+move_to_home() {
     cd "$HOME" || {
         printf "%b\n" "${RED}:: Failed to move to home directory.${RC}"
         exit 1
     }
 }
 
-cloneRepo() {
+clone_repo() {
     printf "%b\n" "${YELLOW}:: Installing git...${RC}"
     $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1 || {
         printf "%b\n" "${RED}:: Failed to install git.${RC}"
@@ -67,7 +67,7 @@ cloneRepo() {
     }
 }
 
-declareFuncs() {
+declare_funcs() {
     printf "%b\n" "${YELLOW}:: Setting up directories...${RC}"
     HYPRLAND_DIR="$HOME/hyprland"
     mkdir -p "$HOME/.config"
@@ -75,7 +75,7 @@ declareFuncs() {
     USERNAME=$(whoami)
 }
 
-installAURHelper() {
+install_aur_helper() {
     printf "%b\n" "${YELLOW}:: Checking for AUR helper...${RC}"
 
     if command -v yay >/dev/null 2>&1; then
@@ -105,7 +105,7 @@ installAURHelper() {
     AUR_HELPER="paru"
 }
 
-setSysOps() {
+set_sys_ops() {
     printf "%b\n" "${YELLOW}:: Configuring system settings...${RC}"
     printf "%b\n" "${YELLOW}:: Setting up Parallel Downloads...${RC}"
     $ESCALATION_TOOL sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 5/' /etc/pacman.conf >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set Parallel Downloads.${RC}"; }
@@ -117,7 +117,7 @@ setSysOps() {
     printf "%b\n" "${GREEN}:: System settings configured successfully${RC}"
 }
 
-installDeps() {
+install_deps() {
     printf "%b\n" "${YELLOW}:: Installing dependencies...${RC}"
     printf "%b\n" "${YELLOW}:: This might take a minute or two...${RC}"
     total_steps=2
@@ -145,7 +145,7 @@ installDeps() {
     printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
-setupConfigurations() {
+setup_configurations() {
     printf "%b\n" "${YELLOW}:: Setting up configuration files...${RC}"
     printf "%b\n" "${YELLOW}:: Installing cursor themes...${RC}"
 
@@ -237,7 +237,7 @@ setupConfigurations() {
     printf "%b\n" "${GREEN}:: All configurations set up successfully${RC}"
 }
 
-setupSDDMPfp() {
+setup_sddm_pfp() {
     printf "%b\n" "${YELLOW}:: Setting up SDDM profile picture...${RC}"
     $ESCALATION_TOOL mkdir -p /var/lib/AccountsService/icons/
     $ESCALATION_TOOL cp "$HYPRLAND_DIR/pfps/touhou.jpg" "/var/lib/AccountsService/icons/$USERNAME"
@@ -254,14 +254,14 @@ success() {
 }
 
 warning
-setEscalationTool
-requestElevation
-moveToHome
-cloneRepo
-declareFuncs
-installAURHelper
-setSysOps
-installDeps
-setupConfigurations
-setupSDDMPfp
+set_escalation_tool
+request_elevation
+move_to_home
+clone_repo
+declare_funcs
+install_aur_helper
+set_sys_ops
+install_deps
+setup_configurations
+setup_sddm_pfp
 success
