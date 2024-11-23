@@ -185,8 +185,8 @@ setup_configurations() {
     $ESCALATION_TOOL mkdir -p /etc/zsh/ >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to create zsh directory.${RC}"; }
     $ESCALATION_TOOL touch /etc/zsh/zshenv >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to create zshenv.${RC}"; }
     echo "export ZDOTDIR=\"$HOME\"" | $ESCALATION_TOOL tee -a /etc/zsh/zshenv >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set ZDOTDIR.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/.zshrc" "$HOME/.zshrc" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up .zshrc.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/.zprofile" "$HOME/.zprofile" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up .zprofile.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/extra/zsh/.zshrc" "$HOME/.zshrc" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up .zshrc.${RC}"; }
+    ln -sf "$HYPRLAND_DIR/extra/zsh/.zprofile" "$HOME/.zprofile" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up .zprofile.${RC}"; }
     touch "$HOME/.zlogin" "$HOME/.zshenv" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to create zlogin and zshenv.${RC}"; }
 
     printf "%b\n" "${YELLOW}:: Setting up Spotify theming...${RC}"
