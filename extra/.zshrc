@@ -90,42 +90,6 @@ rebase() {
     fi
 }
 
-git_status_count() {
-    local modified_count=0
-    local staged_count=0
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        modified_count=$(git status --porcelain | grep -E "^ M|^MM" | wc -l)
-        staged_count=$(git status --porcelain | grep -E "^[MARCD]" | wc -l)
-        if [ $modified_count -gt 0 ] || [ $staged_count -gt 0 ]; then
-            echo "%F{yellow}[%F{red}${modified_count}%F{yellow}|%F{green}${staged_count}%F{yellow}]"
-        fi
-    fi
-}
-
-preexec() {
-    timer=$(($(date +%s%0N)/1000000))
-}
-
-precmd() {
-    if [ $timer ]; then
-        now=$(($(date +%s%0N)/1000000))
-        elapsed=$(($now-$timer))
-        
-        if [ $elapsed -ge 60000 ]; then
-            timer_show="$(($elapsed/60000))m$((($elapsed%60000)/1000))s"
-        elif [ $elapsed -ge 1000 ]; then
-            timer_show="$(($elapsed/1000))s"
-        else
-            timer_show="${elapsed}ms"
-        fi
-        
-        RPROMPT='%F{blue}${timer_show} $(git_status_count)'
-        unset timer
-    else
-        RPROMPT='$(git_status_count)'
-    fi
-}
-
 eval "$(zoxide init zsh --cmd cd)"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
