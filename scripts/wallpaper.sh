@@ -37,7 +37,20 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
             sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
             sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@rosewater: #[0-9a-fA-F]\+;/@rosewater: #${color1};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@flamingo: #[0-9a-fA-F]\+;/@flamingo: #${color5};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@pink: #[0-9a-fA-F]\+;/@pink: #${color3};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@mauve: #[0-9a-fA-F]\+;/@mauve: #${color4};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
             sed -i "s/@red: #[0-9a-fA-F]\+;/@red: #${color2};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@maroon: #[0-9a-fA-F]\+;/@maroon: #${color6};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@peach: #[0-9a-fA-F]\+;/@peach: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@yellow: #[0-9a-fA-F]\+;/@yellow: #${color3};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@green: #[0-9a-fA-F]\+;/@green: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@teal: #[0-9a-fA-F]\+;/@teal: #${color4};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@blue: #[0-9a-fA-F]\+;/@blue: #${color5};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@sapphire: #[0-9a-fA-F]\+;/@sapphire: #${color6};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@sky: #[0-9a-fA-F]\+;/@sky: #${color1};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@lavender: #[0-9a-fA-F]\+;/@lavender: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
 
             cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
 window {
