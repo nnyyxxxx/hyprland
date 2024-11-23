@@ -38,14 +38,14 @@ window#waybar.hidden {
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: #0F0F0F;
+  color: @background;
   background-color: #ffffff;
   box-shadow: 0 0 0 1px #3A3A3C;
   border-radius: 5px;
 }
 
 #workspaces button.active {
-  color: #0F0F0F;
+  color: @background;
   background-color: #ffffff;
   box-shadow: 0 0 0 1px #3A3A3C;
   border-radius: 5px;
@@ -53,7 +53,7 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
   background-color: @color1;
-  color: #0F0F0F;
+  color: @background;
   box-shadow: 0 0 0 1px #3A3A3C;
   border-radius: 5px;
 }
