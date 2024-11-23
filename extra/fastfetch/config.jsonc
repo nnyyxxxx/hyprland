@@ -14,10 +14,6 @@
 "logo": {
     "padding": {
       "top": 1
-    },
-    "color": {
-      "1": "magenta",
-      "2": "yellow"
     }
 },
 
