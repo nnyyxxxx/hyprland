@@ -131,7 +131,7 @@ installDeps() {
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
         ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
-        cmatrix gtk3 neovim pamixer mpv feh zsh kitty dash pipewire-pulse easyeffects \
+        cmatrix gtk3 neovim pamixer mpv feh zsh dash pipewire-pulse easyeffects \
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
         hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm jq python-pywal python-watchdog \
         python xorg-xhost timeshift yazi inotify-tools checkbashisms shfmt fzf alacritty qt5ct \
@@ -169,7 +169,6 @@ setupConfigurations() {
     mv "$XDG_CONFIG_HOME/cava" "$XDG_CONFIG_HOME/cava-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/hypr" "$XDG_CONFIG_HOME/hypr-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/waybar" "$XDG_CONFIG_HOME/waybar-bak" >/dev/null 2>&1
-    mv "$XDG_CONFIG_HOME/kitty" "$XDG_CONFIG_HOME/kitty-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/alacritty" "$XDG_CONFIG_HOME/alacritty-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/dunst" "$XDG_CONFIG_HOME/dunst-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/qt5ct" "$XDG_CONFIG_HOME/qt5ct-bak" >/dev/null 2>&1
@@ -213,7 +212,6 @@ setupConfigurations() {
     ln -sf "$HYPRLAND_DIR/extra/nvim" "$XDG_CONFIG_HOME/nvim" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up nvim configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/gtk-3.0" "$XDG_CONFIG_HOME/gtk-3.0" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up gtk-3.0 configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/hypr" "$XDG_CONFIG_HOME/hypr" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hypr configuration.${RC}"; }
-    ln -sf "$HYPRLAND_DIR/extra/kitty" "$XDG_CONFIG_HOME/kitty" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up kitty configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/waybar" "$XDG_CONFIG_HOME/waybar" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up waybar configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/hyprwall" "$XDG_CONFIG_HOME/hyprwall" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hyprwall configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/dunst" "$XDG_CONFIG_HOME/dunst" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up dunst configuration.${RC}"; }
