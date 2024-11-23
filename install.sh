@@ -118,7 +118,8 @@ installDeps() {
         cmatrix gtk3 neovim pamixer mpv feh zsh kitty dash pipewire-pulse easyeffects \
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
         hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm jq python-pywal python-watchdog \
-        python xorg-xhost timeshift yazi inotify-tools checkbashisms shfmt fzf alacritty qt5ct >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
+        python xorg-xhost timeshift yazi inotify-tools checkbashisms shfmt fzf alacritty qt5ct \
+        tar gzip bzip2 unrar p7zip unzip ncompress >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 

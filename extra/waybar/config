@@ -59,7 +59,7 @@
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "{icon} {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
-        "on-click": "~/.config/rofi/wifi/wifi.sh &",
+        "on-click": "alacritty --title nmtui -e nmtui",
         "interval": 5,
         "nospacing": 1
     },

@@ -23,7 +23,6 @@ alias rm='rm -rf'
 alias vim='nvim'
 alias debloat='~/Documents/debloat.sh'
 alias mpv='mpv --keep-open'
-alias record='mkdir -p ~/recordings && ffmpeg -f x11grab -r 60 -s 2560x1440 -i :0.0 -c:v libx264 -preset fast -crf 23 -pix_fmt yuv420p -vf "scale=2560:1440" -threads 0 ~/recordings/$(date +"%Y-%m-%d-%H-%M-%S").mp4'
 alias history='history 1'
 alias ls='lsd -hN --group-directories-first --color=auto'
 alias fmt='cargo fmt --all'
@@ -32,10 +31,13 @@ alias clear='printf "\033[2J\033[3J\033[1;1H"'
 alias ll='lsd -llhN --group-directories-first --color=auto'
 alias cp='cp -r'
 alias cat='bat'
-alias ..='cd ..'
-alias start='qemu-system-x86_64 -drive format=raw,file=bootimage-hlkernel.bin'
-alias start1='vncviewer 127.0.0.1:5900'
 alias shfmt='shfmt -l -w -i 4 *'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias -- -='cd -'
 
 alias checkout='git checkout'
 alias push='git push'
@@ -45,6 +47,9 @@ alias add='git add .'
 alias stash='git stash && git stash drop'
 alias status='git status'
 alias log='git log'
+
+alias sudo='sudo '
+alias root='sudo -s && cp ~/.zshrc /root/.zshrc && cp ~/.zprofile /root/.zprofile && cp -r ~/.cache/wal /root/.cache/ && zsh'
 
 export EDITOR='nvim'
 export VISUAL='nvim'
@@ -87,6 +92,27 @@ rebase() {
     fi
     if [[ "$1" =~ ^[0-9]+$ ]] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         git rebase -i HEAD~"$1"
+    fi
+}
+
+extract() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)          echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
     fi
 }
 
