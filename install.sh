@@ -172,6 +172,7 @@ setup_configurations() {
     mv "$XDG_CONFIG_HOME/alacritty" "$XDG_CONFIG_HOME/alacritty-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/dunst" "$XDG_CONFIG_HOME/dunst-bak" >/dev/null 2>&1
     mv "$XDG_CONFIG_HOME/qt5ct" "$XDG_CONFIG_HOME/qt5ct-bak" >/dev/null 2>&1
+    mv "$XDG_CONFIG_HOME/hypr" "$XDG_CONFIG_HOME/hypr-bak" >/dev/null 2>&1
     mv "$HOME/.zshrc" "$HOME/.zshrc-bak" >/dev/null 2>&1
     mv "$HOME/.zprofile" "$HOME/.zprofile-bak" >/dev/null 2>&1
 
