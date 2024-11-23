@@ -24,7 +24,7 @@ Install via curl
 | Lockscreen | Hyprlock |
 | Power Menu | Wlogout |
 
-### Keybinds overview:
+### Keybinds:
 | Keybind | Description |  
 | --- | --- |  
 | `ALT SHIFT + Q` | Spawns alacritty (Terminal) |  
