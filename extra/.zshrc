@@ -32,6 +32,7 @@ alias ll='lsd -llhN --group-directories-first --color=auto'
 alias cp='cp -r'
 alias cat='bat'
 alias shfmt='shfmt -l -w -i 4 *'
+alias reload='source ~/.zshrc'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -41,12 +42,22 @@ alias -- -='cd -'
 
 alias checkout='git checkout'
 alias push='git push'
+alias pull='git pull'
 alias fetch='git fetch'
 alias merge='git merge'
 alias add='git add .'
-alias stash='git stash && git stash drop'
+alias stash='git stash'
+alias drop='git stash drop'
+alias pop='git stash pop'
 alias status='git status'
 alias log='git log'
+alias branch='git branch'
+alias diff='git diff'
+alias reset='git reset'
+alias rebase='git rebase'
+alias remote='git remote'
+alias tag='git tag'
+alias clone='git clone'
 
 alias sudo='sudo '
 alias root='sudo -s && cp ~/.zshrc /root/.zshrc && cp ~/.zprofile /root/.zprofile && cp -r ~/.cache/wal /root/.cache/ && zsh'
@@ -60,29 +71,10 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-pull() {
-    git stash
-    git pull
-    git stash pop
-}
-
 commit() {
     git add .
     git commit -m "$*"
     git push
-}
-
-clone() { 
-    git clone "$1" 2>/dev/null && cd "$(basename "$1" .git)"
-}
-
-branch() {
-    if [ "$1" = "-d" ] && [ -n "$2" ]; then
-        git checkout main 2>/dev/null || git checkout master 2>/dev/null
-        git branch -d "$2"
-    else
-        git branch "$@"
-    fi
 }
 
 rebase() {
