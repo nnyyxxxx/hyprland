@@ -123,13 +123,13 @@ install_deps() {
     total_steps=2
     current_step=1
 
-    $ESCALATION_TOOL pacman -Rns --noconfirm \
+    yes | $ESCALATION_TOOL pacman -Rns \
         lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
 
-    $ESCALATION_TOOL pacman -S --needed --noconfirm \
+    yes | $ESCALATION_TOOL pacman -S --needed \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
-        ttf-fira-sans ttf-fira-mono polkit-kde-agent xdg-desktop-portal zip unzip cmake \
+        ttf-fira-sans ttf-fira-mono xdg-desktop-portal zip unzip cmake \
         qt5-graphicaleffects qt5-quickcontrols2 noto-fonts-extra noto-fonts-cjk noto-fonts \
         cmatrix gtk3 neovim pamixer mpv feh zsh dash pipewire-pulse easyeffects \
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
@@ -139,9 +139,9 @@ install_deps() {
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
-    $AUR_HELPER -S --needed --noconfirm \
+    yes | $AUR_HELPER -S --needed \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
-        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
+        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
