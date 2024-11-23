@@ -14,7 +14,7 @@ button {
     background-size: 25%;
 }
 
-button:focus, button:active, button:hover {
+button:hover {
     background-color: #716CCB;
     outline-style: none;
 }

@@ -54,7 +54,7 @@ button {
     background-size: 25%;
 }
 
-button:focus, button:active, button:hover {
+button:hover {
     background-color: #${color2};
     outline-style: none;
 }
