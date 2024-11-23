@@ -219,7 +219,7 @@ setup_configurations() {
     ln -sf "$HYPRLAND_DIR/extra/hyprlauncher" "$XDG_CONFIG_HOME/hyprlauncher" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hyprlauncher configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/alacritty" "$XDG_CONFIG_HOME/alacritty" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up alacritty configuration.${RC}"; }
     ln -sf "$HYPRLAND_DIR/extra/qt5ct" "$XDG_CONFIG_HOME/qt5ct" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up qt5ct configuration.${RC}"; }
-    cp -R "$HYPRLAND_DIR/extra/vesktop/discord-pywal.css" "$XDG_CONFIG_HOME/wal/templates" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up discord-pywal.css.${RC}"; }
+    cp -R "$HYPRLAND_DIR/extra/templates/discord-pywal.css" "$XDG_CONFIG_HOME/wal/templates" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up discord-pywal.css.${RC}"; }
     cp -R "$HYPRLAND_DIR/extra/templates/alacritty.toml" "$XDG_CONFIG_HOME/wal/templates" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up alacritty.toml${RC}"; }
 
     systemctl --user enable pipewire >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up pipewire.${RC}"; }
