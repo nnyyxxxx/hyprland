@@ -37,6 +37,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
             sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
             sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@red: #[0-9a-fA-F]\+;/@red: #${color2};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
 
             cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
 window {
