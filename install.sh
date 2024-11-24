@@ -123,10 +123,10 @@ install_deps() {
     total_steps=2
     current_step=1
 
-    yes | $ESCALATION_TOOL pacman -Rns \
+    $ESCALATION_TOOL pacman -Rns --noconfirm \
         lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
 
-    yes | $ESCALATION_TOOL pacman -S --needed \
+    $ESCALATION_TOOL pacman -S --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
         ttf-fira-sans ttf-fira-mono xdg-desktop-portal zip unzip cmake \
@@ -139,7 +139,7 @@ install_deps() {
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
-    yes | $AUR_HELPER -S --needed \
+    $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
         python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
