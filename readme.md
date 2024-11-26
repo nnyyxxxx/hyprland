@@ -1,9 +1,9 @@
-### Usage:
+## Usage
 Install via curl
   ```shell
   curl -fsSL https://github.com/nnyyxxxx/hyprland/raw/main/install.sh | sh
   ```
-### Keybinds:
+## Keybinds
 | Keybind | Description |  
 | --- | --- |  
 | `ALT SHIFT + Q` | Spawns alacritty (Terminal) |  
@@ -21,5 +21,5 @@ Install via curl
 | `ALT + RMB` | Resizes window in floating & resizes mfact in tiled |
 | `ALT + SPACE` | Makes the selected window float |
 
-### Preview:
+## Preview
 ![](.github/preview.png)
