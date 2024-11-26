@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Dark Horizon",
+    "workbench.colorTheme": "Wal",
     "editor.fontSize": 15,
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.verticalScrollbarSize": 0,
@@ -10,11 +10,9 @@
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "extensions.autoUpdate": false,
     "workbench.statusBar.visible": false,
-    "terminal.external.linuxExec": "hjgdASHDGSAJ",
+    "terminal.external.linuxExec": "hjgdASHDGSAJ", // annoying
     "terminal.explorerKind": "both",
     "terminal.sourceControlRepositoriesKind": "both",
-    "telemetry.telemetryLevel": "off",
-    "catppuccin.accentColor": "red",
     "window.menuBarVisibility": "visible",
     "vscord.app.name": "Visual Studio Code",
     "vscord.status.image.small.idle.text": "Idling",
