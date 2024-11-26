@@ -38,7 +38,7 @@ move_to_home() {
 clone_repo() {
     printf "%b\n" "${YELLOW}:: Installing git...${RC}"
     $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}:: Failed to install git.${RC}"
+        printf "%b\n" "${RED}:: Failed to install git.${RC}proton-ge"
         exit 1
     }
 
@@ -148,7 +148,8 @@ install_deps() {
 
     $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
-        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
+        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git \
+        protonup-qt-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
