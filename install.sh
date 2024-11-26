@@ -135,8 +135,8 @@ install_deps() {
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
         hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm jq python-pywal python-watchdog \
         python xorg-xhost timeshift yazi inotify-tools checkbashisms shfmt fzf alacritty qt5ct qt5 \
-        tar gzip bzip2 unrar p7zip unzip ncompress qt6 gnutls lib32-gnutls base-devel gtk2 gtk3 \
-        lib32-gtk2 lib32-gtk3 libpulse lib32-libpulse alsa-lib lib32-alsa-lib \
+        tar gzip bzip2 unrar p7zip unzip ncompress qt6 gnutls lib32-gnutls base-devel gtk2 \
+        lib32-gtk2 lib32-gtk3 libpulse lib32-libpulse alsa-lib lib32-alsa-lib gtk4 \
         alsa-utils alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib giflib lib32-giflib \
         libpng lib32-libpng lib32-libxcomposite libxinerama lib32-libxinerama \
         libldap lib32-libldap openal lib32-openal libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva \
