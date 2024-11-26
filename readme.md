@@ -3,27 +3,6 @@ Install via curl
   ```shell
   curl -fsSL https://github.com/nnyyxxxx/hyprland/raw/main/install.sh | sh
   ```
-
-### Setup:
-| Category | Application |
-| --- | --- |
-| Terminal | Alacritty |
-| Shell | Zsh |
-| Editor | Neovim + VSCodium |
-| Browser | Librewolf |
-| File Manager | Yazi |
-| System Monitor | Btop |
-| Discord | Vesktop |
-| Music | Spotify |
-| Media Player | MPV |
-| Screenshot | Grim + Slurp |
-| Color Picker | Hyprpicker |
-| Launcher | Hyprlauncher |
-| Bar | Waybar |
-| Notifications | Dunst |
-| Lockscreen | Hyprlock |
-| Power Menu | Wlogout |
-
 ### Keybinds:
 | Keybind | Description |  
 | --- | --- |  
