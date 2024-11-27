@@ -117,6 +117,22 @@ set_sys_ops() {
     printf "%b\n" "${GREEN}:: System settings configured successfully${RC}"
 }
 
+enable_multilib() {
+    printf "%b\n" "${YELLOW}:: Enabling multilib repository...${RC}"
+
+    $ESCALATION_TOOL sed -i '/^#\[multilib\]/{N;s/#\[multilib\]\n#Include/\[multilib\]\nInclude/}' /etc/pacman.conf || {
+        printf "%b\n" "${RED}:: Failed to uncomment multilib repository.${RC}"
+        exit 1
+    }
+
+    $ESCALATION_TOOL pacman -Sy || {
+        printf "%b\n" "${RED}:: Failed to update package database after enabling multilib.${RC}"
+        exit 1
+    }
+
+    printf "%b\n" "${GREEN}:: Multilib repository enabled successfully${RC}"
+}
+
 install_deps() {
     printf "%b\n" "${YELLOW}:: Installing dependencies...${RC}"
     printf "%b\n" "${YELLOW}:: This might take a minute or two...${RC}"
@@ -126,7 +142,7 @@ install_deps() {
     $ESCALATION_TOOL pacman -Rns --noconfirm \
         lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
 
-    $ESCALATION_TOOL pacman -S --needed --noconfirm \
+    $ESCALATION_TOOL pacman -Syyu --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
         pipewire ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-liberation ttf-dejavu meson \
         ttf-fira-sans ttf-fira-mono xdg-desktop-portal zip unzip cmake \
@@ -142,7 +158,7 @@ install_deps() {
         libldap lib32-libldap openal lib32-openal libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva \
         ncurses lib32-ncurses vulkan-icd-loader lib32-vulkan-icd-loader ocl-icd lib32-ocl-icd libva lib32-libva \
         gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils sqlite \
-        lib32-sqlite vulkan-radeon amdvlk >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
+        lib32-sqlite vulkan-radeon amdvlk lib32-mangohud mangohud >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
@@ -269,6 +285,7 @@ clone_repo
 declare_funcs
 install_aur_helper
 set_sys_ops
+enable_multilib
 install_deps
 setup_configurations
 setup_sddm_pfp
