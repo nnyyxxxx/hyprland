@@ -142,7 +142,7 @@ install_deps() {
         libldap lib32-libldap openal lib32-openal libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva \
         ncurses lib32-ncurses vulkan-icd-loader lib32-vulkan-icd-loader ocl-icd lib32-ocl-icd libva lib32-libva \
         gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils sqlite \
-        lib32-sqlite >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
+        lib32-sqlite vulkan-radeon amdvlk >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
     current_step=$((current_step + 1))
 
