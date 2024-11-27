@@ -5,21 +5,21 @@
   },
   "theme": {
     "colors": {
-      "border": "#2F509A",
-      "item_bg": "#09101a",
-      "item_bg_hover": "#2F509A",
-      "item_bg_selected": "#2F509A",
-      "item_description": "#c1c9e3",
+      "border": "#90A1B3",
+      "item_bg": "#0f101b",
+      "item_bg_hover": "#90A1B3",
+      "item_bg_selected": "#90A1B3",
+      "item_description": "#dee4e9",
       "item_description_selected": "#a0a0a0",
-      "item_name": "#c1c9e3",
+      "item_name": "#dee4e9",
       "item_name_selected": "#ffffff",
-      "item_path": "#c1c9e3",
+      "item_path": "#dee4e9",
       "item_path_selected": "#808080",
-      "search_bg": "#2F509A",
-      "search_bg_focused": "#2F509A",
-      "search_caret": "#c1c9e3",
-      "search_text": "#c1c9e3",
-      "window_bg": "#09101a"
+      "search_bg": "#90A1B3",
+      "search_bg_focused": "#90A1B3",
+      "search_caret": "#dee4e9",
+      "search_text": "#dee4e9",
+      "window_bg": "#0f101b"
     },
     "corners": {
       "list_item": 8,
