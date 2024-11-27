@@ -5,30 +5,30 @@
     padding = 16
     horizontal_padding = 16
     frame_width = 1
-    frame_color = "#90A1B3"
-    separator_color = "#90A1B3"
+    frame_color = "#8D797E"
+    separator_color = "#8D797E"
     font = JetBrainsMono Nerd Font 10
     line_height = 4
     corner_radius = 5
     origin = top-left
 
-    background = "#0f101b"
-    foreground = "#dee4e9"
+    background = "#060C15"
+    foreground = "#e6e0df"
 
     timeout = 5
     idle_threshold = 120
 
 [urgency_low]
-    background = "#0f101b"
-    foreground = "#dee4e9"
+    background = "#060C15"
+    foreground = "#e6e0df"
     timeout = 5
 
 [urgency_normal]
-    background = "#0f101b"
-    foreground = "#dee4e9"
+    background = "#060C15"
+    foreground = "#e6e0df"
     timeout = 5
 
 [urgency_critical]
-    background = "#0f101b"
-    foreground = "#5EA4C5"
+    background = "#060C15"
+    foreground = "#545A63"
     timeout = 0
