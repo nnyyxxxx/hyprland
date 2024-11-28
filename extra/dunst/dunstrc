@@ -11,6 +11,7 @@
     line_height = 4
     corner_radius = 5
     origin = top-left
+    monitor = 1
 
     background = "#060C15"
     foreground = "#e6e0df"
