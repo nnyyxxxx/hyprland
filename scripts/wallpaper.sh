@@ -113,6 +113,7 @@ EOF
     line_height = 4
     corner_radius = 5
     origin = top-left
+    monitor = 1
 
     background = "#${color0}"
     foreground = "#${color7}"
