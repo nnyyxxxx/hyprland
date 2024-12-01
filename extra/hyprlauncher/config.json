@@ -3,6 +3,13 @@
     "disable_auto_focus": false,
     "enable_logging": false
   },
+  "dmenu": {
+    "allow_invalid": false,
+    "case_sensitive": false
+  },
+  "finder": {
+    "show_hidden": false
+  },
   "theme": {
     "colors": {
       "border": "#716CCB",
