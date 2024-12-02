@@ -47,6 +47,10 @@
       "search_font_size": 16
     }
   },
+  "web_search": {
+    "enabled": false,
+    "engine": "duckduckgo"
+  },
   "window": {
     "anchor": "left",
     "border_width": 2,
@@ -66,6 +70,7 @@
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
+    "use_custom_css": false,
     "use_gtk_colors": false,
     "width": 600
   }
