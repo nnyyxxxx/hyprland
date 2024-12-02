@@ -7,9 +7,6 @@
     "allow_invalid": false,
     "case_sensitive": false
   },
-  "finder": {
-    "show_hidden": false
-  },
   "theme": {
     "colors": {
       "border": "#716CCB",
@@ -49,7 +46,8 @@
   },
   "web_search": {
     "enabled": false,
-    "engine": "duckduckgo"
+    "engine": "https://mysearchengine.com/search?q=",
+    "prefixes": []
   },
   "window": {
     "anchor": "left",
@@ -65,6 +63,7 @@
     "margin_right": 0,
     "margin_top": 0,
     "max_entries": 50,
+    "show_actions": false,
     "show_border": true,
     "show_descriptions": false,
     "show_icons": true,
