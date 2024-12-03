@@ -1,0 +1,48 @@
+window {
+    background-color: #0f0f0f;
+    border-radius: 12px;
+    border: 2px solid #414868;
+}
+
+listview {
+    background: transparent;
+}
+
+listview > row {
+    padding: 8px;
+    margin: 4px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 200ms ease;
+}
+
+listview > row:selected {
+    background-color: #7aa2f7;
+}
+
+entry {
+    margin: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c0caf5;
+    caret-color: #7aa2f7;
+    font-size: 16px;
+}
+
+.app-name {
+    color: #c0caf5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.app-description {
+    color: #565f89;
+    font-size: 12px;
+}
+
+.app-path {
+    color: #414868;
+    font-size: 12px;
+    font-family: monospace;
+}
