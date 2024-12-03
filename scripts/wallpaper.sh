@@ -143,39 +143,51 @@ EOF
     "disable_auto_focus": false,
     "enable_logging": false
   },
+  "dmenu": {
+    "allow_invalid": false,
+    "case_sensitive": false
+  },
   "theme": {
     "colors": {
       "border": "#${color2}",
-      "window_bg": "#${color0}",
       "item_bg": "#${color0}",
       "item_bg_hover": "#${color2}",
       "item_bg_selected": "#${color2}",
+      "item_description": "#${color7}",
+      "item_description_selected": "#${color7}",
+      "item_name": "#${color7}",
+      "item_name_selected": "#${color7}",
+      "item_path": "#${color7}",
+      "item_path_selected": "#${color7}",
       "search_bg": "#${color2}",
       "search_bg_focused": "#${color2}",
-      "search_text": "#${color7}",
       "search_caret": "#${color7}",
-      "item_name": "#${color7}",
-      "item_description": "#${color7}",
-      "item_path": "#${color7}"
+      "search_text": "#${color7}",
+      "window_bg": "#${color0}"
     },
     "corners": {
-      "window": 12,
       "list_item": 8,
-      "search": 8
+      "search": 8,
+      "window": 12
     },
     "spacing": {
-      "item_padding": 4,
       "item_margin": 6,
+      "item_padding": 4,
       "search_margin": 12,
       "search_padding": 12
     },
     "typography": {
-      "search_font_size": 16,
-      "item_name_size": 14,
       "item_description_size": 12,
+      "item_name_size": 14,
+      "item_path_font_family": "monospace",
       "item_path_size": 12,
-      "item_path_font_family": "monospace"
+      "search_font_size": 16
     }
+  },
+  "web_search": {
+    "enabled": false,
+    "engine": "duckduckgo",
+    "prefixes": []
   },
   "window": {
     "anchor": "left",
@@ -191,11 +203,13 @@ EOF
     "margin_right": 0,
     "margin_top": 0,
     "max_entries": 50,
+    "show_actions": false,
     "show_border": true,
     "show_descriptions": false,
     "show_icons": true,
     "show_paths": false,
     "show_search": true,
+    "use_custom_css": false,
     "use_gtk_colors": false,
     "width": 600
   }
