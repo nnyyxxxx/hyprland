@@ -1,6 +1,6 @@
 {
   "debug": {
-    "disable_auto_focus": false,
+    "disable_auto_focus": true,
     "enable_logging": false
   },
   "dmenu": {
@@ -46,7 +46,7 @@
   },
   "web_search": {
     "enabled": false,
-    "engine": "https://mysearchengine.com/search?q=",
+    "engine": "duckduckgo",
     "prefixes": []
   },
   "window": {
