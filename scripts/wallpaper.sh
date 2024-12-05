@@ -209,6 +209,9 @@ case_sensitive = false
 enabled = false
 engine = "duckduckgo"
 prefixes = []
+
+[calculator]
+enabled = false
 EOF
 
             pkill dunst
