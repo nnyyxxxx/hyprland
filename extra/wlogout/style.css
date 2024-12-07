@@ -4,9 +4,9 @@ window {
 
 button {
     border-radius: 0;
-    border-color: #6E6593;
-    color: #dbd2d8;
-    background-color: #0d0209;
+    border-color: #956059;
+    color: #c6c9c7;
+    background-color: #0C0C0A;
     border-style: solid;
     border-width: 1px;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@ button {
 }
 
 button:hover {
-    background-color: #6E6593;
+    background-color: #956059;
     outline-style: none;
 }
 
