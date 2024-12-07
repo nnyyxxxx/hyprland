@@ -13,29 +13,28 @@
     --background-accent: {color1};
     --background-floating: {background};
     --background-modifier-hover: {color1};
-    --background-modifier-active: {color2};
-    --background-modifier-selected: {color3};
+    --background-modifier-active: {color1};
+    --background-modifier-selected: {color1};
     --background-modifier-accent: {color1};
     --channeltextarea-background: {background};
     --text-normal: {foreground};
-    --text-muted: {color8};
-    --text-link: {color4};
+    --text-muted: {foreground};
+    --text-link: {foreground};
     --button-background: {color1};
-    --button-background-hover: {color2};
-    --button-background-active: {color3};
+    --button-background-hover: {color1};
+    --button-background-active: {color1};
     --button-accent: {color1};
-    --button-accent-hover: {color2};
-    --button-accent-active: {color3};
+    --button-accent-hover: {color1};
+    --button-accent-active: {color1};
     --interactive-normal: {foreground};
-    --interactive-hover: {color1};
-    --interactive-active: {color2};
-    --interactive-muted: {color8};
+    --interactive-hover: {foreground};
+    --interactive-active: {foreground};
+    --interactive-muted: {foreground};
     --thread-section-background: {background};
     --home-bar-background: {background};
     --menu-background: {background};
     --menu-text: {foreground};
 }}
-
 
 .themed_fc4f04.container_fc4f04,
 .container_c2739c,
@@ -48,27 +47,6 @@
 .app_bd26cc,
 .notAppAsidePanel_bd26cc,
 .appAsidePanelWrapper_bd26cc,
-#app-mount.appMount_ea7e65 {{
-    background-color: {background} !important;
-}}
-
-.contentWrapper_af5dbb,
-.drawerSizingWrapper_af5dbb,
-.positionContainer_af5dbb,
-.layer_cd0de5.expressionPickerPositionLayer_bdf0de.positionLayer_af5dbb {{
-    background-color: {background} !important;
-}}
-
-.scrollerBase_c49869.thin_c49869.scroller_d90b3d,
-#channel-attach.menu_ec5137.flexible_d90b3d.menu_d90b3d,
-#popout_72.layer_cd0de5 {{
-    background-color: {background} !important;
-}}
-
-.content_eed6a8,
-.scrollerBase_eed6a8.thin_eed6a8.grid_a6d69a,
-.container_a6d69a,
-.content_a7d72e,
-.chat_a7d72e {{
-    background-color: {background} !important;
+.appMount_ea7e65 {{
+    background: {background};
 }}
