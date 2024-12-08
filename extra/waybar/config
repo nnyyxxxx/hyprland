@@ -124,7 +124,7 @@
         "format": "󰚰",
         "exec": "checkupdates | wc -l",
         "interval": 60,
-        "on-click": "alacritty --title debloat -e ~/hyprland/scripts/debloat.sh",
+        "on-click": "alacritty --title debloat -e ~/dotfiles/scripts/debloat.sh",
         "tooltip-format": "{} updates available",
         "tooltip": true
     },
