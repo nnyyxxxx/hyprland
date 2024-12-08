@@ -6,7 +6,7 @@ All information regarding keybinds, programs, etc. Is located inside of ``hypr/h
 ## Usage
 Install via curl
   ```shell
-  curl -fsSL https://github.com/nnyyxxxx/hyprland/raw/main/install.sh | sh
+  curl -fsSL https://github.com/nnyyxxxx/dotfiles/raw/main/scripts/install.sh | sh
   ```
 
 ## Preview
