@@ -195,7 +195,7 @@ setup_configurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-classic-xcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to set up bibata classic x cursor"; }
 
     printf "%b\n" "${YELLOW}::${RC} Cleaning up old configurations..."
-    find "$HOME" -type l -exec rm {} + >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to remove symlinks."; }
+    find "$HOME" -type l -not -path "$HOME/hyprland/*" -not -path "$HOME/hyprland" -exec rm {} + >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to remove symlinks."; }
 
     printf "%b\n" "${YELLOW}::${RC} Backing up existing configurations..."
     mv "$XDG_CONFIG_HOME/nvim" "$XDG_CONFIG_HOME/nvim-bak" >/dev/null 2>&1
