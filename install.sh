@@ -5,7 +5,7 @@ RED='\033[31m'
 YELLOW='\033[33m'
 GREEN='\033[32m'
 
-warning() {
+warning_message() {
     if ! command -v pacman >/dev/null 2>&1; then
         printf "%b\n" "${RED}::${RC} Automated installation is only available for Arch-based distributions, install manually."
         exit 1
@@ -285,12 +285,12 @@ setup_sddm_pfp() {
     printf "%b\n" "${GREEN}::${RC} SDDM profile picture configured successfully"
 }
 
-success() {
+success_message() {
     printf "%b\n" "${YELLOW}::${RC} Please reboot your system to apply the changes."
     printf "%b\n" "${GREEN}::${RC} Installation complete."
 }
 
-warning
+warning_message
 set_escalation_tool
 request_elevation
 move_to_home
@@ -302,4 +302,4 @@ enable_multilib
 install_deps
 setup_configurations
 setup_sddm_pfp
-success
+success_message
