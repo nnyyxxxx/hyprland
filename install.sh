@@ -136,11 +136,20 @@ enable_multilib() {
 install_deps() {
     printf "%b\n" "${YELLOW}:: Installing dependencies...${RC}"
     printf "%b\n" "${YELLOW}:: This might take a minute or two...${RC}"
-    total_steps=2
+    total_steps=3
     current_step=1
+
+    $AUR_HELPER -S --needed --noconfirm \
+        cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
+        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git \
+        protonup-qt-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
+    printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
+    current_step=$((current_step + 1))
 
     $ESCALATION_TOOL pacman -Rns --noconfirm \
         lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
+    printf "%b\n" "${GREEN}:: Conflicting dependencies uninstalled. (${current_step}/${total_steps})${RC}"
+    current_step=$((current_step + 1))
 
     $ESCALATION_TOOL pacman -Syyu --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
@@ -160,13 +169,6 @@ install_deps() {
         gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils sqlite bubblewrap \
         lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
     printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
-    current_step=$((current_step + 1))
-
-    $AUR_HELPER -S --needed --noconfirm \
-        cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
-        python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git \
-        protonup-qt-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
-    printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
 }
 
 setup_configurations() {
@@ -250,6 +252,8 @@ setup_configurations() {
 
     systemctl --user enable pipewire >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up pipewire.${RC}"; }
     systemctl --user enable pipewire-pulse >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up pipewire-pulse.${RC}"; }
+    systemctl --user enable hyprpolkitagent >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to set up hyprpolkitagent.${RC}"; }
+    systemctl --user start hyprpolkitagent >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to start hyprpolkitagent.${RC}"; }
 
     $ESCALATION_TOOL ln -sf /bin/dash /bin/sh >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to create symlink for sh.${RC}"; }
     $ESCALATION_TOOL usermod -s /bin/zsh "$USERNAME" >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to change shell.${RC}"; }
