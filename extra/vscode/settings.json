@@ -10,10 +10,12 @@
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "extensions.autoUpdate": false,
     "workbench.statusBar.visible": false,
+    "window.titleBarStyle": "native",
+    "window.customTitleBarVisibility": "never",
+    "window.menuBarVisibility": "hidden",
     "terminal.external.linuxExec": "hjgdASHDGSAJ", // annoying
     "terminal.explorerKind": "both",
     "terminal.sourceControlRepositoriesKind": "both",
-    "window.menuBarVisibility": "visible",
     "vscord.app.name": "Visual Studio Code",
     "vscord.status.image.small.idle.text": "Idling",
     "vscord.status.details.text.notInFile": "Idling",
@@ -31,6 +33,8 @@
     "vscord.status.image.small.idle.key": "https://i.imgur.com/ZNiaJLn.jpeg",
     "vscord.status.image.small.viewing.key": "https://i.imgur.com/ZNiaJLn.jpeg",
     "vscord.status.image.small.editing.key": "https://i.imgur.com/ZNiaJLn.jpeg",
+    "extensions.ignoreRecommendations": true,
+    "vscord.status.state.text.editing": "Working on {file_name}{file_extension}",
     "window.commandCenter": false,
-    "extensions.ignoreRecommendations": true
+    "editor.cursorBlinking": "solid"
 }
