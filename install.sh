@@ -43,8 +43,8 @@ clone_repo() {
     }
 
     printf "%b\n" "${YELLOW}::${RC} Checking repository..."
-    if [ -d "$HOME/hyprland" ] && [ -d "$HOME/hyprland/.git" ]; then
-        cd "$HOME/hyprland" || exit 1
+    if [ -d "$HOME/dotfiles" ] && [ -d "$HOME/dotfiles/.git" ]; then
+        cd "$HOME/dotfiles" || exit 1
         if git remote get-url origin | grep -q "github.com/nnyyxxxx/dotfiles"; then
             printf "%b\n" "${YELLOW}::${RC} Repository exists, pulling latest changes..."
             git pull origin main >/dev/null 2>&1 || {
@@ -57,11 +57,11 @@ clone_repo() {
     fi
 
     printf "%b\n" "${YELLOW}::${RC} Cloning repository..."
-    rm -rf "$HOME/hyprland" >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}::${RC} Failed to remove old hyprland directory."
+    rm -rf "$HOME/dotfiles" >/dev/null 2>&1 || {
+        printf "%b\n" "${RED}::${RC} Failed to remove old dotfiles directory."
         exit 1
     }
-    git clone https://github.com/nnyyxxxx/dotfiles "$HOME/hyprland" >/dev/null 2>&1 || {
+    git clone https://github.com/nnyyxxxx/dotfiles "$HOME/dotfiles" >/dev/null 2>&1 || {
         printf "%b\n" "${RED}::${RC} Failed to clone dotfiles."
         exit 1
     }
@@ -69,7 +69,7 @@ clone_repo() {
 
 declare_funcs() {
     printf "%b\n" "${YELLOW}::${RC} Setting up directories..."
-    HYPRLAND_DIR="$HOME/hyprland"
+    HYPRLAND_DIR="$HOME/dotfiles"
     mkdir -p "$HOME/.config"
     XDG_CONFIG_HOME="$HOME/.config"
     USERNAME=$(whoami)
@@ -195,7 +195,7 @@ setup_configurations() {
     cp -R "$HYPRLAND_DIR/extra/bibata-classic-xcursor" "$HOME/.local/share/icons" >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to set up bibata classic x cursor"; }
 
     printf "%b\n" "${YELLOW}::${RC} Cleaning up old configurations..."
-    find "$HOME" -type l -not -path "$HOME/hyprland/*" -not -path "$HOME/hyprland" -exec rm {} + >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to remove symlinks."; }
+    find "$HOME" -type l -not -path "$HOME/dotfiles/*" -not -path "$HOME/dotfiles" -exec rm {} + >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to remove symlinks."; }
 
     printf "%b\n" "${YELLOW}::${RC} Backing up existing configurations..."
     mv "$XDG_CONFIG_HOME/nvim" "$XDG_CONFIG_HOME/nvim-bak" >/dev/null 2>&1

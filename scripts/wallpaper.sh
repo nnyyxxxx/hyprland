@@ -1,6 +1,6 @@
 #!/bin/sh
 
-config_dir="$HOME/hyprland/extra/hyprwall"
+config_dir="$HOME/dotfiles/extra/hyprwall"
 config_file="$config_dir/config.ini"
 last_value=""
 
@@ -13,7 +13,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             waybar &
             pywalfox update
             background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
-            echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-hyprland.conf
+            echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-dotfiles.conf
             mkdir -p "$HOME/.config/vesktop/themes"
             cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"
             cp "$(eval echo "$current_value")" "$HOME/.cache/wal/current_wallpaper"
@@ -27,32 +27,32 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             color6=$(sed -n '7p' $HOME/.cache/wal/colors | sed 's/#//g')
             color7=$(sed -n '8p' $HOME/.cache/wal/colors | sed 's/#//g')
 
-            find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
+            find $HOME/dotfiles/extra/gtk-3.0/dark-horizon/gtk-3.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
-            find $HOME/hyprland/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
+            find $HOME/dotfiles/extra/gtk-3.0/dark-horizon/gtk-4.0/ -name "*.css" -exec sed -i 's/background-color: #[0-9a-fA-F]\+;*/background-color: #'"${color0}"';/g' {} \;
 
             gsettings set org.gnome.desktop.interface gtk-theme "dummy"
             gsettings set org.gnome.desktop.interface gtk-theme "dark-horizon"
 
-            sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@rosewater: #[0-9a-fA-F]\+;/@rosewater: #${color1};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@flamingo: #[0-9a-fA-F]\+;/@flamingo: #${color5};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@pink: #[0-9a-fA-F]\+;/@pink: #${color3};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@mauve: #[0-9a-fA-F]\+;/@mauve: #${color4};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@red: #[0-9a-fA-F]\+;/@red: #${color2};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@maroon: #[0-9a-fA-F]\+;/@maroon: #${color6};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@peach: #[0-9a-fA-F]\+;/@peach: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@yellow: #[0-9a-fA-F]\+;/@yellow: #${color3};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@green: #[0-9a-fA-F]\+;/@green: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@teal: #[0-9a-fA-F]\+;/@teal: #${color4};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@blue: #[0-9a-fA-F]\+;/@blue: #${color5};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@sapphire: #[0-9a-fA-F]\+;/@sapphire: #${color6};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@sky: #[0-9a-fA-F]\+;/@sky: #${color1};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
-            sed -i "s/@lavender: #[0-9a-fA-F]\+;/@lavender: #${color7};/g" "$HOME/hyprland/extra/librewolf/catppuccin.json"
+            sed -i "s/@base: #[0-9a-fA-F]\+;/@base: #${color0};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@mantle: #[0-9a-fA-F]\+;/@mantle: #${color0};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@crust: #[0-9a-fA-F]\+;/@crust: #${color0};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@rosewater: #[0-9a-fA-F]\+;/@rosewater: #${color1};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@flamingo: #[0-9a-fA-F]\+;/@flamingo: #${color5};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@pink: #[0-9a-fA-F]\+;/@pink: #${color3};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@mauve: #[0-9a-fA-F]\+;/@mauve: #${color4};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@red: #[0-9a-fA-F]\+;/@red: #${color2};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@maroon: #[0-9a-fA-F]\+;/@maroon: #${color6};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@peach: #[0-9a-fA-F]\+;/@peach: #${color7};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@yellow: #[0-9a-fA-F]\+;/@yellow: #${color3};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@green: #[0-9a-fA-F]\+;/@green: #${color7};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@teal: #[0-9a-fA-F]\+;/@teal: #${color4};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@blue: #[0-9a-fA-F]\+;/@blue: #${color5};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@sapphire: #[0-9a-fA-F]\+;/@sapphire: #${color6};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@sky: #[0-9a-fA-F]\+;/@sky: #${color1};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
+            sed -i "s/@lavender: #[0-9a-fA-F]\+;/@lavender: #${color7};/g" "$HOME/dotfiles/extra/librewolf/catppuccin.json"
 
-            cat >$HOME/hyprland/extra/wlogout/style.css <<EOF
+            cat >$HOME/dotfiles/extra/wlogout/style.css <<EOF
 window {
 	background-color: rgba(12, 12, 12, 0.9);
 }
@@ -99,7 +99,7 @@ button:hover {
 }
 EOF
 
-            cat >$HOME/hyprland/extra/dunst/dunstrc <<EOF
+            cat >$HOME/dotfiles/extra/dunst/dunstrc <<EOF
 [global]
     width = 300
     height = 100
@@ -137,7 +137,7 @@ EOF
     timeout = 0
 EOF
 
-            cat >$HOME/hyprland/extra/hyprlauncher/config.toml <<EOF
+            cat >$HOME/dotfiles/extra/hyprlauncher/config.toml <<EOF
 [window]
 width = 600
 height = 1430
@@ -217,12 +217,12 @@ EOF
             pkill dunst
             dunst &
 
-            if ! grep -q "\[color\]" "$HOME/hyprland/extra/cava/config"; then
-                printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >>"$HOME/hyprland/extra/cava/config"
+            if ! grep -q "\[color\]" "$HOME/dotfiles/extra/cava/config"; then
+                printf "\n[color]\nbackground = '#%s'\ngradient = 1\n" "$color0" >>"$HOME/dotfiles/extra/cava/config"
                 i=1
                 while [ $i -le 8 ]; do
                     eval "current_color=\$color$((8 - i))"
-                    printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >>"$HOME/hyprland/extra/cava/config"
+                    printf "gradient_color_%d = '#%s'\n" "$i" "$current_color" >>"$HOME/dotfiles/extra/cava/config"
                     i=$((i + 1))
                 done
             else
@@ -247,14 +247,14 @@ EOF
                 /\[color\]/ { print colors; skip = 1; next }
                 /^\[/ { skip = 0 }
                 !skip { print }
-            ' "$HOME/hyprland/extra/cava/config" >"$HOME/hyprland/extra/cava/config.tmp" &&
-                    mv "$HOME/hyprland/extra/cava/config.tmp" "$HOME/hyprland/extra/cava/config"
+            ' "$HOME/dotfiles/extra/cava/config" >"$HOME/dotfiles/extra/cava/config.tmp" &&
+                    mv "$HOME/dotfiles/extra/cava/config.tmp" "$HOME/dotfiles/extra/cava/config"
             fi
 
             pkill cava
             cava &
 
-            cat >$HOME/hyprland/hypr/dark-horizon.conf <<EOF
+            cat >$HOME/dotfiles/hypr/dark-horizon.conf <<EOF
 \$background = rgb(${color0})
 \$backgroundAlpha = ${color0}
 
@@ -335,14 +335,14 @@ EOF
             cp /tmp/sddm-theme.conf /usr/share/sddm/themes/corners/theme.conf
             rm /tmp/sddm-theme.conf
 
-            cat >$HOME/hyprland/extra/qt5ct/colors/mocha.conf <<EOF
+            cat >$HOME/dotfiles/extra/qt5ct/colors/mocha.conf <<EOF
 [ColorScheme]
 active_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color0}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
 disabled_colors=#ff${color2}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color2}, #ff${color2}, #ff${color2}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color4}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
 inactive_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color2}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
 EOF
 
-            cat >$HOME/hyprland/extra/qt6ct/colors/mocha.conf <<EOF
+            cat >$HOME/dotfiles/extra/qt6ct/colors/mocha.conf <<EOF
 [ColorScheme]
 active_colors=#ff${color7}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color7}, #ff${color7}, #ff${color7}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color0}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
 disabled_colors=#ff${color2}, #ff${color0}, #ff${color2}, #ff${color3}, #ff${color4}, #ff${color5}, #ff${color2}, #ff${color2}, #ff${color2}, #ff${color0}, #ff${color0}, #ff${color2}, #ff${color4}, #ff${color4}, #ff${color4}, #ff${color1}, #ff${color0}, #ff${color7}, #ff${color0}, #ff${color7}, #80${color2}
