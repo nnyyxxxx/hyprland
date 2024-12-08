@@ -125,7 +125,7 @@ enable_multilib() {
         exit 1
     }
 
-    $ESCALATION_TOOL pacman -Sy || {
+    $ESCALATION_TOOL pacman -Sy >/dev/null 2>&1 || {
         printf "%b\n" "${RED}:: Failed to update package database after enabling multilib.${RC}"
         exit 1
     }
@@ -142,13 +142,19 @@ install_deps() {
     $AUR_HELPER -S --needed --noconfirm \
         cava pipes.sh checkupdates-with-aur librewolf-bin hyprwall-bin wlogout \
         python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git \
-        protonup-qt-bin >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install AUR dependencies.${RC}"; }
-    printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}"
+        protonup-qt-bin >/dev/null 2>&1 &&
+        printf "%b\n" "${GREEN}:: AUR dependencies installed (${current_step}/${total_steps})${RC}" || {
+        printf "%b\n" "${RED}:: Failed to install AUR packages.${RC}"
+        exit 1
+    }
     current_step=$((current_step + 1))
 
     $ESCALATION_TOOL pacman -Rns --noconfirm \
-        lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
-    printf "%b\n" "${GREEN}:: Conflicting dependencies uninstalled. (${current_step}/${total_steps})${RC}"
+        lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1 &&
+        printf "%b\n" "${GREEN}:: Conflicting dependencies uninstalled. (${current_step}/${total_steps})${RC}" || {
+        printf "%b\n" "${RED}:: Failed to remove conflicting packages. Check /var/log/pacman.log for details.${RC}"
+        exit 1
+    }
     current_step=$((current_step + 1))
 
     $ESCALATION_TOOL pacman -Syyu --needed --noconfirm \
@@ -167,8 +173,11 @@ install_deps() {
         libldap lib32-libldap openal lib32-openal libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva \
         ncurses lib32-ncurses vulkan-icd-loader lib32-vulkan-icd-loader ocl-icd lib32-ocl-icd libva lib32-libva \
         gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils sqlite bubblewrap \
-        lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct >/dev/null 2>&1 || { printf "%b\n" "${RED}:: Failed to install dependencies.${RC}"; }
-    printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}"
+        lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct >/dev/null 2>&1 &&
+        printf "%b\n" "${GREEN}:: Dependencies installed (${current_step}/${total_steps})${RC}" || {
+        printf "%b\n" "${RED}:: Failed to install system packages. Check /var/log/pacman.log for details.${RC}"
+        exit 1
+    }
 }
 
 setup_configurations() {
