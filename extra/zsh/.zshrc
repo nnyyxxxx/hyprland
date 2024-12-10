@@ -66,6 +66,10 @@ export VISUAL='nvim'
 export TERMINAL='alacritty'
 export BROWSER='librewolf'
 
+bench() {
+    hyperfine --warmup 100 --runs 500 -N "$@"
+}
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
