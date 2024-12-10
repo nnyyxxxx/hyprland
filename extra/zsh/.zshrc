@@ -67,7 +67,7 @@ export TERMINAL='alacritty'
 export BROWSER='librewolf'
 
 bench() {
-    hyperfine --warmup 100 --runs 500 -N "$@"
+    hyperfine --warmup 500 --runs 10000 -N "$@"
 }
 
 parse_git_branch() {
