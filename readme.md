@@ -8,6 +8,6 @@ Install via curl
   ```shell
   curl -fsSL https://github.com/nnyyxxxx/dotfiles/raw/main/scripts/install.sh | sh
   ```
-commit
+
 ## Preview
 ![](.github/preview.png)
