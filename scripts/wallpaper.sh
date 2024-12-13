@@ -12,7 +12,7 @@ inotifywait -m -e modify,create "$config_dir" | while read -r directory events f
             killall waybar
             waybar &
             pywalfox update
-            background=$(jq -r '.special.background' $HOME/.cache/wal/colors.json | sed 's/#//')
+            background=$(jq -r '.colors.color1' $HOME/.cache/wal/colors.json | sed 's/#//')
             echo "\$background = rgba(${background}FF)" >$HOME/.cache/wal/colors-dotfiles.conf
             mkdir -p "$HOME/.config/vesktop/themes"
             cp $HOME/.cache/wal/discord-pywal.css "$HOME/.config/vesktop/themes/pywal.css"

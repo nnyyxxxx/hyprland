@@ -12,6 +12,7 @@ window#waybar {
   margin: 4px;
   padding: 0 2px;
   border-radius: 5px;
+  border: 2px solid @color1;
 }
 
 window#waybar.hidden {
@@ -59,11 +60,13 @@ window#waybar.hidden {
 }
 
 #custom-arch {
-  margin: 0 2px 0 0;
-  padding: 4px 8px;
-  background-color: @background;
-  color: #ffffff;
-  border-radius: 5px;
+  margin-top: 6px;
+  margin-right: 2px;
+  padding: 0 8px;
+}
+
+#custom-power {
+  margin-bottom: 6px;
 }
 
 #custom-updates,
@@ -80,8 +83,7 @@ window#waybar.hidden {
   border-radius: 5px;
 }
 
-#network,
-#custom-power {
+#network {
   margin: 0 2px;
   padding: 4px 8px;
   background-color: @background;
