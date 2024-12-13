@@ -23,24 +23,24 @@ down = "j"
 delete_word = "h"
 
 [theme.colors]
-window_bg = "#09101a"
-search_bg = "#2F509A"
-search_bg_focused = "#2F509A"
-item_bg = "#09101a"
-item_bg_hover = "#2F509A"
-item_bg_selected = "#2F509A"
-search_text = "#c1c9e3"
-search_caret = "#c1c9e3"
-item_name = "#c1c9e3"
-item_name_selected = "#c1c9e3"
-item_description = "#c1c9e3"
-item_description_selected = "#c1c9e3"
-item_path = "#c1c9e3"
-item_path_selected = "#c1c9e3"
-border = "#2F509A"
+window_bg = "#040407"
+search_bg = "#716CCB"
+search_bg_focused = "#716CCB"
+item_bg = "#040407"
+item_bg_hover = "#716CCB"
+item_bg_selected = "#716CCB"
+search_text = "#ddcde4"
+search_caret = "#ddcde4"
+item_name = "#ddcde4"
+item_name_selected = "#ddcde4"
+item_description = "#ddcde4"
+item_description_selected = "#ddcde4"
+item_path = "#ddcde4"
+item_path_selected = "#ddcde4"
+border = "#716CCB"
 
 [theme.corners]
-window = 12
+window = 5
 search = 8
 list_item = 8
 
