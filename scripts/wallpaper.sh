@@ -140,8 +140,8 @@ EOF
             cat >$HOME/dotfiles/extra/hyprlauncher/config.toml <<EOF
 [window]
 width = 600
-height = 1430
-anchor = "left"
+height = 700
+anchor = "center"
 margin_top = 0
 margin_bottom = 0
 margin_left = 0
@@ -180,7 +180,7 @@ item_path_selected = "#${color7}"
 border = "#${color2}"
 
 [theme.corners]
-window = 12
+window = 5
 search = 8
 list_item = 8
 
