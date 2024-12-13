@@ -173,7 +173,8 @@ install_deps() {
         libldap lib32-libldap openal lib32-openal libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva \
         ncurses lib32-ncurses vulkan-icd-loader lib32-vulkan-icd-loader ocl-icd lib32-ocl-icd libva lib32-libva \
         gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils sqlite bubblewrap \
-        lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct hyperfine >/dev/null 2>&1 &&
+        lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct hyperfine \
+        lsp-plugins >/dev/null 2>&1 &&
         printf "%b\n" "${GREEN}::${RC} Dependencies installed (${current_step}/${total_steps})" || {
         printf "%b\n" "${RED}::${RC} Failed to install system packages. Check /var/log/pacman.log for details."
         exit 1
