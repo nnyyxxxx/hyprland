@@ -165,7 +165,7 @@ install_deps() {
         cmatrix gtk3 neovim pamixer mpv feh zsh dash pipewire-pulse easyeffects \
         btop zoxide zsh-syntax-highlighting ffmpeg xdg-desktop-portal-hyprland qt5-wayland \
         hypridle hyprlock qt6-wayland lsd libnotify dunst bat sddm jq python-pywal python-watchdog \
-        python xorg-xhost timeshift yazi inotify-tools checkbashisms shfmt fzf alacritty qt5ct qt5 \
+        python xorg-xhost timeshift inotify-tools checkbashisms shfmt fzf alacritty qt5ct qt5 \
         tar gzip bzip2 unrar p7zip unzip ncompress qt6 gnutls lib32-gnutls base-devel gtk2 \
         lib32-gtk2 lib32-gtk3 libpulse lib32-libpulse alsa-lib lib32-alsa-lib gtk4 \
         alsa-utils alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib giflib lib32-giflib \
