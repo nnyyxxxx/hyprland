@@ -69,18 +69,24 @@ window#waybar.hidden {
   margin-bottom: 6px;
 }
 
-#custom-updates,
+#custom-updates {
+  margin-top: 6px;
+}
+
 #battery,
 #backlight,
 #wireplumber,
 #clock,
-#tray,
 #window {
   margin: 0 2px;
   padding: 4px 8px;
   background-color: @background;
   color: #ffffff;
   border-radius: 5px;
+}
+
+#tray {
+  margin-left: 4px;
 }
 
 #network {
