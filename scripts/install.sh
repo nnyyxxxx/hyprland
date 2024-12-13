@@ -104,7 +104,7 @@ enable_multilib() {
 install_deps() {
     printf "%b\n" "${YELLOW}::${RC} Installing dependencies..."
     printf "%b\n" "${YELLOW}::${RC} This might take a minute or two..."
-    total_steps=3
+    total_steps=2
     current_step=1
 
     $AUR_HELPER -S --needed --noconfirm \
@@ -118,12 +118,7 @@ install_deps() {
     current_step=$((current_step + 1))
 
     $ESCALATION_TOOL pacman -Rns --noconfirm \
-        lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1 &&
-        printf "%b\n" "${GREEN}::${RC} Conflicting dependencies uninstalled. (${current_step}/${total_steps})" || {
-        printf "%b\n" "${RED}::${RC} Failed to remove conflicting packages. Check /var/log/pacman.log for details."
-        exit 1
-    }
-    current_step=$((current_step + 1))
+        lightdm gdm lxdm lemurs emptty xorg-xdm ly hyprland-git >/dev/null 2>&1
 
     $ESCALATION_TOOL pacman -Syyu --needed --noconfirm \
         cliphist waybar grim slurp hyprpicker hyprpaper bleachbit hyprland fastfetch cpio \
