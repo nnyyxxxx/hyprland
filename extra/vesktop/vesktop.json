@@ -109,7 +109,7 @@
             },
             "ClientTheme": {
                 "enabled": true,
-                "color": "0f0f0f"
+                "color": "000000"
             },
             "ColorSighted": {
                 "enabled": false
@@ -408,7 +408,7 @@
                 "enabled": false
             },
             "RoleColorEverywhere": {
-                "enabled": false
+                "enabled": true
             },
             "SecretRingToneEnabler": {
                 "enabled": false
@@ -645,7 +645,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1731309508306
+            "settingsSyncVersion": 1734088246701
         }
     },
     "quickCss": ""
