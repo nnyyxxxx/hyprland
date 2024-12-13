@@ -35,38 +35,6 @@ move_to_home() {
     }
 }
 
-clone_repo() {
-    printf "%b\n" "${YELLOW}::${RC} Installing git..."
-    $ESCALATION_TOOL pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}::${RC} Failed to install git."
-        exit 1
-    }
-
-    printf "%b\n" "${YELLOW}::${RC} Checking repository..."
-    if [ -d "$HOME/dotfiles" ] && [ -d "$HOME/dotfiles/.git" ]; then
-        cd "$HOME/dotfiles" || exit 1
-        if git remote get-url origin | grep -q "github.com/nnyyxxxx/dotfiles"; then
-            printf "%b\n" "${YELLOW}::${RC} Repository exists, pulling latest changes..."
-            git pull origin main >/dev/null 2>&1 || {
-                printf "%b\n" "${RED}::${RC} Failed to pull latest changes."
-                exit 1
-            }
-            printf "%b\n" "${GREEN}::${RC} Repository updated successfully"
-            return 0
-        fi
-    fi
-
-    printf "%b\n" "${YELLOW}::${RC} Cloning repository..."
-    rm -rf "$HOME/dotfiles" >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}::${RC} Failed to remove old dotfiles directory."
-        exit 1
-    }
-    git clone https://github.com/nnyyxxxx/dotfiles "$HOME/dotfiles" >/dev/null 2>&1 || {
-        printf "%b\n" "${RED}::${RC} Failed to clone dotfiles."
-        exit 1
-    }
-}
-
 declare_funcs() {
     printf "%b\n" "${YELLOW}::${RC} Setting up directories..."
     HYPRLAND_DIR="$HOME/dotfiles"
@@ -299,7 +267,6 @@ warning_message
 set_escalation_tool
 request_elevation
 move_to_home
-clone_repo
 declare_funcs
 install_aur_helper
 set_sys_ops
