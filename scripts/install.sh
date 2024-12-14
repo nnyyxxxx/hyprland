@@ -112,7 +112,7 @@ install_deps() {
         python-pywalfox-librewolf spotify vesktop-bin hyprlauncher-bin hyprpolkitagent-git \
         protonup-qt-bin >/dev/null 2>&1 &&
         printf "%b\n" "${GREEN}::${RC} AUR dependencies installed (${current_step}/${total_steps})" || {
-        printf "%b\n" "${RED}::${RC} Failed to install AUR packages."
+        printf "%b\n" "${RED}::${RC} Failed to install AUR dependencies."
         exit 1
     }
     current_step=$((current_step + 1))
@@ -139,7 +139,7 @@ install_deps() {
         lib32-sqlite vulkan-radeon lib32-vulkan-radeon lib32-mangohud mangohud pavucontrol qt6ct hyperfine \
         lsp-plugins >/dev/null 2>&1 &&
         printf "%b\n" "${GREEN}::${RC} Dependencies installed (${current_step}/${total_steps})" || {
-        printf "%b\n" "${RED}::${RC} Failed to install system packages. Check /var/log/pacman.log for details."
+        printf "%b\n" "${RED}::${RC} Failed to install dependencies. Check /var/log/pacman.log for details."
         exit 1
     }
 }
