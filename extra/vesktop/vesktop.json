@@ -141,7 +141,8 @@
                 "enabled": false
             },
             "Decor": {
-                "enabled": false
+                "enabled": false,
+                "agreedToGuidelines": false
             },
             "DisableCallIdle": {
                 "enabled": false
@@ -159,10 +160,16 @@
                 "enabled": false
             },
             "FakeNitro": {
-                "enabled": false
+                "enabled": true,
+                "enableStickerBypass": true,
+                "enableStreamQualityBypass": true,
+                "enableEmojiBypass": true,
+                "transformEmojis": true,
+                "transformStickers": true
             },
             "FakeProfileThemes": {
-                "enabled": false
+                "enabled": true,
+                "nitroFirst": true
             },
             "FavoriteEmojiFirst": {
                 "enabled": false
@@ -288,7 +295,7 @@
                 "enabled": false
             },
             "NoF1": {
-                "enabled": false
+                "enabled": true
             },
             "NoMosaic": {
                 "enabled": false
@@ -327,7 +334,7 @@
                 "enabled": false
             },
             "NSFWGateBypass": {
-                "enabled": false
+                "enabled": true
             },
             "OnePingPerDM": {
                 "enabled": false
@@ -408,7 +415,13 @@
                 "enabled": false
             },
             "RoleColorEverywhere": {
-                "enabled": true
+                "enabled": true,
+                "chatMentions": true,
+                "memberList": true,
+                "voiceUsers": true,
+                "reactorsList": true,
+                "pollResults": true,
+                "colorChatMessages": false
             },
             "SecretRingToneEnabler": {
                 "enabled": false
@@ -602,7 +615,7 @@
                 "enabled": false
             },
             "YoutubeAdblock": {
-                "enabled": false
+                "enabled": true
             },
             "AlwaysExpandRoles": {
                 "enabled": false
@@ -617,7 +630,7 @@
                 "enabled": false
             },
             "VolumeBooster": {
-                "enabled": false
+                "enabled": true
             },
             "FullSearchContext": {
                 "enabled": false
@@ -632,7 +645,7 @@
                 "enabled": true
             },
             "FixImagesQuality": {
-                "enabled": false
+                "enabled": true
             }
         },
         "notifications": {
@@ -645,7 +658,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1734088246701
+            "settingsSyncVersion": 1734466628873
         }
     },
     "quickCss": ""
