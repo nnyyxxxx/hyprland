@@ -36,7 +36,7 @@ move_to_home() {
 }
 
 declare_funcs() {
-    printf "%b\n" "${YELLOW}::${RC} Setting up directories..."
+    printf "%b\n" "${YELLOW}::${RC} Declaring functions..."
     HYPRLAND_DIR="$HOME/dotfiles"
     mkdir -p "$HOME/.config"
     XDG_CONFIG_HOME="$HOME/.config"
@@ -74,7 +74,7 @@ install_aur_helper() {
 }
 
 set_sys_ops() {
-    printf "%b\n" "${YELLOW}::${RC} Configuring system settings..."
+    printf "%b\n" "${YELLOW}::${RC} Configuring system operations..."
     printf "%b\n" "${YELLOW}::${RC} Setting up Parallel Downloads..."
     $ESCALATION_TOOL sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 5/' /etc/pacman.conf >/dev/null 2>&1 || { printf "%b\n" "${RED}::${RC} Failed to set Parallel Downloads."; }
 
